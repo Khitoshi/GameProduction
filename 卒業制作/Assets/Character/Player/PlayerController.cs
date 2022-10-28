@@ -17,28 +17,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Move();
+    }   
+
+    private void Move()
+    {
         Vector2 position = transform.position;
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
             position.x -= MoveSpeed;
-            renderer.flipX = false;
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
             position.x += MoveSpeed;
-            renderer.flipX = true;
         }
-        else if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
+
+        if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
             position.y -= MoveSpeed;
-            
+
         }
         else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
             position.y += MoveSpeed;
-            
         }
-
         transform.position = position;
-    }   
+    }
 }
