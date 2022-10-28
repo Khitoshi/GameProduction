@@ -49,10 +49,6 @@ public class SightCheckerExample2D : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * _maxDistance, Color.red, time);
         }
 
-
-
-
-
         // Ž‹ŠE”»’è
         return innerProduct > cosHalf && targetDistance < _maxDistance;
     }
