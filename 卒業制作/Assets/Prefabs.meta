@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: bc5fd23b25060d74fa91cbc7f2f1b01d
+=======
+guid: a2a38dae24f27ea478af8b62882c7e84
+>>>>>>> origin/Graphics
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
