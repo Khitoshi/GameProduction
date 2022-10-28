@@ -5,16 +5,26 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638013137890695002
+<<<<<<< HEAD
+      ticks: 638025165779786545
     m_Hash: 941527744
+=======
+      ticks: 638007078817583955
+    m_Hash: 3937868600
+>>>>>>> 3b3adf318ece593dabad95ae29fe5bf64d61488a
   m_LockFileStatus:
     m_FilePath: "D:/Unity/\u5352\u696D\u5236\u4F5C/\u5352\u696D\u5236\u4F5C/Packages/packages-lock.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638013137891457511
+<<<<<<< HEAD
+      ticks: 638025165779858039
     m_Hash: 1472339586
+=======
+      ticks: 638007079231058247
+    m_Hash: 4176202931
+>>>>>>> 3b3adf318ece593dabad95ae29fe5bf64d61488a
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -246,6 +256,7 @@ m_PackageAssets:
         - 5.0.0
         - 5.0.1
         - 5.0.2
+        - 5.0.3
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -1106,7 +1117,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 10.10.1
       source: 1
-      resolvedPath: "D:\\Unity\\\u5352\u696D\u5236\u4F5C\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.render-pipelines.universal@10.10.1"
+      resolvedPath: "C:\\Users\\2200558\\Desktop\\\u5352\u696D\u5236\u4F5C\\\u4F5C\u54C1\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.render-pipelines.universal@10.10.1"
       assetPath: Packages/com.unity.render-pipelines.universal
       name: com.unity.render-pipelines.universal
       displayName: Universal RP
@@ -1280,12 +1291,14 @@ m_PackageAssets:
         - 1.1.30
         - 1.1.31
         - 1.1.33
+        - 1.3.0
         - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
         compatible:
         - 1.1.31
         - 1.1.33
+        - 1.3.0
         - 2.0.1-exp.1
         - 2.0.1-pre.12
         - 2.0.1-pre.18
@@ -1507,7 +1520,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Use Unity Timeline to create cinematic content, game-play sequences,
         audio sequences, and complex particle effects.
       status: 4
@@ -1586,6 +1599,7 @@ m_PackageAssets:
         - 1.7.0-pre.2
         - 1.7.0
         - 1.7.1
+        - 1.7.2
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1614,6 +1628,7 @@ m_PackageAssets:
         - 1.7.0-pre.2
         - 1.7.0
         - 1.7.1
+        - 1.7.2
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -1647,7 +1662,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
@@ -3534,7 +3549,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.1.0
       source: 1
-      resolvedPath: "D:\\Unity\\\u5352\u696D\u5236\u4F5C\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.mathematics@1.1.0"
+      resolvedPath: "C:\\Users\\2200558\\Desktop\\\u5352\u696D\u5236\u4F5C\\\u4F5C\u54C1\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.mathematics@1.1.0"
       assetPath: Packages/com.unity.mathematics
       name: com.unity.mathematics
       displayName: Mathematics
@@ -3615,7 +3630,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 10.10.1
       source: 1
-      resolvedPath: "D:\\Unity\\\u5352\u696D\u5236\u4F5C\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.render-pipelines.core@10.10.1"
+      resolvedPath: "C:\\Users\\2200558\\Desktop\\\u5352\u696D\u5236\u4F5C\\\u4F5C\u54C1\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.render-pipelines.core@10.10.1"
       assetPath: Packages/com.unity.render-pipelines.core
       name: com.unity.render-pipelines.core
       displayName: Core RP Library
@@ -3782,7 +3797,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 10.10.1
       source: 1
-      resolvedPath: "D:\\Unity\\\u5352\u696D\u5236\u4F5C\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.shadergraph@10.10.1"
+      resolvedPath: "C:\\Users\\2200558\\Desktop\\\u5352\u696D\u5236\u4F5C\\\u4F5C\u54C1\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.shadergraph@10.10.1"
       assetPath: Packages/com.unity.shadergraph
       name: com.unity.shadergraph
       displayName: Shader Graph
@@ -3982,6 +3997,7 @@ m_PackageAssets:
         - 1.4.1
         - 1.4.2
         - 1.4.3
+        - 1.5.2
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -3998,6 +4014,7 @@ m_PackageAssets:
         - 1.4.1
         - 1.4.2
         - 1.4.3
+        - 1.5.2
         verified: 1.4.3
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -4026,6 +4043,90 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
         revision: 4cd880d4fd5c60597629249bf4f324e4c8d7aa2e
         path: 
+<<<<<<< HEAD
+=======
+    - packageId: com.unity.mathematics@1.1.0
+      testable: 0
+      isDirectDependency: 0
+      version: 1.1.0
+      source: 1
+      resolvedPath: "D:\\Unity\\\u5352\u696D\u5236\u4F5C\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.mathematics@1.1.0"
+      assetPath: Packages/com.unity.mathematics
+      name: com.unity.mathematics
+      displayName: Mathematics
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: Unity's C# SIMD math library providing vector types and math functions
+        with a shader like syntax.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.0.12-preview.2
+        - 0.0.12-preview.5
+        - 0.0.12-preview.8
+        - 0.0.12-preview.10
+        - 0.0.12-preview.11
+        - 0.0.12-preview.13
+        - 0.0.12-preview.17
+        - 0.0.12-preview.19
+        - 0.0.12-preview.20
+        - 1.0.0-preview.1
+        - 1.0.1
+        - 1.1.0-preview.1
+        - 1.1.0
+        - 1.2.1
+        - 1.2.4
+        - 1.2.5
+        - 1.2.6
+        compatible:
+        - 0.0.12-preview.2
+        - 0.0.12-preview.5
+        - 0.0.12-preview.8
+        - 0.0.12-preview.10
+        - 0.0.12-preview.11
+        - 0.0.12-preview.13
+        - 0.0.12-preview.17
+        - 0.0.12-preview.19
+        - 0.0.12-preview.20
+        - 1.0.0-preview.1
+        - 1.0.1
+        - 1.1.0-preview.1
+        - 1.1.0
+        - 1.2.1
+        - 1.2.4
+        - 1.2.5
+        - 1.2.6
+        verified: 1.2.6
+      dependencies: []
+      resolvedDependencies: []
+      keywords:
+      - unity
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 636984649280000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git@github.com:Unity-Technologies/Unity.Mathematics.git
+        revision: 0a3dfafaf606098ea681de4c4be60f3aac63b773
+        path: 
+>>>>>>> 3b3adf318ece593dabad95ae29fe5bf64d61488a
     - packageId: com.unity.2d.common@4.2.0
       testable: 0
       isDirectDependency: 0
@@ -4208,7 +4309,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 4.3.2
       source: 1
-      resolvedPath: "D:\\Unity\\\u5352\u696D\u5236\u4F5C\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.searcher@4.3.2"
+      resolvedPath: "C:\\Users\\2200558\\Desktop\\\u5352\u696D\u5236\u4F5C\\\u4F5C\u54C1\\\u5352\u696D\u5236\u4F5C\\Library\\PackageCache\\com.unity.searcher@4.3.2"
       assetPath: Packages/com.unity.searcher
       name: com.unity.searcher
       displayName: Searcher
