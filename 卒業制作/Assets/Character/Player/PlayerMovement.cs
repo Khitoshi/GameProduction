@@ -17,6 +17,8 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            //TODO :メモリの局所性をチェック(player.GetPlayerInput().GetHorizontal(),player.GetPlayerInput().GetVertical())
+            //
             Vector3 position = new Vector3(0, 0, 0);
             position.x += player.GetPlayerInput().GetHorizontal()   *   moveSpeed;
             position.y += player.GetPlayerInput().GetVertical()     *   moveSpeed;

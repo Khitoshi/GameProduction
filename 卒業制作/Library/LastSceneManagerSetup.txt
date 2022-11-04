@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Scene_Enemy.unity
-=======
 - path: Assets/Scenes/Player Test.unity
->>>>>>> 3b3adf318ece593dabad95ae29fe5bf64d61488a
   isLoaded: 1
   isActive: 1
   isSubScene: 0

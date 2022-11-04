@@ -2,55 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Experimental.Rendering.Universal;
+
 public class PlayerFOV : MonoBehaviour
 {
-    [SerializeField] private float angle;
+    [SerializeField] private float Angle;
+
+    new Light2D light;
+    //light.
+    CircleCollider2D circle_collider;
     // Start is called before the first frame update
     void Start()
     {
+        light = GetComponentInChildren<Light2D>();
+        circle_collider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Stay: " + $"{Stay}");
-        //State = 0;
+        float light_radius = circle_collider.radius / 10;
+        light.pointLightInnerRadius =
+            light.pointLightOuterRadius = light_radius;
+
+        float light_angle = Angle * 2;
+        light.pointLightInnerAngle =
+            light.pointLightOuterAngle = light_angle;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {   
-        //name = "0";
-        if (other.gameObject.tag == "Test") //Ž‹ŠE‚Ì”ÍˆÍ“à‚Ì“–‚½‚è”»’è
+        if (other.gameObject.tag == "Enemy") //Ž‹ŠE‚Ì”ÍˆÍ“à‚Ì“–‚½‚è”»’è
         {
-            //name = "1";
             //Ž‹ŠE‚ÌŠp“x“à‚ÉŽû‚Ü‚Á‚Ä‚¢‚é‚©
-            Vector3 posDelta = other.transform.position - this.transform.position;
-            float target_angle = Vector3.Angle(this.transform.up, posDelta);
+            Vector3 pos_delta = other.transform.position - this.transform.position;
+            float target_angle = Vector3.Angle(this.transform.up, pos_delta);
 
-            if (target_angle < angle) //target_angle‚ªangle‚ÉŽû‚Ü‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©
+            SpriteRenderer sprite_renderer = other.GetComponent<SpriteRenderer>();
+            Color color = new Color(
+                sprite_renderer.color.r,
+                sprite_renderer.color.g,
+                sprite_renderer.color.b,
+                0);
+
+            if (target_angle < Angle) //target_angle‚ªangle‚ÉŽû‚Ü‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©
             {
-                Debug.DrawRay(transform.position, posDelta);
-                if (Physics.Raycast(this.transform.position, posDelta, out RaycastHit hit)) //Ray‚ðŽg—p‚µ‚Ätarget‚É“–‚½‚Á‚Ä‚¢‚é‚©”»•Ê
+                int layer_mask = LayerMask.GetMask("Enemy");
+                float light_radius = circle_collider.radius / 10;
+                
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, pos_delta, light_radius, layer_mask);
+                if (hit.collider == other)
                 {
-                    if (hit.collider == other)
-                    {
-                        Debug.Log(hit.collider.name);
-                        //name = hit.collider.name;
-                    }
+                    sprite_renderer.color = new Color(color.r, color.g, color.b, 1);
+                    Debug.DrawRay(transform.position, pos_delta);
+                    //Debug.Log(hit.collider.name);
                 }
             }
         }
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            SpriteRenderer sprite_renderer = other.GetComponent<SpriteRenderer>();
+            Color color = new Color(
+            sprite_renderer.color.r,
+            sprite_renderer.color.g,
+            sprite_renderer.color.b,
+            0);
+            sprite_renderer.color = new Color(color.r, color.g, color.b, 0);
+        }
+    }
 
-
-    
 
     #region Debug
     private void OnGUI()
     {
-        //Vector3 forward = transform.TransformDirection(transform.forward) * 10;
-        //Debug.DrawRay(transform.position, forward, Color.red,0.01f);
         //GUI.Box(new Rect(20, 20, 150, 23), "Name: "+$"{}");
         // Œ‹‰Ê•\Ž¦
     }
