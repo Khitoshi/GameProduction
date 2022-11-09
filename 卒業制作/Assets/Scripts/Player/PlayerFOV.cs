@@ -39,6 +39,7 @@ namespace Player
         void Update()
         {
             
+            /*
             float light_radius = circle_collider.radius;
             light.pointLightInnerRadius =
                 light.pointLightOuterRadius = light_radius;
@@ -46,10 +47,12 @@ namespace Player
             float light_angle = Angle * 2;
             light.pointLightInnerAngle =
                 light.pointLightOuterAngle = light_angle;   
+            */
         }
     
         private void OnTriggerStay2D(Collider2D other)
         {
+            return;
             //otherがトリガーのタグか検索して、-1の(ない)場合返す
             if (!TriggerTag.Contains(other.tag)) return;
             

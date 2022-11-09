@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 45
-  target: {fileID: 0}
+  target: {fileID: 5903967335068470474, guid: db3fae69d0ca6f745b8e6d1c32cab22c, type: 3}
   speed: 3
 --- !u!114 &4375564828914293601
 MonoBehaviour:
