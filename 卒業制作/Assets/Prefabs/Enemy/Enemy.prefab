@@ -167,13 +167,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375564828914293600}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0296ac4be529bc84cbe8a97e3a2c0281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 45
-  target: {fileID: 5903967335068470474, guid: db3fae69d0ca6f745b8e6d1c32cab22c, type: 3}
+  target: {fileID: 0}
   speed: 3
 --- !u!114 &4375564828914293601
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375564828914293600}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3d22b2d63734b844b78415ee5ef663b, type: 3}
   m_Name: 
