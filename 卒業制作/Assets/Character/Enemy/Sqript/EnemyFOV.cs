@@ -12,49 +12,59 @@ public class EnemyFOV : MonoBehaviour
     private Rigidbody2D rigidbody2D;                //敵のRigidbody2D
     private Vector3 enemyPosition;                  //敵のポジション
 
+    //視界の距離
+    private CircleCollider2D circle_collider;
 
-
+    //onTriggerStay時に使用するtag
+    private readonly System.Collections.ObjectModel.ReadOnlyCollection<string> TriggerTag = Array.AsReadOnly<string>(new string[] {
+            "Player"
+        });
 
     // Start is called before the first frame update
     void Start()
     {
+        circle_collider = GetComponent<CircleCollider2D>();
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Stay: " + $"{Stay}");
-        //State = 0;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //name = "0"
-        if (other.gameObject.tag == "Player") //視界の範囲内の当たり判定
+        //otherがトリガーのタグか検索して、-1の(ない)場合返す
+        if (!TriggerTag.Contains(other.tag)) return;
+
+        //視界の角度内に収まっているか
+        Vector3 pos_delta = other.transform.position - this.transform.position;
+        //TODOenemyのむいている方向にdirectionを変更
+        Vector3 direction = transform.up;
+        float target_angle = Vector3.Angle(direction, pos_delta);
+
+        //target_angleがangleに収まっていない場合返す
+        if (target_angle >= angle)
         {
-            //name = "1"
-            //視界の角度内に収まっているか
-            Vector3 posDelta = other.transform.position - this.transform.position;
-            float target_angle = Vector3.Angle(this.transform.up, posDelta);
+            //ObjectIndication(other.GetComponent<SpriteRenderer>(), 0);
+            return;
+        }
 
-            if (target_angle < angle) //target_angleがangleに収まっているかどうか
+        //トリガーのタグでRayCastを行う
+        foreach (string tag in TriggerTag)
+        {
+            int layer_mask = LayerMask.GetMask(tag);
+            float light_radius = circle_collider.radius;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, pos_delta, light_radius, layer_mask);
+            //Debug.Log(other.name);
+            if (hit.collider == other)
             {
-                Debug.DrawRay(transform.position, posDelta);
-
-                //if (Physics.Raycast(this.transform.position, posDelta, out RaycastHit hit)) //Rayを使用してtargetに当たっているか判別
-                //{
-                //    Debug.DrawRay(transform.position, posDelta);
-                //    if (hit.collider == other)
-                //    {
-                //        Debug.Log(hit.collider.name);
-                //    }
-
-
-                    //プレイヤーを追いかける
-
-                    transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-                //}
+                //Debug.Log(hit.transform.name);
+                Debug.DrawRay(transform.position, pos_delta);
+                //オブジェクトの透明度変更
+                //ObjectIndication(other.GetComponent<SpriteRenderer>(), 1);
+                //ここに視界に入った時に使いたい処理を書く
+                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
             }
         }
     }
