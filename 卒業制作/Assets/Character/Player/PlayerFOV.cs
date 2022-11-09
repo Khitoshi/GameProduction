@@ -20,7 +20,7 @@ public class PlayerFOV : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {   
         //name = "0";
-        if (other.gameObject.tag == "Test") //Ž‹ŠE‚Ì”ÍˆÍ“à‚Ì“–‚½‚è”»’è
+        if (other.gameObject.tag == "Enemy") //Ž‹ŠE‚Ì”ÍˆÍ“à‚Ì“–‚½‚è”»’è
         {
             //name = "1";
             //Ž‹ŠE‚ÌŠp“x“à‚ÉŽû‚Ü‚Á‚Ä‚¢‚é‚©

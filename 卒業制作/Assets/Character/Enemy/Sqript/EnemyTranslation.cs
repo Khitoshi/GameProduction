@@ -9,7 +9,7 @@ public class EnemyTranslation : MonoBehaviour
     public float changeTime = 3.0f;
     private float timer;
     private int direction = 1;//1なら前進方向、ー１なら後ろ方向
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidbody2D ;
 
     // Start is called before the first frame update
     void Start()
