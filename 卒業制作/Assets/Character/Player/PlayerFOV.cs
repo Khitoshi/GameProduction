@@ -32,6 +32,10 @@ public class PlayerFOV : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {   
+<<<<<<< HEAD
+=======
+        //name = "0";
+>>>>>>> Enemy
         if (other.gameObject.tag == "Enemy") //Ž‹ŠE‚Ì”ÍˆÍ“à‚Ì“–‚½‚è”»’è
         {
             //Ž‹ŠE‚ÌŠp“x“à‚ÉŽû‚Ü‚Á‚Ä‚¢‚é‚©

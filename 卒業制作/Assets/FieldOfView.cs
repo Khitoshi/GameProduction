@@ -23,7 +23,6 @@ public class FieldOfView : MonoBehaviour
     private void Start()
     {
         light = GetComponentInChildren<Light2D>();
-
     }
 
     void Update()
