@@ -6,8 +6,10 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private Player player;
+        [SerializeField] 
+        private float moveSpeed;
+
+        private Player player;
         // Start is called before the first frame update
         void Start()
         {
@@ -17,12 +19,12 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            //TODO :メモリの局所性をチェック(player.GetPlayerInput().GetHorizontal(),player.GetPlayerInput().GetVertical())
-            //
             Vector3 position = new Vector3(0, 0, 0);
-            position.x += player.GetPlayerInput().GetHorizontal()   *   moveSpeed;
-            position.y += player.GetPlayerInput().GetVertical()     *   moveSpeed;
-            
+            float horizontal    =   player.GetPlayerInput().GetHorizontal() * Time.deltaTime;
+            float vertical      =   player.GetPlayerInput().GetVertical() * Time.deltaTime;
+  
+            position.x += horizontal    *   moveSpeed;
+            position.y += vertical      *   moveSpeed;
             transform.position += position;
         }
     }

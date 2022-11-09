@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float MoveSpeed;
+    [SerializeField]
+    private float moveSpeed;
 
-    private SpriteRenderer renderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -25,21 +24,21 @@ public class PlayerController : MonoBehaviour
         Vector2 position = transform.position;
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
-            position.x -= MoveSpeed;
+            position.x -= moveSpeed;
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
-            position.x += MoveSpeed;
+            position.x += moveSpeed;
         }
 
         if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
         {
-            position.y -= MoveSpeed;
+            position.y -= moveSpeed;
 
         }
         else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
-            position.y += MoveSpeed;
+            position.y += moveSpeed;
         }
         transform.position = position;
     }

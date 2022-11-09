@@ -4,16 +4,20 @@ using UnityEngine;
 
 namespace Player
 {
-    [RequireComponent(typeof(PlayerInput), typeof(PlayerMovement),typeof(PlayerFOV))]
+
+    [RequireComponent(typeof(PlayerInput))]
+    [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerFOV))]
+    [RequireComponent(typeof(PlayerDirection))]
     public class Player : MonoBehaviour
     {
-        [SerializeField] private PlayerInput playerInput;
-        [SerializeField] private PlayerMovement playerMovement;
+        private PlayerInput playerInput;
+        private PlayerDirection playerDirection;
         // Start is called before the first frame update
         void Start()
         {
-            playerMovement = GetComponent<PlayerMovement>();
             playerInput = GetComponent<PlayerInput>();
+            playerDirection = GetComponent<PlayerDirection>();
         }
     
         // Update is called once per frame
@@ -25,6 +29,12 @@ namespace Player
         public PlayerInput GetPlayerInput()
         {
             return playerInput;
+        }
+
+
+        public PlayerDirection GetPlayerDirection()
+        {
+            return playerDirection;
         }
 
     }
