@@ -18,6 +18,12 @@ namespace Player
         {
             playerInput = GetComponent<PlayerInput>();
             playerDirection = GetComponent<PlayerDirection>();
+
+
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            sr.receiveShadows = false;
+
         }
     
         // Update is called once per frame
