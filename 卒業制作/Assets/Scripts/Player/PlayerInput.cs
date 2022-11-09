@@ -8,6 +8,7 @@ namespace Player
     {
         private float horizontal;
         private float vertical;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -16,9 +17,15 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            horizontal  = Input.GetAxis("Horizontal") * Time.deltaTime;
-            vertical    = Input.GetAxis("Vertical") * Time.deltaTime;
-            //Debug.Log("Delta: "+Delta) ;
+            
+            //•â³‚ğŠ|‚¯‚Ä‚É…•½A‚’¼‚ğ“üè‚·‚é
+            //horizontal  = Input.GetAxis("Horizontal");
+            //vertical    = Input.GetAxis("Vertical");
+
+            //•â³‚ğŠ|‚¯‚¸‚É…•½A‚’¼‚ğ“üè‚·‚é(-1~1)
+            horizontal  = Input.GetAxisRaw("Horizontal");
+            vertical    = Input.GetAxisRaw("Vertical");
+
         }
 
         public float GetHorizontal()
