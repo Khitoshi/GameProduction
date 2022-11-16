@@ -6,7 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Light(Shader)
+<<<<<<< HEAD
   - MapObject
+=======
+  - Goal
+>>>>>>> 0165b3f4b4af5944a1667128ad4f881f25519e0e
   layers:
   - Default
   - TransparentFX
