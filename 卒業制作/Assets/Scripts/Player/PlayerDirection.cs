@@ -11,8 +11,8 @@ namespace Player
         [SerializeField]
         private new Light2D light;
 
-        private float horizontal;
-        private float vertical;
+        private float horizontal = 0;
+        private float vertical = 0;
 
         private Vector3 direction;
 
@@ -21,8 +21,6 @@ namespace Player
         {
             light = GetComponentInChildren<Light2D>();
 
-            horizontal  = 0;
-            vertical    = 0;
             direction = transform.up;
         }
 
@@ -31,8 +29,8 @@ namespace Player
         {
             //horizontal -90~90(êÖïΩ)
             //vertical 0~180(êÇíº)
-            horizontal = GetComponent<Player>().GetPlayerInput().GetHorizontal();
-            vertical = GetComponent<Player>().GetPlayerInput().GetVertical();
+            horizontal = GetComponent<Player>().playerInput.horizontal;
+            vertical = GetComponent<Player>().playerInput.vertical;
 
             Quaternion rotation = light.transform.rotation;
             

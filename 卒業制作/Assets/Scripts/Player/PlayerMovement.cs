@@ -6,26 +6,36 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] 
-        private float moveSpeed;
+        [SerializeField]
+        public float moveSpeed ;
 
-        private Player player;
+        //private Player player;
         // Start is called before the first frame update
+
         void Start()
         {
-            player = GetComponent<Player>();
+            //   player = GetComponent<Player>();
         }
     
         // Update is called once per frame
         void Update()
         {
-            Vector3 position = new Vector3(0, 0, 0);
-            float horizontal    =   player.GetPlayerInput().GetHorizontal() * Time.deltaTime;
-            float vertical      =   player.GetPlayerInput().GetVertical() * Time.deltaTime;
+
+            float rawHrizontal = GetComponent<Player>().playerInput.horizontal;
+            float rawVertical = GetComponent<Player>().playerInput.vertical;
+            
+            Vector3 position = transform.position;
+
+            float horizontal = rawHrizontal * Time.deltaTime;
+            float vertical = rawVertical * Time.deltaTime;
+
+            //float horizontal    =   player.playerInput.horizontal * Time.deltaTime;
+            //float vertical      =   player.playerInput.vertical * Time.deltaTime;
   
             position.x += horizontal    *   moveSpeed;
             position.y += vertical      *   moveSpeed;
-            transform.position += position;
+
+            transform.position = position;
         }
     }
 }

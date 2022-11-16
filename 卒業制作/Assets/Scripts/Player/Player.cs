@@ -11,19 +11,15 @@ namespace Player
     [RequireComponent(typeof(PlayerDirection))]
     public class Player : MonoBehaviour
     {
-        private PlayerInput playerInput;
-        private PlayerDirection playerDirection;
+        public PlayerInput playerInput { get; private set; }
+        public PlayerMovement playerMovement { get; private set; }
+        public PlayerDirection playerDirection { get; private set; }
         // Start is called before the first frame update
         void Start()
         {
             playerInput = GetComponent<PlayerInput>();
             playerDirection = GetComponent<PlayerDirection>();
-
-
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            sr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-            sr.receiveShadows = false;
-
+            playerMovement = GetComponent<PlayerMovement>();
         }
     
         // Update is called once per frame
@@ -31,17 +27,5 @@ namespace Player
         {
             
         }
-
-        public PlayerInput GetPlayerInput()
-        {
-            return playerInput;
-        }
-
-
-        public PlayerDirection GetPlayerDirection()
-        {
-            return playerDirection;
-        }
-
     }
 }

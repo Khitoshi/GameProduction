@@ -6,8 +6,11 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
-        private float horizontal;
-        private float vertical;
+
+        [HideInInspector] public float horizontal { get; private set; }
+
+
+        [HideInInspector] public float vertical { get; private set; }
 
         // Start is called before the first frame update
         void Start()
@@ -26,16 +29,6 @@ namespace Player
             horizontal  = Input.GetAxisRaw("Horizontal");
             vertical    = Input.GetAxisRaw("Vertical");
 
-        }
-
-        public float GetHorizontal()
-        {
-            return horizontal;
-        }
-
-        public float GetVertical()
-        {
-            return vertical;
         }
 
     }
