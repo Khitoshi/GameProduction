@@ -6,6 +6,7 @@ namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
+
         private float horizontal;
         private float vertical;
 
