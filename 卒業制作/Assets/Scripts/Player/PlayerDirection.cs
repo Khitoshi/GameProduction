@@ -17,11 +17,14 @@ namespace Player
         private Vector3 direction;
 
         // Start is called before the first frame update
+        private Player player;
         void Start()
         {
             light = GetComponentInChildren<Light2D>();
 
             direction = transform.up;
+
+            player = GetComponent<Player>();
         }
 
         // Update is called once per frame
@@ -29,8 +32,8 @@ namespace Player
         {
             //horizontal -90~90(êÖïΩ)
             //vertical 0~180(êÇíº)
-            horizontal = GetComponent<Player>().playerInput.horizontal;
-            vertical = GetComponent<Player>().playerInput.vertical;
+            horizontal = player.playerInput.horizontal;
+            vertical = player.playerInput.vertical;
 
             Quaternion rotation = light.transform.rotation;
             
@@ -65,13 +68,13 @@ namespace Player
             
         }
 
-        #region Debug
+        #if UNITY_EDITOR
         private void OnGUI()
         {
             GUI.Box(new Rect(20, 20, 150, 20), "horizontal: " + $"{horizontal}");
             GUI.Box(new Rect(20, 40, 150, 20), "vertical: " + $"{vertical}");
         }
-        #endregion
+        #endif
 
         
         public Vector3 GetDirection()

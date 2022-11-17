@@ -12,6 +12,7 @@ namespace Enemy
         public EnemyFOV enemyFOV{get;private set;}
         public EnemyRandomMove enemyRandomMove { get; private set; }
         public EnemyTranslation enemyTranslation { get; private set; }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -23,7 +24,6 @@ namespace Enemy
         // Update is called once per frame
         void Update()
         {
-            
         }
     }
 }

@@ -6,37 +6,30 @@ namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-<<<<<<< HEAD
         [SerializeField]
         public float moveSpeed ;
-=======
-        [SerializeField] 
-        private float moveSpeed;
+
         private Rigidbody2D rigidbody2d;
 
-       private  float horizontal ;
-        private float vertical;
-
->>>>>>> 0165b3f4b4af5944a1667128ad4f881f25519e0e
-
+        
+        //private  float horizontal ;
+        //private float vertical;
+        
         //private Player player;
         // Start is called before the first frame update
 
+        Player player;
+
         void Start()
         {
-<<<<<<< HEAD
-            //   player = GetComponent<Player>();
-=======
             player = GetComponent<Player>();
             rigidbody2d = GetComponent<Rigidbody2D>();
->>>>>>> 0165b3f4b4af5944a1667128ad4f881f25519e0e
         }
     
         // Update is called once per frame
         void Update()
         {
-<<<<<<< HEAD
-
+            /*
             float rawHrizontal = GetComponent<Player>().playerInput.horizontal;
             float rawVertical = GetComponent<Player>().playerInput.vertical;
             
@@ -52,22 +45,26 @@ namespace Player
             position.y += vertical      *   moveSpeed;
 
             transform.position = position;
-=======
-             horizontal    =   player.GetPlayerInput().GetHorizontal() * Time.deltaTime;
-             vertical      =   player.GetPlayerInput().GetVertical() * Time.deltaTime;
->>>>>>> 0165b3f4b4af5944a1667128ad4f881f25519e0e
+
+            */
+
+             //horizontal    =   player.playerInput.horizontal * Time.deltaTime;
+             //vertical      =   player.playerInput.vertical * Time.deltaTime;
         }
         void FixedUpdate()
         {
-            Vector3 position = new Vector3(0, 0, 0);
+            float rawHrizontal = player.playerInput.horizontal;
+            float rawVertical = player.playerInput.vertical;
+
+            float horizontal = rawHrizontal * Time.deltaTime;
+            float vertical = rawVertical * Time.deltaTime;
+            //Vector3 position = new Vector3(0, 0, 0);
+            Vector3 position = this.transform.position;
+
             position.x += horizontal * moveSpeed;
             position.y += vertical * moveSpeed;
-            transform.position += position;
+            transform.position = position;
             rigidbody2d.MovePosition(transform.position);
-
         }
-
-
- 
     }
 }

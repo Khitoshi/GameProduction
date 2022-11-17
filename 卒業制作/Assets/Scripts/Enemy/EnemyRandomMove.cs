@@ -21,7 +21,6 @@ namespace Enemy
         void Start()
         {
             movePosition = moveRandomPosition();//実行時オブジェクトの目的地を設定
-            
         }
     
         // Update is called once per frame
@@ -31,7 +30,6 @@ namespace Enemy
             {
                 movePosition = moveRandomPosition();
             }
-
             //playerオブジェクトが目的地に移動、移動速度
             this.player.transform.position = Vector3.MoveTowards(player.transform.position, movePosition, speed * Time.deltaTime);
         }

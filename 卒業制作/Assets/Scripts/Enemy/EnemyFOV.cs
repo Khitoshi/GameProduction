@@ -41,20 +41,17 @@ namespace Enemy
             //TODO:enemy‚Ì‚Ş‚¢‚Ä‚¢‚é•ûŒü‚Édirection‚ğ•ÏX
             Vector3 direction = GetComponent<Enemy>().enemyTranslation.A;
             float target_angle = Vector3.Angle(direction, pos_delta);
-
             if (target_angle >= angle)
             {
                 //ObjectIndication(other.GetComponent<SpriteRenderer>(), 0);
                 return;
             }
-            
+
             int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
             float light_radius = circle_collider.radius;
             RaycastHit2D hit = Physics2D.Raycast(transform.position, pos_delta, light_radius, layer_mask);
-
             if (hit.collider == other)
-            {
-                
+            {   
                 //‚±‚±‚É‹ŠE‚É“ü‚Á‚½‚Ég‚¢‚½‚¢ˆ—‚ğ‘‚­
                 Debug.DrawRay(transform.position, pos_delta);
 
@@ -64,7 +61,6 @@ namespace Enemy
                     moveSpeed * Time.deltaTime
                     );
             }
-            
         }
     }
 }

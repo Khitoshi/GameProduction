@@ -14,6 +14,7 @@ namespace Player
         public PlayerInput playerInput { get; private set; }
         public PlayerMovement playerMovement { get; private set; }
         public PlayerDirection playerDirection { get; private set; }
+            
         // Start is called before the first frame update
         void Start()
         {
@@ -25,7 +26,6 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            
         }
     }
 }

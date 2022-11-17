@@ -57,12 +57,12 @@ namespace Player
             Color color = spr.color;
             spr.color = new Color(color.r, color.g, color.b, alpha);
         }
-    
-        #region Debug
+
+        #if UNITY_EDITOR
         private void OnGUI()
         {
         }
-        #endregion
+        #endif
     }
 }
 

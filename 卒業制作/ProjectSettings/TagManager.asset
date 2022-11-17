@@ -4,13 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
   - Light(Shader)
-<<<<<<< HEAD
+  - Enemy
   - MapObject
-=======
-  - Goal
->>>>>>> 0165b3f4b4af5944a1667128ad4f881f25519e0e
   layers:
   - Default
   - TransparentFX
@@ -23,7 +19,7 @@ TagManager:
   - Player
   - Enemy
   - 
-  - MapObject
+  - 
   - 
   - 
   - 

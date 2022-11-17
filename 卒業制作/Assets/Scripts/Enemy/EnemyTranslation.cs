@@ -50,18 +50,18 @@ namespace Enemy
                 //縦方向の移動処理
                 position.y += speed * Time.deltaTime * direction;
                 rotation = Quaternion.Euler(0, 0, 180 * -direction);
+                A = transform.up * direction;
             }
             else
             {
                 //横方向の移動
                 position.x += speed * Time.deltaTime * direction;
                 rotation = Quaternion.Euler(0, 0, 90 * -direction);
+                A = transform.right * direction;
             }
             FOVLight.transform.rotation = rotation;
 
-
             //物理システムに位置を伝える
-
             rigidbody2D.MovePosition(position);
         }
     }
