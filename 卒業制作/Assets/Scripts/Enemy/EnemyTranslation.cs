@@ -7,37 +7,37 @@ namespace Enemy
     public class EnemyTranslation : MonoBehaviour
     {
 
-        [SerializeField] private bool is_vertical { get; } //縦方向に移動するか
-        [SerializeField] private float speed { get; } = 3.0f; //移動速度
+        [SerializeField] private bool _isVertical { get; } //縦方向に移動するか
+        [SerializeField] private float _speed { get; } = 3.0f; //移動速度
         //[SerializeField] private float changeTime = 3.0f;
-        [SerializeField] private float changeTime { get; } = 3;
+        [SerializeField] private float _changeTime { get; } = 3;
 
-        private float timer;
-        private int direction = 1;//1なら前進方向、-1なら後ろ方向
+        private float _timer;
+        private int _direction = 1;//1なら前進方向、-1なら後ろ方向
         //private Rigidbody2D rigidbody2D ;
-        private new Rigidbody2D rigidbody2D;
+        private Rigidbody2D _rigidbody2D;
 
-        private GameObject FOVLight;
+        private GameObject _FOVLight;
 
         public Vector3 A { get; private set; }
 
         // Start is called before the first frame update
         void Start()
         {
-            rigidbody2D = GetComponent<Rigidbody2D>();
-            timer = changeTime;
-            FOVLight = transform.Find("FOV_Light").gameObject;
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _timer = _changeTime;
+            _FOVLight = transform.Find("FOV_Light").gameObject;
         }
 
         // Update is called once per frame
         void Update()
         {
             //一定時間間隔で移動方向を逆方向にする
-            timer -= Time.deltaTime;
-            if (timer < 0)
+            _timer -= Time.deltaTime;
+            if (_timer < 0)
             {
-                direction = -direction;
-                timer = changeTime;
+                _direction = -_direction;
+                _timer = _changeTime;
             }
         }
 
@@ -45,24 +45,24 @@ namespace Enemy
         {
             Vector2 position = transform.position;
             Quaternion rotation = Quaternion.Euler(0, 0, 0);
-            if (is_vertical)
+            if (_isVertical)
             {
                 //縦方向の移動処理
-                position.y += speed * Time.deltaTime * direction;
-                rotation = Quaternion.Euler(0, 0, 180 * -direction);
-                A = transform.up * direction;
+                position.y += _speed * Time.deltaTime * _direction;
+                rotation = Quaternion.Euler(0, 0, 180 * -_direction);
+                A = transform.up * _direction;
             }
             else
             {
                 //横方向の移動
-                position.x += speed * Time.deltaTime * direction;
-                rotation = Quaternion.Euler(0, 0, 90 * -direction);
-                A = transform.right * direction;
+                position.x += _speed * Time.deltaTime * _direction;
+                rotation = Quaternion.Euler(0, 0, 90 * -_direction);
+                A = transform.right * _direction;
             }
-            FOVLight.transform.rotation = rotation;
+            _FOVLight.transform.rotation = rotation;
 
             //物理システムに位置を伝える
-            rigidbody2D.MovePosition(position);
+            _rigidbody2D.MovePosition(position);
         }
     }
 }
