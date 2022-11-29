@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Enemy
 {
+    //エネミーがランダムで動く用のクラス
     public class EnemyRandomMove : MonoBehaviour
     {
         [SerializeField] private GameObject player;//動かしたいオブジェクトをインスペクターから入れる

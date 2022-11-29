@@ -5,6 +5,7 @@ using System;
 
 namespace Enemy
 {
+    //エネミーの視界の判定処理クラス
     public class EnemyFOV : MonoBehaviour
     {
         [SerializeField] private float angle;//視界のアングル
