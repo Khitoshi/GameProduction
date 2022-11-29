@@ -9,48 +9,21 @@ namespace Player
         [SerializeField]
         public float moveSpeed ;
 
-        private Rigidbody2D rigidbody2d;
-
-        
-        //private  float horizontal ;
-        //private float vertical;
-        
-        //private Player player;
-        // Start is called before the first frame update
+        private Rigidbody2D _rigidbody2d;
 
         Player player;
 
         void Start()
         {
             player = GetComponent<Player>();
-            rigidbody2d = GetComponent<Rigidbody2D>();
+            _rigidbody2d = GetComponent<Rigidbody2D>();
         }
     
         // Update is called once per frame
         void Update()
         {
-            /*
-            float rawHrizontal = GetComponent<Player>().playerInput.horizontal;
-            float rawVertical = GetComponent<Player>().playerInput.vertical;
-            
-            Vector3 position = transform.position;
-
-            float horizontal = rawHrizontal * Time.deltaTime;
-            float vertical = rawVertical * Time.deltaTime;
-
-            //float horizontal    =   player.playerInput.horizontal * Time.deltaTime;
-            //float vertical      =   player.playerInput.vertical * Time.deltaTime;
-  
-            position.x += horizontal    *   moveSpeed;
-            position.y += vertical      *   moveSpeed;
-
-            transform.position = position;
-
-            */
-
-             //horizontal    =   player.playerInput.horizontal * Time.deltaTime;
-             //vertical      =   player.playerInput.vertical * Time.deltaTime;
         }
+
         void FixedUpdate()
         {
             float rawHrizontal = player.playerInput.horizontal;
@@ -64,7 +37,7 @@ namespace Player
             position.x += horizontal * moveSpeed;
             position.y += vertical * moveSpeed;
             transform.position = position;
-            rigidbody2d.MovePosition(transform.position);
+            _rigidbody2d.MovePosition(transform.position);
         }
     }
 }

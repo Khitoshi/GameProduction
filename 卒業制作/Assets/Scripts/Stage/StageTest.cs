@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 
-public class Stage_Test : MonoBehaviour
+public class StageTest : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,7 @@ public class Stage_Test : MonoBehaviour
       if (Input.GetMouseButtonDown(0))
       {
           SceneManager.LoadScene("Stage_Test2");
+         
       }
     }
-
-  
 }

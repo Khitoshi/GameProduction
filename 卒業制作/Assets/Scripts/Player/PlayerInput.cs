@@ -24,7 +24,7 @@ namespace Player
             //horizontal  = Input.GetAxis("Horizontal");
             //vertical    = Input.GetAxis("Vertical");
 
-            //•â³‚ğŠ|‚¯‚¸‚É…•½A‚’¼‚ğ“üè‚·‚é(-1~1)
+            //•â³‚ğŠ|‚¯‚¸‚É…•½A‚’¼‚ğ“üè‚·‚é(-1or1)
             horizontal  = Input.GetAxisRaw("Horizontal");
             vertical    = Input.GetAxisRaw("Vertical");
         }
