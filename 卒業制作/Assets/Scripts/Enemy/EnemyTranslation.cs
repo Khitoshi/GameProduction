@@ -6,67 +6,37 @@ namespace Enemy
 {
     public class EnemyTranslation : MonoBehaviour
     {
-
-<<<<<<< HEAD
-        [SerializeField] private bool is_vertical { get; } //縦方向に移動するか
-        [SerializeField] private float speed { get; } = 3.0f; //移動速度
+        [SerializeField] private bool is_vertical_ { get; } //縦方向に移動するか
+        [SerializeField] private float speed_ { get; } = 3.0f; //移動速度
         //[SerializeField] private float changeTime = 3.0f;
-        [SerializeField] private float changeTime { get; } = 3;
+        [SerializeField] private float change_time_ { get; } = 3;
 
-        private float timer;
-        private int direction = 1;//1なら前進方向、-1なら後ろ方向
+        private float timer_;
+        private int direction_ = 1;//1なら前進方向、-1なら後ろ方向
         //private Rigidbody2D rigidbody2D ;
-        private new Rigidbody2D rigidbody2D;
-=======
-        [SerializeField] private bool _isVertical { get; } //縦方向に移動するか
-        [SerializeField] private float _speed { get; } = 3.0f; //移動速度
-        //[SerializeField] private float changeTime = 3.0f;
-        [SerializeField] private float _changeTime { get; } = 3;
->>>>>>> 06c6f599a9f159f9d902045eea49ea9da3face6e
+        private new Rigidbody2D rigidbody2D_;
 
-        private float _timer;
-        private int _direction = 1;//1なら前進方向、-1なら後ろ方向
-        //private Rigidbody2D rigidbody2D ;
-        private Rigidbody2D _rigidbody2D;
+        private GameObject fov_light_;
 
-<<<<<<< HEAD
-=======
-        private GameObject _FOVLight;
-
->>>>>>> 06c6f599a9f159f9d902045eea49ea9da3face6e
-        public Vector3 A { get; private set; }
+        //public Vector3 A { get; private set; }
 
         // Start is called before the first frame update
         void Start()
         {
-<<<<<<< HEAD
-            rigidbody2D = GetComponent<Rigidbody2D>();
-            timer = changeTime;
-            FOVLight = transform.Find("FOV_Light").gameObject;
-=======
-            _rigidbody2D = GetComponent<Rigidbody2D>();
-            _timer = _changeTime;
-            _FOVLight = transform.Find("FOV_Light").gameObject;
->>>>>>> 06c6f599a9f159f9d902045eea49ea9da3face6e
+            rigidbody2D_ = GetComponent<Rigidbody2D>();
+            timer_ = change_time_;
+            fov_light_ = transform.Find("FOV_Light").gameObject;
         }
 
         // Update is called once per frame
         void Update()
         {
             //一定時間間隔で移動方向を逆方向にする
-<<<<<<< HEAD
-            timer -= Time.deltaTime;
-            if (timer < 0)
+            timer_ -= Time.deltaTime;
+            if (timer_ < 0)
             {
-                direction = -direction;
-                timer = changeTime;
-=======
-            _timer -= Time.deltaTime;
-            if (_timer < 0)
-            {
-                _direction = -_direction;
-                _timer = _changeTime;
->>>>>>> 06c6f599a9f159f9d902045eea49ea9da3face6e
+                direction_ = -direction_;
+                timer_ = change_time_;
             }
         }
 
@@ -74,44 +44,24 @@ namespace Enemy
         {
             Vector2 position = transform.position;
             Quaternion rotation = Quaternion.Euler(0, 0, 0);
-<<<<<<< HEAD
-            if (is_vertical)
+            if (is_vertical_)
             {
                 //縦方向の移動処理
-                position.y += speed * Time.deltaTime * direction;
-                rotation = Quaternion.Euler(0, 0, 180 * -direction);
-                A = transform.up * direction;
-=======
-            if (_isVertical)
-            {
-                //縦方向の移動処理
-                position.y += _speed * Time.deltaTime * _direction;
-                rotation = Quaternion.Euler(0, 0, 180 * -_direction);
-                A = transform.up * _direction;
->>>>>>> 06c6f599a9f159f9d902045eea49ea9da3face6e
+                position.y += speed_ * Time.deltaTime * direction_;
+                rotation = Quaternion.Euler(0, 0, 180 * -direction_);
+                //A = transform.up * direction_;
             }
             else
             {
                 //横方向の移動
-<<<<<<< HEAD
-                position.x += speed * Time.deltaTime * direction;
-                rotation = Quaternion.Euler(0, 0, 90 * -direction);
-                A = transform.right * direction;
+                position.x += speed_ * Time.deltaTime * direction_;
+                rotation = Quaternion.Euler(0, 0, 90 * -direction_);
+                //A = transform.right * direction_;
             }
-            FOVLight.transform.rotation = rotation;
+            fov_light_.transform.rotation = rotation;
 
             //物理システムに位置を伝える
-            rigidbody2D.MovePosition(position);
-=======
-                position.x += _speed * Time.deltaTime * _direction;
-                rotation = Quaternion.Euler(0, 0, 90 * -_direction);
-                A = transform.right * _direction;
-            }
-            _FOVLight.transform.rotation = rotation;
-
-            //物理システムに位置を伝える
-            _rigidbody2D.MovePosition(position);
->>>>>>> 06c6f599a9f159f9d902045eea49ea9da3face6e
+            rigidbody2D_.MovePosition(position);
         }
     }
 }

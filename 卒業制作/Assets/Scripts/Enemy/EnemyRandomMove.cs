@@ -4,40 +4,40 @@ using UnityEngine;
 
 namespace Enemy
 {
-    //エネミーがランダムで動く用のクラス
+    //意味不明クラス...RandomなのにPlayerを移動...?
     public class EnemyRandomMove : MonoBehaviour
     {
-        [SerializeField] private GameObject _player;//動かしたいオブジェクトをインスペクターから入れる
-        [SerializeField] private int _speed = 5; //オブジェクトが自動で動くスピード調整
+        [SerializeField] private GameObject player_;//動かしたいオブジェクトをインスペクターから入れる
+        [SerializeField] private int speed_ = 5; //オブジェクトが自動で動くスピード調整
 
-        [SerializeField] private float _randomXMax = 7;
-        [SerializeField] private float _randomXMin = -4;
+        [SerializeField] private float randomX_max_ = 7;
+        [SerializeField] private float randomX_min_ = -4;
 
-        [SerializeField] private float _randomYMax = 4;
-        [SerializeField] private float _randomYMin = -7;
+        [SerializeField] private float randomY_max_ = 4;
+        [SerializeField] private float randomY_min = -7;
 
-        private Vector3 _movePosition; //オブジェクトの目的地を保存
+        private Vector3 move_target_position; //オブジェクトの目的地を保存
 
         // Start is called before the first frame update
         void Start()
         {
-            _movePosition = MoveRandomPosition();//実行時オブジェクトの目的地を設定
+            move_target_position = MoveRandomPosition();//実行時オブジェクトの目的地を設定
         }
     
         // Update is called once per frame
         void Update()
         {
-            if (_movePosition == _player.transform.position)//playerオブジェクトが目的地に達成すると
+            if (move_target_position == player_.transform.position)//playerオブジェクトが目的地に達成すると
             {
-                _movePosition = MoveRandomPosition();
+                move_target_position = MoveRandomPosition();
             }
             //playerオブジェクトが目的地に移動、移動速度
-            this._player.transform.position = Vector3.MoveTowards(_player.transform.position, _movePosition, _speed * Time.deltaTime);
+            this.player_.transform.position = Vector3.MoveTowards(player_.transform.position, move_target_position, speed_ * Time.deltaTime);
         }
     
         private Vector3 MoveRandomPosition()
         {
-            Vector3 randomPosi = new Vector3(Random.Range(_randomXMin, _randomXMax), Random.Range(_randomYMin, _randomYMax), 0);
+            Vector3 randomPosi = new Vector3(Random.Range(randomX_min_, randomX_max_), Random.Range(randomY_min, randomY_max_), 0);
             return randomPosi;
         }
     }

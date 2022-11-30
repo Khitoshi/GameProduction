@@ -7,10 +7,11 @@ using System.Collections.ObjectModel;
 
 namespace Player
 {
+    //Player‹–ìŠpˆ—
     public class PlayerFOV : MonoBehaviour
     {
         //RayCast‘Î‰tag
-        private readonly ReadOnlyCollection<string> _triggerTag = Array.AsReadOnly<string>(new string[] {
+        private readonly ReadOnlyCollection<string> trigger_tag_ = Array.AsReadOnly<string>(new string[] {
             "Enemy"
         });
     

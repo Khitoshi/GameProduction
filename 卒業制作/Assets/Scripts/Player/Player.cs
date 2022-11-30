@@ -11,16 +11,16 @@ namespace Player
     [RequireComponent(typeof(PlayerDirection))]
     public class Player : MonoBehaviour
     {
-        public PlayerInput playerInput { get; private set; }
-        public PlayerMovement playerMovement { get; private set; }
-        public PlayerDirection playerDirection { get; private set; }
+        public PlayerInput player_input_ { get; private set; }
+        public PlayerMovement player_movement_ { get; private set; }
+        public PlayerDirection player_direction_ { get; private set; }
             
         // Start is called before the first frame update
         void Start()
         {
-            playerInput = GetComponent<PlayerInput>();
-            playerDirection = GetComponent<PlayerDirection>();
-            playerMovement = GetComponent<PlayerMovement>();
+            player_input_ = GetComponent<PlayerInput>();
+            player_direction_ = GetComponent<PlayerDirection>();
+            player_movement_ = GetComponent<PlayerMovement>();
         }
     
         // Update is called once per frame

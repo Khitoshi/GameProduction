@@ -7,9 +7,9 @@ namespace Player
     public class PlayerInput : MonoBehaviour
     {
 
-        [HideInInspector] public float horizontal { get; private set; }
+        [HideInInspector] public float horizontal_ { get; private set; }
 
-        [HideInInspector] public float vertical { get; private set; }
+        [HideInInspector] public float vertical_ { get; private set; }
 
         // Start is called before the first frame update
         void Start()
@@ -25,8 +25,8 @@ namespace Player
             //vertical    = Input.GetAxis("Vertical");
 
             //ï‚ê≥Çä|ÇØÇ∏Ç…êÖïΩÅAêÇíºÇì¸éËÇ∑ÇÈ(-1or1)
-            horizontal  = Input.GetAxisRaw("Horizontal");
-            vertical    = Input.GetAxisRaw("Vertical");
+            horizontal_  = Input.GetAxisRaw("Horizontal");
+            vertical_    = Input.GetAxisRaw("Vertical");
         }
     }
 }

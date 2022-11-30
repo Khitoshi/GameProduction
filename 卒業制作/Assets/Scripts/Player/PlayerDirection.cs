@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 namespace Player
 {
+    //player‚Ì‹ŠE•ûŒü“™‚Ìˆ—
     public class PlayerDirection : MonoBehaviour
     {
         // Start is called before the first frame update        

@@ -9,16 +9,16 @@ namespace Enemy
     [RequireComponent(typeof(EnemyTranslation))]
     public class Enemy : MonoBehaviour
     {
-        public EnemyFOV enemyFOV{get;private set;}
-        public EnemyRandomMove enemyRandomMove { get; private set; }
-        public EnemyTranslation enemyTranslation { get; private set; }
+        public EnemyFOV enemy_fov_{get;private set;}
+        public EnemyRandomMove enemy_random_move_ { get; private set; }
+        public EnemyTranslation enemy_translation_ { get; private set; }
 
         // Start is called before the first frame update
         void Start()
         {
-            enemyFOV = GetComponent<EnemyFOV>();
-            enemyRandomMove = GetComponent<EnemyRandomMove>();
-            enemyTranslation = GetComponent<EnemyTranslation>();
+            enemy_fov_ = GetComponent<EnemyFOV>();
+            enemy_random_move_ = GetComponent<EnemyRandomMove>();
+            enemy_translation_ = GetComponent<EnemyTranslation>();
         }
     
         // Update is called once per frame
