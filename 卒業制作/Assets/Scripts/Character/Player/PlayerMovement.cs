@@ -22,22 +22,23 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+
         }
 
         void FixedUpdate()
         {
-            float rawHrizontal = player_.player_input_.horizontal_;
-            float rawVertical = player_.player_input_.vertical_;
+            //float rawHrizontal = player_.player_input_.horizontal_;
+            //float rawVertical = player_.player_input_.vertical_;
 
-            float horizontal = rawHrizontal * Time.deltaTime;
-            float vertical = rawVertical * Time.deltaTime;
-            //Vector3 position = new Vector3(0, 0, 0);
-            Vector3 position = this.transform.position;
+            //float horizontal = rawHrizontal * Time.deltaTime;
+            //float vertical = rawVertical * Time.deltaTime;
+            ////Vector3 position = new Vector3(0, 0, 0);
+            //Vector3 position = this.transform.position;
 
-            position.x += horizontal * moveSpeed_;
-            position.y += vertical * moveSpeed_;
-            transform.position = position;
-            rigidbody2d_.MovePosition(transform.position);
+            //position.x += horizontal * moveSpeed_;
+            //position.y += vertical * moveSpeed_;
+            //transform.position = position;
+            //rigidbody2d_.MovePosition(transform.position);
         }
     }
 }

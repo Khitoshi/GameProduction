@@ -19,6 +19,13 @@ public class PlayerInterFace : CharacterInterface
     {
         //入力による移動速度計算
         player_move_.inputMove();
+
+    }
+
+    //壁接触時にガタツキ防止の為FixedUpdate内で処理する
+    //0.02秒毎に呼ばれるフレーム
+    private void FixedUpdate()
+    {
         //移動計算を座標へ反映する
         player_move_.move();
     }

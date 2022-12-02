@@ -9,6 +9,5 @@ public class PlayerFieldOfView : CharacterFieldOfView
     //引数の文字列は視野角がレイキャストしたい対称の文字列を入れる
     public PlayerFieldOfView() : base("Enemy")
     {
-        Debug.Log("PlayerFiledOfViewのコンストラクタ");
     }
 }
