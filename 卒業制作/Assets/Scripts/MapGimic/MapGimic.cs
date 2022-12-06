@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Item
+namespace MapGimic
 {
-    //Itemの基底クラス
-    public class Item : MonoBehaviour
+    public class MapGimic : MonoBehaviour
     {
-        [SerializeField] protected ItemFlagDateBase item_flag_manager_;
-        
-        public void Start()
-        {   
-        }
-
-        private void Update()
+        // Start is called before the first frame update
+        void Start()
         {
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
 
         //タイルを変化させる
         protected void ChangeTile(Tilemap tileMap, Vector3Int position, TileBase afterTilebase)
@@ -26,5 +25,6 @@ namespace Item
             Debug.Log("set tilemap");
             tile.SetTile(position, afterTilebase);
         }
+
     }
 }
