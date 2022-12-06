@@ -15,7 +15,7 @@ public class EnemyInterFace : CharacterInterface
     public EnemyMove enemy_move_;   //座標移動
     public EnemyFieldOfView enemy_fov_; //視界
     private ENEMY_STATE_LABEL enemy_act_;   //行動ステート
-    private Vector3 target_position_;   //追跡する目的地
+    private Transform target_transform_;   //追跡する目的地
     private void Start()
     {
         enemy_move_ = GetComponent<EnemyMove>();
@@ -30,7 +30,6 @@ public class EnemyInterFace : CharacterInterface
 
     private void Update()
     {
-
 
     }
 
@@ -47,16 +46,18 @@ public class EnemyInterFace : CharacterInterface
             case ENEMY_STATE_LABEL.idle:
                 enemy_move_.horizonalMove();
                 enemy_move_.rotationOnlyMove();
+
+                //移動計算を座標へ反映する
+                enemy_move_.move();
                 break;
 
             case ENEMY_STATE_LABEL.pursuit_player:
-                transform.position = enemy_move_.moveToTarget(transform.position, target_position_);
+                //座標を直接操作してるのでmove()関数と競合する
+                transform.position = enemy_move_.moveToTarget(transform, target_transform_);
 
                 break;
         }
 
-        //移動計算を座標へ反映する
-        enemy_move_.move();
     }
 
     public void transitionIdleState()
@@ -67,6 +68,6 @@ public class EnemyInterFace : CharacterInterface
     public void transitionPursuitPlayerState(Collider2D other)
     {
         enemy_act_ = ENEMY_STATE_LABEL.pursuit_player;
-        target_position_ = other.transform.position;
+        target_transform_ = other.transform;
     }
 }

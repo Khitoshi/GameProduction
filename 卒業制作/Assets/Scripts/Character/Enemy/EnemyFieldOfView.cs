@@ -26,26 +26,38 @@ public class EnemyFieldOfView : CharacterFieldOfView
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(checkFieldOfView(other))
+        //探査対象のプレイヤー以外は処理をしない
+        if (other.gameObject.tag == "Player")
         {
-            if (on_field_of_view != null)
+
+            if (checkFieldOfView(other))
             {
-                on_field_of_view(other);
+                if (on_field_of_view != null)
+                {
+                    on_field_of_view(other);
+                }
+            }
+
+            //視界から消えた場合
+            else
+            {
+                if (exit_field_of_view != null)
+                {
+                    exit_field_of_view();
+                }
             }
         }
 
-        //視界から消えた場合
-        else
-        {
-            if (exit_field_of_view != null)
-            {
-                exit_field_of_view();
-            }
-        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+
+        //探査対象のプレイヤー以外は処理をしない
+        if (other.gameObject.tag != "Player")
+            return;
+
         if (exit_field_of_view != null)
         {
             exit_field_of_view();

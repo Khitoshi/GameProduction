@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMove))]
-[RequireComponent(typeof(PlayerFieldOfView))]
 //プレイヤー制御クラス
 public class PlayerInterFace : CharacterInterface
 {
@@ -12,7 +11,7 @@ public class PlayerInterFace : CharacterInterface
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
-        player_fov = GetComponent<PlayerFieldOfView>();
+        player_fov = GetComponentInChildren<PlayerFieldOfView>();
     }
 
     private void Update()

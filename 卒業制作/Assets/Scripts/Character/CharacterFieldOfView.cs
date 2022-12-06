@@ -9,7 +9,6 @@ using System.Collections.ObjectModel;
 public class CharacterFieldOfView : MonoBehaviour
 {
     //視界のアングル
-    [SerializeField] private float angle_;
     [SerializeField] float search_radian_start = 0.785f;    //0.785fはdgreeで45度
     [SerializeField] float search_radian_end = 2.356f;  //2.356fはdgreeで135度
 
@@ -24,28 +23,34 @@ public class CharacterFieldOfView : MonoBehaviour
         trigger_tag_ = Array.AsReadOnly<string>(new string[] { raycast_mask });
     }
 
-    private void Update()
+    public void Update()
     {
         //視界のレイ方向デバッグ表示用の処理↓
         float ray_length = 1.0f;
 
-        float offset_angle_radian = transform.localEulerAngles.z;
+        float offset_angle_radian = transform.parent.localEulerAngles.z;
         offset_angle_radian *= 0.01745f; //rad = dgree * (π/180)
 
         Vector3 ray_end1 = new Vector3(transform.parent.position.x + Mathf.Cos(search_radian_start + offset_angle_radian) * ray_length, transform.parent.position.y + Mathf.Sin(search_radian_start + offset_angle_radian), transform.position.z);
         Vector3 ray_end2 = new Vector3(transform.parent.position.x + Mathf.Cos(search_radian_end + offset_angle_radian) * ray_length, transform.parent.position.y + Mathf.Sin(search_radian_end + offset_angle_radian), transform.position.z);
 
+        float front_x = Mathf.Cos(offset_angle_radian + 1.5705f);
+        float front_y = Mathf.Sin(offset_angle_radian + 1.5705f);
+        Vector3 eye_end = new Vector3(transform.parent.position.x + front_x * 2.0f, transform.parent.position.y + front_y * 2.0f, transform.parent.position.z );
+
         Color line_color = new Color(1.0f, 1.0f, 1.0f);
+        Debug.DrawLine(transform.parent.position, eye_end, line_color);
         Debug.DrawLine(transform.parent.position, ray_end1, line_color);
         Debug.DrawLine(transform.parent.position, ray_end2, line_color);
         //視界のレイ方向デバッグ表示用の処理↑
+
+        //親オブジェクトの座標を更新
+        transform.position = transform.parent.position;
     }
 
     //視野角の中にいるか判定する
     public bool checkFieldOfView(Collider2D other)
     {
-        //otherがトリガーのタグか検索して、-1の(ない)場合返す
-        if (!trigger_tag_.Contains(other.tag)) return false;
 
         //視界の角度内に収まっているか
         //接触オブジェクトへのベクトル
@@ -84,21 +89,26 @@ public class CharacterFieldOfView : MonoBehaviour
             if (target_angle >= radian_start
                 && target_angle <= radian_end)
             {
+
                 return checkTargetRayCast(other);
             }
 
         }
-       
+
         else
         {
             //自身の回転角によってstartの方が大きくなる場合はこれで角度判定を行う
             if (target_angle <= radian_start
                  && target_angle <= radian_end)
             {
+
                 return checkTargetRayCast(other);
             }
         }
 
+        Debug.Log("角度" + target_angle / 0.01745f);
+        Debug.Log("S角度" + radian_start / 0.01745f);
+        Debug.Log("E角度" + radian_end / 0.01745f);
 
         return false;
 
@@ -118,11 +128,17 @@ public class CharacterFieldOfView : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(mine_position, direction, circle_collider_.radius, layer_mask);
 
-        //レイキャスト対象がヒットコリジョンと同じならtrue(ヒットコリジョン対象はコンストラクタ時に限定されている)
-        if (hit.collider.gameObject.tag == other.gameObject.tag)
-            return true;
+        if (hit)
+        {
+
+            //レイキャスト対象がヒットコリジョンと同じならtrue(ヒットコリジョン対象はコンストラクタ時に限定されている)
+            if (hit.collider.gameObject.tag == other.gameObject.tag)
+                return true;
+
+        }
 
         return false;
     }
+
 
 }
