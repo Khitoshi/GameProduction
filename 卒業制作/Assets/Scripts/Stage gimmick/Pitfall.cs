@@ -34,34 +34,34 @@ public class Pitfall : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collion)
     {
         // falseの時&そのオブジェクトのタグが以下の時
-        if (!isFall && collion.gameObject.CompareTag("FallTile"))
-        {
-            Debug.Log("second");
-            FallProcess();
+        //if (!isFall && collion.gameObject.CompareTag("FallTile"))
+        //{
+        //    Debug.Log("second");
+        //    FallProcess();
 
-            if (Input.GetKey(KeyCode.R))
-            {
-                Debug.Log(KeyCount);
-                KeyCount++;
-                if (KeyCount >= MaxCount)
-                {
-                    Debug.Log("再開");
+        //    if (Input.GetKey(KeyCode.R))
+        //    {
+        //        Debug.Log(KeyCount);
+        //        KeyCount++;
+        //        if (KeyCount >= MaxCount)
+        //        {
+        //            Debug.Log("再開");
                     
 
-                    isFall = false;
-                }
-            }
+        //            isFall = false;
+        //        }
+        //    }
 
+        //}
+
+        if(collion.gameObject.tag == "Player")
+        {
+            PlayerInterFace player = collion.gameObject.GetComponent<PlayerInterFace>();
+            player.transitionPitfallState();
+            Debug.Log("確認");
         }
     }
 
-    private void FallProcess()
-    {
-        Debug.Log("R");
-        isFall = true;
-
-        rb.position = Vector3.zero;
-    }
-   
+    
 }
 
