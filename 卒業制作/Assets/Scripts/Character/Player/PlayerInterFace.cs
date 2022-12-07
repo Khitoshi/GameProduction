@@ -6,17 +6,28 @@ using UnityEngine;
 //プレイヤー制御クラス
 public class PlayerInterFace : CharacterInterface
 {
+    private enum PLAYER_STATE
+    {
+        idle = 0,
+        move = 1,
+        pitfall = 2,
+    }
+
+
     public PlayerMove player_move_;
     public PlayerFieldOfView player_fov;
+    private PLAYER_STATE player_act;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
         player_fov = GetComponentInChildren<PlayerFieldOfView>();
+
+        player_act = PLAYER_STATE.idle;
     }
 
     private void Update()
     {
-        //入力による移動速度計算
+
         player_move_.inputMove();
 
     }
@@ -25,8 +36,38 @@ public class PlayerInterFace : CharacterInterface
     //0.02秒毎に呼ばれるフレーム
     private void FixedUpdate()
     {
-        //移動計算を座標へ反映する
-        player_move_.move();
+        playerAction();
     }
 
+    private void playerAction()
+    {
+        switch(player_act)
+        {
+            case PLAYER_STATE.idle:
+                player_move_.move();
+                break;
+
+            case PLAYER_STATE.move:
+                player_move_.move();
+                break;
+
+            case PLAYER_STATE.pitfall:
+                break;
+        }
+    }
+
+    public void transitionIdleState()
+    {
+        player_act = PLAYER_STATE.idle;
+    }
+
+    public void transitionMoveState()
+    {
+        player_act = PLAYER_STATE.move;
+    }
+
+    public void transitionPitfallState()
+    {
+        player_act = PLAYER_STATE.pitfall;
+    }
 }
