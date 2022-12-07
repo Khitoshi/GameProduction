@@ -28,13 +28,13 @@ namespace MapGimic
         {
             
         }
-    
-        private void OnTriggerStay2D(Collider2D collision)
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.tag != "Player") return;
-            
+            if (collision.gameObject.tag != "Player") return;
+            Debug.Log(collision.gameObject.name);
             //鍵を拾っているかの判定
-            if(item_flag_datebase_.Key == 1)
+            if (item_flag_datebase_.Key == 1)
             {
                 //自身のタイルを変更
                 ChangeTile(this_tilemap_, this_tilemap_position_, tilebase_after_);
