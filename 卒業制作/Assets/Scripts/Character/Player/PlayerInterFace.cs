@@ -19,6 +19,12 @@ public class PlayerInterFace : CharacterInterface
         //入力による移動速度計算
         player_move_.inputMove();
 
+        //仮でプレイヤーを殺す処理を実装
+        if(Input.GetKey("up"))
+        {
+            GameManager.game_staging_controller.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
+        }
+
     }
 
     //壁接触時にガタツキ防止の為FixedUpdate内で処理する
