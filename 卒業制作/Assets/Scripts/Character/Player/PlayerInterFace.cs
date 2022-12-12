@@ -10,7 +10,8 @@ public class PlayerInterFace : CharacterInterface
     {
         idle = 0,
         move = 1,
-        pitfall = 2,
+        pitfall = 2,//落とし穴にハマっている
+        stealth = 3,//机の下などにいる
     }
 
 
@@ -53,6 +54,10 @@ public class PlayerInterFace : CharacterInterface
 
             case PLAYER_STATE.pitfall:
                 break;
+
+            case PLAYER_STATE.stealth:
+                player_move_.move();
+                break;
         }
     }
 
@@ -70,4 +75,12 @@ public class PlayerInterFace : CharacterInterface
     {
         player_act = PLAYER_STATE.pitfall;
     }
+
+    public void transitionStealthState()
+    {
+        player_act = PLAYER_STATE.stealth;
+        //TODO:新しいクラスを作って　moveなどと同じような処理を作る
+        this.gameObject.layer = LayerMask.NameToLayer("Stealth");
+    }
+
 }
