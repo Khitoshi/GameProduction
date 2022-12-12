@@ -12,6 +12,7 @@ public class PlayerInterFace : CharacterInterface
     {
         player_move_ = GetComponent<PlayerMove>();
         player_fov = GetComponentInChildren<PlayerFieldOfView>();
+        is_life = true;
     }
 
     private void Update()
@@ -22,7 +23,13 @@ public class PlayerInterFace : CharacterInterface
         //‰¼‚ÅƒvƒŒƒCƒ„[‚ğE‚·ˆ—‚ğÀ‘•
         if(Input.GetKey("up"))
         {
-            GameManager.game_staging_controller.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
+            if (is_life != false)
+            {
+                GameManager.game_staging_controller.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
+                GameManager.game_staging_controller.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                GameManager.game_staging_controller.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                is_life = false;
+            }
         }
 
     }

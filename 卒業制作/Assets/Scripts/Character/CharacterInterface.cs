@@ -7,6 +7,6 @@ public class CharacterInterface : MonoBehaviour
 {
 
     //キャラクターオブジェクトの生死判定
-    private bool is_life = false;
+    protected bool is_life = false;
 
 }

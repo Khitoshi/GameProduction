@@ -1,57 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverStaging : StateBase
 {
-    public StagingObject staging_object_;
 
-    private float text_up_time_;     //テキストの拡大時間
+    public float text_up_time_ = 0.5f;     //テキストの拡大時間
 
     private float time_ = 0.0f;
 
+    public float max_staging_time_ = 3.0f; //演出の終了時間
+
     public GameObject text_object_;
 
+    public GameObject canvas_;  //キャンバス
+
     //コンストラクタ
-    public GameOverStaging(StagingObject staging) { staging_object_ = staging; }
+    public GameOverStaging() { }
     //ステートに入った時のメソッド
-    public void enter()
+    public override void enter()
     {
-        text_up_time_ = 0.5f;
 
         //prefabからオブジェクト生成
-        text_object_ = Instantiate(staging_object_.objects_[0]);
+        text_object_ = Instantiate(text_object_);
+        canvas_ = Instantiate(canvas_);
+        text_object_.transform.SetParent(canvas_.transform, false);
 
         //最初は小さく表示する
         Vector3 scale = text_object_.transform.localScale;
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         text_object_.transform.localScale = scale;
 
-        //画面中央に出現
-        text_object_.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
 
     }
     //ステートで実行するメソッド
-    public void execute() 
+    public override void execute()
     {
         //文字を拡大表示
-        if(time_ < text_up_time_)
+        if (time_ < text_up_time_)
         {
             Vector3 scale = text_object_.transform.localScale;
-            scale += new Vector3(0.1f, 0.1f, 0.1f);
-            text_object_.transform.localScale = scale;
+            scale += new Vector3(0.005f, 0.005f, 0.005f);
+            if (scale.x <= 1.0f)
+                text_object_.transform.localScale = scale;
         }
 
         //演出時間の終了
-        if (time_ > staging_object_.max_staging_time)
-            this.exit();
+        if (time_ > max_staging_time_)
+            GameManager.game_staging_controller.state_machine_.getState().exit();
 
         time_ += Time.deltaTime;
 
+        Debug.Log("up");
+
     }
     //ステートから出ていくときのメソッド
-    public void exit() 
+    public override void exit()
     {
         Destroy(text_object_);
+        //DestroyImmediate(text_object_, true);
+        Destroy(canvas_);
     }
 }

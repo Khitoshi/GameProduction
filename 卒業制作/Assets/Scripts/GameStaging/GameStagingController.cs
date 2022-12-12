@@ -3,18 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//演出時のオブジェクト
-public struct StagingObject
-{
-    public List<GameObject> objects_;  //演出時に必要となるオブジェクトを追加していく(Prefabのオブジェクトのみ追加)
-    public bool can_operation_;  //演出中、プレイヤーが操作可能かどうか
-
-    public bool can_object_update_; //全てのオブジェクトが演出中に更新可能かどうか
-
-    public float max_staging_time;  //演出時間
-
-};
-
 //ゲーム演出コントロールクラス
 public class GameStagingController : MonoBehaviour
 {
@@ -28,14 +16,7 @@ public class GameStagingController : MonoBehaviour
     }
 
     //演出用リスト
-    private List<StagingObject> staging_objects_;
-
-    private StagingObject[] game_staging_;
-    public GameObject game_over_text_;
-
     public StateMachine state_machine_;
-    public StagingState staging_;
-    public GameOverStaging game_over_staging_;
 
     //演出中かどうか
     private bool is_staging_ { set; get; } = false;
@@ -45,33 +26,10 @@ public class GameStagingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        staging_objects_ = new List<StagingObject>();
-
-        //ゲームオーバー時の設定↓
-        game_staging_ = new StagingObject[1];
-        if (game_over_text_ != null)
-        {
-            game_staging_[0].objects_ = new List<GameObject>();
-            game_staging_[0].objects_.Add(game_over_text_);
-        }
-        game_staging_[0].can_operation_ = false;
-        game_staging_[0].can_object_update_ = false;
-        game_staging_[0].max_staging_time = 3.0f;
-        //ゲームオーバー時の設定↑
-
-        for (int i = 0; i < game_staging_.Length; i++)
-        {
-            staging_objects_.Add(game_staging_[i]);
-        }
 
         //ゲームオーバー演出ステート登録↓
         state_machine_ = GetComponent<StateMachine>();
 
-        staging_ = GetComponent<StagingState>();
-        state_machine_.registerState(staging_);
-        //game_over_staging_ = new GameOverStaging(game_staging_[0]);
-        game_over_staging_ = GetComponent<GameOverStaging>();
-        state_machine_.registerSubState((int)GAME_STAGING_LABEL.game_over, game_over_staging_);
         //ゲームオーバー演出ステート登録↑
     }
 
