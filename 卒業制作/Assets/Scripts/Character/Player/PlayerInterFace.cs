@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMove))]
+[RequireComponent(typeof(PlayerTrapMove))]
 //プレイヤー制御クラス
 public class PlayerInterFace : CharacterInterface
 {
@@ -15,11 +16,13 @@ public class PlayerInterFace : CharacterInterface
 
 
     public PlayerMove player_move_;
+    public PlayerTrapMove player_trap_move;
     public PlayerFieldOfView player_fov;
     private PLAYER_STATE player_act;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
+        player_trap_move = GetComponent<PlayerTrapMove>();
         player_fov = GetComponentInChildren<PlayerFieldOfView>();
 
         player_act = PLAYER_STATE.idle;
@@ -52,6 +55,7 @@ public class PlayerInterFace : CharacterInterface
                 break;
 
             case PLAYER_STATE.pitfall:
+                player_trap_move.pitfallAct();
                 break;
         }
     }
