@@ -75,7 +75,7 @@ public class EnemyInterFace : CharacterInterface
     {
         if (collision.transform.tag != "Player") return;
 
-        collision.gameObject.GetComponent<PlayerInterFace>().SetPlayerStateLabel_Die();
+        collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
 
     }
 
