@@ -57,7 +57,7 @@ public class Pitfall : MonoBehaviour
         if(collion.gameObject.tag == "Player")
         {
             PlayerInterFace player = collion.gameObject.GetComponent<PlayerInterFace>();
-            player.transitionPitfallState();
+            //player.transitionPitfallState();
             Debug.Log("Šm”F");
         }
     }

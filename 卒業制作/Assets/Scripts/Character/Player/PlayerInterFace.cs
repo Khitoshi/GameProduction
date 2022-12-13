@@ -6,30 +6,31 @@ using UnityEngine;
 //プレイヤー制御クラス
 public class PlayerInterFace : CharacterInterface
 {
-    private enum PLAYER_STATE
-    {
-        idle = 0,
-        move = 1,
-        pitfall = 2,//落とし穴にハマっている
-        stealth = 3,//机の下などにいる
-    }
-
-
     public PlayerMove player_move_;
     public PlayerFieldOfView player_fov;
-    private PLAYER_STATE player_act;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
         player_fov = GetComponentInChildren<PlayerFieldOfView>();
-
-        player_act = PLAYER_STATE.idle;
+        is_life = true;
     }
 
     private void Update()
     {
-
+        //入力による移動速度計算
         player_move_.inputMove();
+
+        //仮でプレイヤーを殺す処理を実装
+        if(Input.GetKey("up"))
+        {
+            if (is_life != false)
+            {
+                GameManager.game_staging_controller.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
+                GameManager.game_staging_controller.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                GameManager.game_staging_controller.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                is_life = false;
+            }
+        }
 
     }
 
@@ -37,50 +38,8 @@ public class PlayerInterFace : CharacterInterface
     //0.02秒毎に呼ばれるフレーム
     private void FixedUpdate()
     {
-        playerAction();
-    }
-
-    private void playerAction()
-    {
-        switch(player_act)
-        {
-            case PLAYER_STATE.idle:
-                player_move_.move();
-                break;
-
-            case PLAYER_STATE.move:
-                player_move_.move();
-                break;
-
-            case PLAYER_STATE.pitfall:
-                break;
-
-            case PLAYER_STATE.stealth:
-                player_move_.move();
-                break;
-        }
-    }
-
-    public void transitionIdleState()
-    {
-        player_act = PLAYER_STATE.idle;
-    }
-
-    public void transitionMoveState()
-    {
-        player_act = PLAYER_STATE.move;
-    }
-
-    public void transitionPitfallState()
-    {
-        player_act = PLAYER_STATE.pitfall;
-    }
-
-    public void transitionStealthState()
-    {
-        player_act = PLAYER_STATE.stealth;
-        //TODO:新しいクラスを作って　moveなどと同じような処理を作る
-        this.gameObject.layer = LayerMask.NameToLayer("Stealth");
+        //移動計算を座標へ反映する
+        player_move_.move();
     }
 
 }

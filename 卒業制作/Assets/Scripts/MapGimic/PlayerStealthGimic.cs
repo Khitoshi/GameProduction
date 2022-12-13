@@ -21,8 +21,9 @@ namespace MapGimic
             //collision.gameObject.layer = LayerMask.NameToLayer("Stealth");
             //レイヤーをStealthModeに変更(stealthはレイヤー衝突マトリックスでEnemy等と衝突しない設定にしている)
 
-            PlayerInterFace player = collision.gameObject.GetComponent<PlayerInterFace>();
-            player.transitionStealthState();
+            //PlayerInterFace player = collision.gameObject.GetComponent<PlayerInterFace>();
+            //player.transitionStealthState();
+            
         }
         
         
