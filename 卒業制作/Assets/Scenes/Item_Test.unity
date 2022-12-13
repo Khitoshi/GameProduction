@@ -600,7 +600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1532585640327657150, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532585640327657151, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
       propertyPath: move_speed_
@@ -867,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 1594294540389222584, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
       propertyPath: player_gimic_
       value: 
-      objectReference: {fileID: 894861483}
+      objectReference: {fileID: 0}
     - target: {fileID: 1594294540389222585, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
       propertyPath: m_Name
       value: PlayerTest
@@ -878,23 +878,6 @@ PrefabInstance:
       objectReference: {fileID: 66986063}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
---- !u!1 &894861482 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1594294540389222585, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
-  m_PrefabInstance: {fileID: 724196713}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &894861483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894861482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 397d3f6429a0c504ca43724d221b7d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1168494760
 GameObject:
   m_ObjectHideFlags: 0
