@@ -106,10 +106,11 @@ public class CharacterFieldOfView : MonoBehaviour
             }
         }
 
+        /*
         Debug.Log("角度" + target_angle / 0.01745f);
         Debug.Log("S角度" + radian_start / 0.01745f);
         Debug.Log("E角度" + radian_end / 0.01745f);
-
+        */
         return false;
 
     }
@@ -134,7 +135,7 @@ public class CharacterFieldOfView : MonoBehaviour
         {
             //Raycastの線を表示する
             Debug.DrawRay(this.transform.position, hit.transform.position - this.transform.position);
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             //レイキャスト対象がヒットコリジョンと同じならtrue(ヒットコリジョン対象はコンストラクタ時に限定されている)
             if (hit.collider.gameObject.tag == other.gameObject.tag)
                 return true;

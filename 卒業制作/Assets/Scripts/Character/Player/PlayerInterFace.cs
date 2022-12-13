@@ -6,8 +6,16 @@ using UnityEngine;
 //プレイヤー制御クラス
 public class PlayerInterFace : CharacterInterface
 {
+    private enum PLAYER_STATE_LABEL
+    {
+        idle = 0,
+        die,
+    }
+    private PLAYER_STATE_LABEL player_act_;   //行動ステート
+
     public PlayerMove player_move_;
     public PlayerFieldOfView player_fov;
+
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
@@ -21,6 +29,7 @@ public class PlayerInterFace : CharacterInterface
         player_move_.inputMove();
 
         //仮でプレイヤーを殺す処理を実装
+        /*
         if(Input.GetKey("up"))
         {
             if (is_life != false)
@@ -31,15 +40,40 @@ public class PlayerInterFace : CharacterInterface
                 is_life = false;
             }
         }
-
+        */
     }
 
     //壁接触時にガタツキ防止の為FixedUpdate内で処理する
     //0.02秒毎に呼ばれるフレーム
     private void FixedUpdate()
     {
+        switch (player_act_)
+        {
+            case PLAYER_STATE_LABEL.idle:
+                player_move_.move();
+                break;
+
+            case PLAYER_STATE_LABEL.die:
+                //座標を直接操作してるのでmove()関数と競合する
+                //transform.position = enemy_move_.moveToTarget(transform, target_transform_);
+                if(is_life)
+                {
+                    Destroy(gameObject, 5.0f);
+                    GameManager.game_staging_controller.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
+                    GameManager.game_staging_controller.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                    GameManager.game_staging_controller.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                    is_life = false;
+                }
+                break;
+        }
+
         //移動計算を座標へ反映する
-        player_move_.move();
     }
+
+    public void SetPlayerStateLabel_Die()
+    {
+        player_act_ = PLAYER_STATE_LABEL.die;
+    }
+
 
 }

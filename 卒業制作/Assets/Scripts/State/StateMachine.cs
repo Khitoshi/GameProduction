@@ -5,7 +5,7 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
 	// 現在のステート
-	private HierarchicalState current_state_;
+	public HierarchicalState current_state_ { private set; get; }
 	// 各ステートを保持する配列
 	public List<HierarchicalState> state_pool_;
 	// コンストラクタ

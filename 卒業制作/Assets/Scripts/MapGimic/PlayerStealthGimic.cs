@@ -18,7 +18,7 @@ namespace MapGimic
             Debug.Log("Enter");
             //Debug.Log(collision.name);
             //collision.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-            //collision.gameObject.layer = LayerMask.NameToLayer("Stealth");
+            collision.gameObject.layer = LayerMask.NameToLayer("Stealth");
             //レイヤーをStealthModeに変更(stealthはレイヤー衝突マトリックスでEnemy等と衝突しない設定にしている)
 
             //PlayerInterFace player = collision.gameObject.GetComponent<PlayerInterFace>();
