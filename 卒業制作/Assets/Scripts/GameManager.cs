@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FadeService))] 
 [RequireComponent(typeof(GameStagingController))]
 public class GameManager : MonoBehaviour
 {
+    public static FadeService fade_service_ { get; private set; }
 
-    public static GameStagingController game_staging_controller { get; private set; }
+    public static GameStagingController game_staging_controller_ { get; private set; }
 
     //ゲーム開始時直後のシーン読込前に呼ばれるようにする属性を指定
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]  //←関数の前にこれを付ける事でゲーム開始時のシーン読込前に呼ばれる
@@ -21,7 +23,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameManager);
 
         //グローバルで利用するためのサービスを設定
-        game_staging_controller = gameManager.GetComponent<GameStagingController>();
+        fade_service_ = gameManager.GetComponent<FadeService>();
+        game_staging_controller_ = gameManager.GetComponent<GameStagingController>();
 
 
     }

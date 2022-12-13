@@ -13,6 +13,6 @@ public class StagingState : HierarchicalState
     //ステートで実行するメソッド
     public override void execute() { base.execute(); }
     //ステートから出ていくときのメソッド
-    public override void exit() { GameManager.game_staging_controller.setStagingNone(); base.exit(); }
+    public override void exit() { GameManager.game_staging_controller_.setStagingNone(); base.exit(); }
 }
 
