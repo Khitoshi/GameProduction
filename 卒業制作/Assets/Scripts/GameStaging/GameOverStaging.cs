@@ -48,7 +48,7 @@ public class GameOverStaging : StateBase
 
         //‰‰oŽžŠÔ‚ÌI—¹
         if (time_ > max_staging_time_)
-            GameManager.game_staging_controller.state_machine_.getState().exit();
+            GameManager.game_staging_controller_.state_machine_.getState().exit();
 
         time_ += Time.deltaTime;
 
@@ -59,7 +59,6 @@ public class GameOverStaging : StateBase
     public override void exit()
     {
         Destroy(text_object_);
-        //DestroyImmediate(text_object_, true);
         Destroy(canvas_);
     }
 }
