@@ -32,7 +32,6 @@ namespace MapGimic
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag != "Player") return;
-            Debug.Log(collision.gameObject.name);
             //Œ®‚ğE‚Á‚Ä‚¢‚é‚©‚Ì”»’è
             if (item_flag_datebase_.Key == 1)
             {

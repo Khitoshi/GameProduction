@@ -70,4 +70,14 @@ public class EnemyInterFace : CharacterInterface
         enemy_act_ = ENEMY_STATE_LABEL.pursuit_player;
         target_transform_ = other.transform;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag != "Player") return;
+
+        collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
+
+    }
+
+
 }

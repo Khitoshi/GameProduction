@@ -12,6 +12,7 @@ public class PlayerInterFace : CharacterInterface
         idle = 0,
         move = 1,
         pitfall = 2,
+        die,
     }
 
 
@@ -23,7 +24,8 @@ public class PlayerInterFace : CharacterInterface
     {
         player_move_ = GetComponent<PlayerMove>();
         player_trap_move = GetComponent<PlayerTrapMove>();
-        player_fov = GetComponentInChildren<PlayerFieldOfView>();
+        if (player_fov != null)
+            player_fov = GetComponentInChildren<PlayerFieldOfView>();
         is_life = true;
 
         player_act = PLAYER_STATE.idle;
@@ -46,7 +48,7 @@ public class PlayerInterFace : CharacterInterface
 
     private void playerAction()
     {
-        switch(player_act)
+        switch (player_act)
         {
             case PLAYER_STATE.idle:
                 player_move_.move();
@@ -59,6 +61,17 @@ public class PlayerInterFace : CharacterInterface
             case PLAYER_STATE.pitfall:
                 player_trap_move.pitfallAct();
                 break;
+            case PLAYER_STATE.die:
+                if (is_life)
+                {
+                    Destroy(gameObject, 5.0f);
+                    GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
+                    GameManager.game_staging_controller_.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                    GameManager.game_staging_controller_.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
+                    is_life = false;
+                }
+                break;
+
         }
     }
 
@@ -76,4 +89,10 @@ public class PlayerInterFace : CharacterInterface
     {
         player_act = PLAYER_STATE.pitfall;
     }
+
+    public void transitionDieState()
+    {
+        player_act = PLAYER_STATE.die;
+    }
+
 }

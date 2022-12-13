@@ -106,6 +106,7 @@ public class CharacterFieldOfView : MonoBehaviour
             }
         }
 
+
         Debug.Log("角度" + target_angle / 0.01745f);
         Debug.Log("S角度" + radian_start / 0.01745f);
         Debug.Log("E角度" + radian_end / 0.01745f);
@@ -123,14 +124,18 @@ public class CharacterFieldOfView : MonoBehaviour
         //レイを飛ばす方向を算出
         Vector2 direction = target_position - mine_position;
 
-        //自身はレイキャスト対象ならないようにマスクする
-        int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
+        //自身とStealth(机の下にいる状態)の場合、レイキャスト対象ならないようにマスクする
+        //int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
+        int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(LayerMask.NameToLayer("Stealth"))) &
+           ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
 
         RaycastHit2D hit = Physics2D.Raycast(mine_position, direction, circle_collider_.radius, layer_mask);
 
         if (hit)
         {
-
+            //Raycastの線を表示する
+            Debug.DrawRay(this.transform.position, hit.transform.position - this.transform.position);
+            //Debug.Log(hit.transform.name);
             //レイキャスト対象がヒットコリジョンと同じならtrue(ヒットコリジョン対象はコンストラクタ時に限定されている)
             if (hit.collider.gameObject.tag == other.gameObject.tag)
                 return true;

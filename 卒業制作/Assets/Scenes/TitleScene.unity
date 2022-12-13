@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touch_button_: {fileID: 34924962}
-  change_scdne_: Stage_Test2
+  change_scdne_: Stage_2
 --- !u!4 &1159198355
 Transform:
   m_ObjectHideFlags: 0

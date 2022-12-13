@@ -49,7 +49,7 @@ public class GameStagingController : MonoBehaviour
         if (staging_label != GAME_STAGING_LABEL.none)
         {
             is_staging_ = true;
-            state_machine_.setState((int)GAME_STAGING_LABEL.game_over);
+            state_machine_.setState((int)staging_label);
 
         }
         else
