@@ -21,7 +21,8 @@ public class HierarchicalState : StateBase
     //サブステート登録
     public void setSubState(int new_state) 
     {
-        if (sub_state_pool_[new_state] != null)
+        if (sub_state_pool_[new_state] == null) return;
+        if(current_state_ != sub_state_pool_[new_state])
         {
             current_state_ = sub_state_pool_[new_state];
             current_state_.enter();
@@ -30,7 +31,12 @@ public class HierarchicalState : StateBase
     //サブステート変更
     public void changeSubState(int new_state) 
     {
-        current_state_.exit();
+        if (current_state_ == sub_state_pool_[new_state]) return;
+
+        if(current_state_ != null)
+        {
+            current_state_.exit();
+        }
         setSubState(new_state);
     }
 

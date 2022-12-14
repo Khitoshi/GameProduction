@@ -25,15 +25,17 @@ public class EnemyInterFace : CharacterInterface
 
         //enemy_act_ = ENEMY_STATE_LABEL.idle;
 
-        //enemy_fov_.on_field_of_view += transitionPursuitPlayerState;
+        enemy_fov_.on_field_of_view += transitionPursuitState;
         //‹ŠE‚É‚¢‚éê‡‚Ìƒƒ\ƒbƒh
-        enemy_fov_.on_field_of_view += transitionWanderState;
+        //enemy_fov_.on_field_of_view += transitionWanderState;
 
         //‹ŠE‚©‚çÁ‚¦‚½(Å‰‚©‚ç‚¢‚È‚¢)ê‡‚Ìƒƒ\ƒbƒh
-        enemy_fov_.exit_field_of_view += transitionPursuitState;
+        enemy_fov_.exit_field_of_view += transitionWanderState;
 
         enemy_state_machine = GetComponent<EnemyStateMachine>();
-        enemy_state_machine.ChangeState(enemy_state_machine.current_pool_[(int)ENEMY_STATE_LABEL.idle]);
+        enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.idle);
+        //enemy_state_machine.ChangeState(enemy_state_machine.current_pool_[(int)ENEMY_STATE_LABEL.idle]);
+        //enemy_state_machine
         //enemy_state_machine = new EnemyStateMachine();
         //enemy_state_machine.current_state_ = enemy_state_machine.current_pool_[0];
     }
@@ -46,7 +48,7 @@ public class EnemyInterFace : CharacterInterface
     //•ÇÚG‚ÉƒKƒ^ƒcƒL–h~‚Ìˆ×FixedUpdate“à‚Åˆ—‚·‚é
     private void FixedUpdate()
     {
-       
+        enemy_state_machine.execute();
     }
 
     public void enemyAction()
@@ -77,10 +79,11 @@ public class EnemyInterFace : CharacterInterface
         //        break;
         //}
 
-        enemy_state_machine.Excute();
+        enemy_state_machine.execute();
 
     }
 
+    /*
     public void transitionIdleState()
     {
         //enemy_act_ = ENEMY_STATE_LABEL.idle;
@@ -106,10 +109,23 @@ public class EnemyInterFace : CharacterInterface
         //target_transform_ = gameObject.transform.Find("PlayerTest");
     }
 
-    public void MoveToTarget(Vector3 target)
+    */
+    public void moveToTarget(Vector3 target)
     {
         transform.position = enemy_move_.moveToTarget(transform, target);
     }
+
+
+    void transitionWanderState()
+    {
+        GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.wander);
+    }
+
+    void transitionPursuitState()
+    {
+        GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

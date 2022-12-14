@@ -27,7 +27,6 @@ public class CharacterFieldOfView : MonoBehaviour
     {
         //視界のレイ方向デバッグ表示用の処理↓
         float ray_length = 1.0f;
-
         float offset_angle_radian = transform.parent.localEulerAngles.z;
         offset_angle_radian *= 0.01745f; //rad = dgree * (π/180)
 
