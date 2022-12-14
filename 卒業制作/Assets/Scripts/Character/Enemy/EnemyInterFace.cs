@@ -36,10 +36,10 @@ public class EnemyInterFace : CharacterInterface
     //•ÇÚG‚ÉƒKƒ^ƒcƒL–h~‚Ìˆ×FixedUpdate“à‚Åˆ—‚·‚é
     private void FixedUpdate()
     {
-        enemyAction();
+       
     }
 
-    private void enemyAction()
+    public void enemyAction()
     {
         switch (enemy_act_)
         {

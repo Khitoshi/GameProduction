@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;  //SceneManagerを使用するのに必要
 
 [RequireComponent(typeof(PlayerMove))]
 [RequireComponent(typeof(PlayerTrapMove))]
@@ -13,6 +14,7 @@ public class PlayerInterFace : CharacterInterface
         move = 1,
         pitfall = 2,
         die,
+        delete, //自身の削除ステート
     }
 
 
@@ -35,18 +37,16 @@ public class PlayerInterFace : CharacterInterface
     private void Update()
     {
 
-        player_move_.inputMove();
-
     }
 
     //壁接触時にガタツキ防止の為FixedUpdate内で処理する
     //0.02秒毎に呼ばれるフレーム
     private void FixedUpdate()
     {
-        playerAction();
+
     }
 
-    private void playerAction()
+    public void playerAction()
     {
         switch (player_act)
         {
@@ -64,12 +64,21 @@ public class PlayerInterFace : CharacterInterface
             case PLAYER_STATE.die:
                 if (is_life)
                 {
-                    Destroy(gameObject, 5.0f);
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
-                    GameManager.game_staging_controller_.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
-                    GameManager.game_staging_controller_.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_over);
                     is_life = false;
+
                 }
+
+                //演出が終了したら自身を削除するステートへ遷移する
+                if (!GameManager.game_staging_controller_.is_staging_)
+                {
+                    transitionDeleteState();
+                }
+                break;
+
+            case PLAYER_STATE.delete:
+                //Destroy(gameObject);
+                SceneManager.LoadScene("GameOverScene");
                 break;
 
         }
@@ -93,6 +102,11 @@ public class PlayerInterFace : CharacterInterface
     public void transitionDieState()
     {
         player_act = PLAYER_STATE.die;
+    }
+
+    public void transitionDeleteState()
+    {
+        player_act = PLAYER_STATE.delete;
     }
 
 }
