@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
         for (int i = 0; i < enemy_lists_.Count; i++)
         {
+            //シーンのヒエラルキービューに設定されたプレイヤーオブジェクトを取得する
             enemy_lists_[i] = enemy_lists_[i].GetComponent<EnemyInterFace>();
         }
     }

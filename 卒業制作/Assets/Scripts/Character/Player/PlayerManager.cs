@@ -5,6 +5,7 @@ using UnityEngine;
 //プレイヤー管理クラス
 public class PlayerManager : MonoBehaviour
 {
+    
     [SerializeField]
     private PlayerInterFace player_ = null;
 
@@ -12,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(player_ != null)
         {
+            //シーンのヒエラルキービューに設定されたプレイヤーオブジェクトを取得する
             player_ = player_.GetComponent<PlayerInterFace>();
         }
     }
