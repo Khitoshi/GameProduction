@@ -52,8 +52,6 @@ public class GameOverStaging : StateBase
 
         time_ += Time.deltaTime;
 
-        Debug.Log("up");
-
     }
     //ステートから出ていくときのメソッド
     public override void exit()

@@ -19,9 +19,9 @@ public class GameStagingController : MonoBehaviour
     public StateMachine state_machine_;
 
     //ââèoíÜÇ©Ç«Ç§Ç©
-    private bool is_staging_ { set; get; } = false;
+    public bool is_staging_ { set; get; } = false;
 
-    private GAME_STAGING_LABEL staging_state_ = GAME_STAGING_LABEL.none;
+    public GAME_STAGING_LABEL staging_state_ = GAME_STAGING_LABEL.none;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +50,7 @@ public class GameStagingController : MonoBehaviour
         {
             is_staging_ = true;
             state_machine_.setState((int)staging_label);
+            state_machine_.setSubState((int)staging_label);
 
         }
         else
