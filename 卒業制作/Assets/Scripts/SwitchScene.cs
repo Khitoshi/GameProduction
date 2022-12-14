@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;  //SceneManagerを使用するのに必要
 
-public class TitleScene : MonoBehaviour
+public class SwitchScene : MonoBehaviour
 {
     [SerializeField]
     private Button touch_button_;
 
     [SerializeField]
-    private string change_scdne_ = null;
+    private string change_scene_ = null;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class TitleScene : MonoBehaviour
     private IEnumerator DoTransitionScene()
     {
 
-        if (change_scdne_ == null)
+        if (change_scene_ == null)
         {
             Debug.Log("シーンが設定されていません");
         }
@@ -56,7 +56,7 @@ public class TitleScene : MonoBehaviour
         yield return new WaitUntil(() => !GameManager.fade_service_.isFading());
         
         //画面が真っ黒状態でシーンを遷移する
-        SceneManager.LoadScene(change_scdne_);
+        SceneManager.LoadScene(change_scene_);
         //フェードイン開始
         GameManager.fade_service_.fadeIn();
     }
