@@ -13,6 +13,7 @@ public class PlayerInterFace : CharacterInterface
         move = 1,
         pitfall = 2,
         die,
+        game_clear,
     }
 
 
@@ -71,7 +72,15 @@ public class PlayerInterFace : CharacterInterface
                     is_life = false;
                 }
                 break;
-
+            case PLAYER_STATE.game_clear:
+                if(is_life)
+                {
+                    GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
+                    GameManager.game_staging_controller_.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_clear);
+                    GameManager.game_staging_controller_.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_clear);
+                    is_life = false;
+                }
+                break;
         }
     }
 
@@ -93,6 +102,11 @@ public class PlayerInterFace : CharacterInterface
     public void transitionDieState()
     {
         player_act = PLAYER_STATE.die;
+    }
+
+    public void transitionGameClearState()
+    {
+        player_act = PLAYER_STATE.game_clear;
     }
 
 }

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         var gameManager = Instantiate(gameManagerPrefab);
         //シーンの変更時に破棄されないようにする
         DontDestroyOnLoad(gameManager);
-
+        
         //グローバルで利用するためのサービスを設定
         fade_service_ = gameManager.GetComponent<FadeService>();
         game_staging_controller_ = gameManager.GetComponent<GameStagingController>();
