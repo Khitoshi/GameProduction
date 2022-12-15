@@ -19,14 +19,11 @@ public class PlayerTrapMove : CharacterMove
     public void pitfallAct()
     {
         gaugePlus = true;
-        Debug.Log(gauge.isMaxGauge);
         
-
         if(gauge.isMaxGauge)
         {
             gaugePlus = false;
             gauge.isMaxGauge = false;
-            Debug.Log("Šm”F");
 
             PlayerPos();
         }

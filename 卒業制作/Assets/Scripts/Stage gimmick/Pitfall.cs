@@ -17,7 +17,6 @@ public class Pitfall : MonoBehaviour
         {
             PlayerInterFace player = collsion.gameObject.GetComponent<PlayerInterFace>();
             player.transitionPitfallState();
-            Debug.Log("Šm”F");
         }
     }
 
