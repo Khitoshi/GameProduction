@@ -58,3 +58,5 @@ public class GameClearStaging : StateBase
         Destroy(canvas_);
     }
 }
+
+

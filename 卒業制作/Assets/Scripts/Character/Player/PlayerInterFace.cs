@@ -15,6 +15,7 @@ public class PlayerInterFace : CharacterInterface
         pitfall = 2,
         die,
         delete, //自身の削除ステート
+        game_clear,
     }
 
 
@@ -80,7 +81,15 @@ public class PlayerInterFace : CharacterInterface
                 //Destroy(gameObject);
                 SceneManager.LoadScene("GameOverScene");
                 break;
-
+            case PLAYER_STATE.game_clear:
+                if(is_life)
+                {
+                    GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
+                    GameManager.game_staging_controller_.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_clear);
+                    GameManager.game_staging_controller_.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_clear);
+                    is_life = false;
+                }
+                break;
         }
     }
 
@@ -107,6 +116,11 @@ public class PlayerInterFace : CharacterInterface
     public void transitionDeleteState()
     {
         player_act = PLAYER_STATE.delete;
+    }
+
+    public void transitionGameClearState()
+    {
+        player_act = PLAYER_STATE.game_clear;
     }
 
 }

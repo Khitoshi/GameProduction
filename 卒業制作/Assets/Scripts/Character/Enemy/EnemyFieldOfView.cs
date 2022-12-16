@@ -7,6 +7,7 @@ public class EnemyFieldOfView : CharacterFieldOfView
 {
 
     public delegate void onFieldOfView(Collider2D other);
+    //public delegate void onFieldOfView();
     public onFieldOfView on_field_of_view;
 
     public delegate void exitFieldOfView();
@@ -35,6 +36,7 @@ public class EnemyFieldOfView : CharacterFieldOfView
                 if (on_field_of_view != null)
                 {
                     on_field_of_view(other);
+                    //on_field_of_view();
                 }
             }
 
