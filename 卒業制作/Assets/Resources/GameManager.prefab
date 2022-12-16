@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1806847185463394990}
   - component: {fileID: -6430618823929727535}
   - component: {fileID: 65250261890416479}
+  - component: {fileID: -8755448813284944276}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state_machine_: {fileID: -8808514088512623342}
+  staging_state_: -1
 --- !u!114 &8635608478753762339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,3 +121,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 4050506885884034882, guid: b63e2866b95b180438c3ef297bd9227b, type: 3}
   speed: 1
+--- !u!114 &-8755448813284944276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959603799975704514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab61a39a62239049848c143f04d342a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_up_time_: 0.5
+  max_staging_time_: 3
+  text_object_: {fileID: 5093859705699090076, guid: 8eb0704b18becb44ba856b359c87867a, type: 3}
+  canvas_: {fileID: 6035581250280229784, guid: 80eece357a2c33248bec8100814ab3f1, type: 3}
