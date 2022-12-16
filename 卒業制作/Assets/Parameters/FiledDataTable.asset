@@ -15,7 +15,7 @@ MonoBehaviour:
   Fields:
   - Id: 0
     Name: StageTest
-    SceneName: Stage_Test
+    SceneName: Stage_1
     Icon: {fileID: 21300000, guid: d5f311a0f7fc4c942961836372752e49, type: 3}
   - Id: 1
     Name: StageTest
