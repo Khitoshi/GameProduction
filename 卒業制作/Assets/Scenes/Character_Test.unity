@@ -758,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 23027944}
+    - target: {fileID: 8901395610582922954, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
+      propertyPath: move_speed_
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
 --- !u!1001 &1532585641050881501
