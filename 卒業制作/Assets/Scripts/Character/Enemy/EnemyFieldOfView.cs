@@ -6,12 +6,11 @@ using UnityEngine;
 public class EnemyFieldOfView : CharacterFieldOfView
 {
 
-    //public delegate void onFieldOfView(Collider2D other);
-    public delegate void onFieldOfView();
-    public onFieldOfView on_field_of_view;//pursuit
+    public delegate void onFieldOfView(Collider2D other);
+    public onFieldOfView on_field_of_view;
 
     public delegate void exitFieldOfView();
-    public exitFieldOfView exit_field_of_view;//wander
+    public exitFieldOfView exit_field_of_view;
 
     //コンストラクタ(GetComponentにてクラスを生成される時にもコンストラクタは呼ばれる)
     //引数の文字列は視野角がレイキャストしたい対称の文字列を入れる
@@ -23,14 +22,6 @@ public class EnemyFieldOfView : CharacterFieldOfView
     private void Start()
     {
         circle_collider_ = GetComponent<CircleCollider2D>();
-        
-    }
-
-    private void Update()
-    {
-        //wander
-        //GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.wander);
-        
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -41,11 +32,9 @@ public class EnemyFieldOfView : CharacterFieldOfView
 
             if (checkFieldOfView(other))
             {
-                //playerを発見した時
                 if (on_field_of_view != null)
                 {
-                    //is_trigger = true;
-                    on_field_of_view();
+                    on_field_of_view(other);
                 }
             }
 
@@ -57,7 +46,6 @@ public class EnemyFieldOfView : CharacterFieldOfView
                     exit_field_of_view();
                 }
             }
-            
         }
 
 
@@ -70,7 +58,6 @@ public class EnemyFieldOfView : CharacterFieldOfView
         if (other.gameObject.tag != "Player")
             return;
 
-        //視界範囲から出るので索敵(Wander)にする
         if (exit_field_of_view != null)
         {
             exit_field_of_view();

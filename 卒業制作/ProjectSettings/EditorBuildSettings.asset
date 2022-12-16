@@ -12,18 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Player Test.unity
     guid: f70e5bcf08045ce43a34ee0bfc4ed07d
   - enabled: 1
-    path: Assets/Scenes/Stage_1.unity
+    path: Assets/Scenes/Stage_Test.unity
     guid: c9f394c7b38873e4bbdecab32d2a06c2
   - enabled: 1
-    path: Assets/Scenes/Stage_3.unity
+    path: Assets/Scenes/Stage_Test2.unity
     guid: 636a08baa6b0b0a4b8dfd65e272947ed
-  - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
-    guid: f91042484d74a4d458809c192b1bdd43
-  - enabled: 1
-    path: Assets/Scenes/Stage_2.unity
-    guid: 68302fe67e17a1b4f88e5805dfc38c81
-  - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
-    guid: 3dbb6b5ee8feaa34f86de0669a460887
   m_configObjects: {}
