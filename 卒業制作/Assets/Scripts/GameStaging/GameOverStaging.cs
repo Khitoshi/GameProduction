@@ -21,7 +21,6 @@ public class GameOverStaging : StateBase
     //ステートに入った時のメソッド
     public override void enter()
     {
-
         //prefabからオブジェクト生成
         text_object_ = Instantiate(text_object_);
         canvas_ = Instantiate(canvas_);
@@ -31,8 +30,6 @@ public class GameOverStaging : StateBase
         Vector3 scale = text_object_.transform.localScale;
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         text_object_.transform.localScale = scale;
-
-
     }
     //ステートで実行するメソッド
     public override void execute()

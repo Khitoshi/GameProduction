@@ -4,23 +4,45 @@ using UnityEngine;
 
 public class EnemyPursuitState : StateBase
 {
-    
-    Vector3 player_postion;
+    //’ÇÕ‚·‚étarget‚Ìposition
+    Vector3 target_postion_;
+
+    EnemyInterFace enemy_inter_face_;
+
     public override void enter()
     {
+        enemy_inter_face_ = GetComponent<EnemyInterFace>();
+        
         Debug.Log("pursuit start");
-        //player_postion = GameObject.Find("PlayerTest").transform.position;
     }
 
     public override void execute()
     {
-        player_postion = GameObject.Find("PlayerTest").transform.position;
-        
-        GetComponent<EnemyInterFace>().moveToTarget(player_postion);
+        //player‚ÌÅI”­Œ©ˆÊ’u‚Ü‚Å‚Â‚¢‚Ä‚¢‚È‚¢ê‡
+        if(transform.position != target_postion_)
+        {
+            //‰ñ“]
+            enemy_inter_face_.enemy_move_.rotationOnlyMove(target_postion_);
+
+            //ˆÚ“®
+            transform.position = enemy_inter_face_.enemy_move_.moveToTarget(this.transform, target_postion_);
+        }
+        else
+        {
+            //œpœj‚Öó‘Ô•ÏX
+            enemy_inter_face_.enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.idle);
+        }
     }
 
     public override void exit()
     {
         Debug.Log("Pursuit end");
     }
+
+    //’ÇÕ‚·‚étarget‚Ìposition‚ğset
+    public void set_target_positon(Vector3 position)
+    {
+        target_postion_ = position;
+    }
+
 }
