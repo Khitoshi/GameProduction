@@ -2,32 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerTrapMove : CharacterMove
 {
-    private int KeyCount = 0;
-    private int MaxCount = 7;
+    public Gauge gauge;
+    private PlayerInterFace player;
+    public bool gaugePlus;
+    Vector2 pos;
 
-    void Start()
+    private void Start()
     {
-        KeyCount = 0;
+        player = GetComponent<PlayerInterFace>();
+        gaugePlus = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void pitfallAct()
     {
-        pitfallAct();
-    }
-
-    private void pitfallAct()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
+        gaugePlus = true;
+        
+        if(gauge.isMaxGauge)
         {
-            KeyCount++;
-            if(KeyCount>=MaxCount)
-            {
-                KeyCount = 0;
+            gaugePlus = false;
+            gauge.isMaxGauge = false;
 
-            }
+            PlayerPos();
         }
+    }
+
+    private void PlayerPos()
+    {
+        //’âŽ~‚µ‚Ä‚¢‚½player‚ð“®‚©‚·
+        player.transitionMoveState();
+        Rigidbody2D rigid = player.GetComponent<Rigidbody2D>();
+        pos = rigid.position;
+        pos += new Vector2(-1.0f, 0.0f);
+        rigid.position = pos;
     }
 }
