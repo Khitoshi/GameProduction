@@ -19,6 +19,7 @@ public class GameClearStaging : StateBase
     //ステートに入った時のメソッド
     public override void enter()
     {
+
         //prefabからオブジェクト生成
         text_object_ = Instantiate(text_object_);
         canvas_ = Instantiate(canvas_);
@@ -28,6 +29,8 @@ public class GameClearStaging : StateBase
         Vector3 scale = text_object_.transform.localScale;
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         text_object_.transform.localScale = scale;
+
+
     }
     //ステートで実行するメソッド
     public override void execute()
@@ -41,20 +44,11 @@ public class GameClearStaging : StateBase
                 text_object_.transform.localScale = scale;
         }
 
-
-        //演出の終了
-
+        //演出時間の終了
         if (time_ > max_staging_time_)
-        {
-            if (Input.anyKey)
-            {
-                GameManager.game_staging_controller_.state_machine_.getState().exit();
-            }
-        }
+            GameManager.game_staging_controller_.state_machine_.getState().exit();
 
         time_ += Time.deltaTime;
-        
-        Debug.Log("up");
 
     }
     //ステートから出ていくときのメソッド
@@ -64,3 +58,5 @@ public class GameClearStaging : StateBase
         Destroy(canvas_);
     }
 }
+
+

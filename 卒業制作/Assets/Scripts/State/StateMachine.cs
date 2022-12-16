@@ -13,7 +13,7 @@ public class StateMachine : MonoBehaviour
 	// 更新処理
 	public void execute() 
 	{
-		current_state_.execute();
+		current_state_.execute();	
 	}
 	// ステートセット
 	public void setState(int set_state)

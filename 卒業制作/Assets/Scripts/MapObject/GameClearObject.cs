@@ -20,7 +20,7 @@ public class GameClearObject : MonoBehaviour
     {
         if (collision.transform.tag != "Player") return;
         //TODO
-        //collision.gameObject.GetComponent<PlayerInterFace>().transitionGameClearState();
+        collision.gameObject.GetComponent<PlayerInterFace>().transitionGameClearState();
     }
 
 }

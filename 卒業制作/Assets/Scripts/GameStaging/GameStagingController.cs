@@ -49,7 +49,8 @@ public class GameStagingController : MonoBehaviour
         if (staging_label != GAME_STAGING_LABEL.none)
         {
             is_staging_ = true;
-            state_machine_.setState((int)staging_label);
+            //TODO:現在はゲーム演出のみなのでサブステートに様々な演出を登録していくからHierarchStateは0番のみ
+            state_machine_.setState(0);
             state_machine_.setSubState((int)staging_label);
 
         }

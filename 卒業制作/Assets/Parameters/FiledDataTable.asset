@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a04bded9e8adc4bb1ef39e49a85590, type: 3}
+  m_Name: FiledDataTable
+  m_EditorClassIdentifier: 
+  Fields:
+  - Id: 0
+    Name: StageTest
+    SceneName: Stage_1
+    Icon: {fileID: 21300000, guid: d5f311a0f7fc4c942961836372752e49, type: 3}
+  - Id: 1
+    Name: StageTest
+    SceneName: stage gimmick
+    Icon: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}

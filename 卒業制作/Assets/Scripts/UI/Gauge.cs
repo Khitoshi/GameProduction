@@ -17,16 +17,16 @@ public class Gauge : MonoBehaviour
 
     void Start()
     {
-        image1 = GetComponent<Image>();
-        image2 = GetComponent<Image>();
-
+        image2 = GameObject.Find("Canvas/Image2").GetComponent<Image>();
+        image1 = GameObject.Find("Canvas/Image1").GetComponent<Image>();
 
         image2.type = Image.Type.Filled;
         image2.fillMethod = Image.FillMethod.Horizontal;
         image2.fillOrigin = 0;
         image2.fillAmount = 0;
 
-        canvas.alpha = 0.0f;
+        image1.enabled = false;
+        image2.enabled = false; 
 
         isMaxGauge = false;
     }
@@ -36,25 +36,38 @@ public class Gauge : MonoBehaviour
     {
         if(trapMove.gaugePlus)
         {
-            canvas.alpha = 1.0f; 
+            image1.enabled = true;
+            image2.enabled = true;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //ÉQÅ[ÉWÇ™ëùÇ¶ÇÈ
-                gaugeAmount += 4.0f * Time.deltaTime;
-                image1.color = new Color(1.0f, 1.0f, 0.0f);
-
-                image2.fillAmount = gaugeAmount;
+                KeyDownProcess();
                 if (gaugeAmount >= 1f)
                 {
-                    gaugeAmount = 0f;
-                    Debug.Log("Max");
-
-                    image1.color = new Color(1.0f, 1.0f, 1.0f);
-                    canvas.alpha = 0.0f;
-                    isMaxGauge = true;
+                    MaxProcess();
                 }
             }
         }
+    }
+
+    private void KeyDownProcess()
+    {
+        //ÉQÅ[ÉWÇ™ëùÇ¶ÇÈ
+        gaugeAmount += 6.0f * Time.deltaTime;
+        image2.color = new Color(1.0f, 1.0f, 0.0f);
+
+        image2.fillAmount = gaugeAmount;
+    }
+
+
+    private void  MaxProcess()
+    {
+        gaugeAmount = 0f;
+
+        image1.enabled = false;
+        image2.enabled = false;
+
+        image2.color = new Color(1.0f, 1.0f, 1.0f);
+        isMaxGauge = true;
     }
 }
