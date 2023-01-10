@@ -19,7 +19,7 @@ public class HierarchicalState : StateBase
     //ステートから出ていくときのメソッド
     public virtual void exit() { current_state_.exit(); }
     //サブステート登録
-    public void setSubState(int new_state) 
+    public void setSubState(int new_state)
     {
         if (sub_state_pool_[new_state] != null)
         {
@@ -28,9 +28,10 @@ public class HierarchicalState : StateBase
         }
     }
     //サブステート変更
-    public void changeSubState(int new_state) 
+    public void changeSubState(int new_state)
     {
-        current_state_.exit();
+        if (current_state_ != null)
+            current_state_.exit();
         setSubState(new_state);
     }
 
