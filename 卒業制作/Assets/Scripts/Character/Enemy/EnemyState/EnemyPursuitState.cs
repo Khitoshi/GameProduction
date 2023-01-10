@@ -2,35 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPursuitState : EnemyStateBase
+public class EnemyPursuitState : StateBase
 {
-    public CircleCollider2D circle_collider;
-    //移動先の位置
-    private Vector3 move_target_position = new Vector3(0, 0, 0);
-    public override void Enter()
-    {
-        float radius = circle_collider.radius;
+    //追跡するtargetのposition
+    Vector3 target_postion_;
 
-        // CircleCollider内のランダムな位置を計算
-        move_target_position = Random.insideUnitCircle * radius;
-        Debug.Log("Pursuit start");
-    }
+    EnemyInterFace enemy_inter_face_;
 
-    public override void Excute()
+    public override void enter()
     {
+        enemy_inter_face_ = GetComponent<EnemyInterFace>();
         
-        if (transform.position == move_target_position)
-        {
-            this.gameObject.GetComponent<EnemyInterFace>().transitionIdleState();
-        }
-        Debug.Log("target" + move_target_position);
-        //移動
-        this.gameObject.GetComponent<EnemyInterFace>().MoveToTarget(move_target_position);
-        //transform.position
+        Debug.Log("pursuit start");
     }
 
-    public override void Exit()
+    public override void execute()
+    {
+        //playerの最終発見位置までついていない場合
+        if(transform.position != target_postion_)
+        {
+            //回転
+            //enemy_inter_face_.enemy_move_.rotationOnlyMove(target_postion_);
+
+            //移動
+            transform.position = enemy_inter_face_.enemy_move_.moveToTarget(this.transform, target_postion_);
+        }
+        else
+        {
+            //徘徊へ状態変更
+            enemy_inter_face_.enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.idle);
+        }
+    }
+
+    public override void exit()
     {
         Debug.Log("Pursuit end");
     }
+
+    //追跡するtargetのpositionをset
+    public void set_target_positon(Vector3 position)
+    {
+        target_postion_ = position;
+    }
+
 }

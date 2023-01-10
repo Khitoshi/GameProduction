@@ -67,7 +67,6 @@ public class PlayerInterFace : CharacterInterface
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
                     is_life = false;
-
                 }
 
                 //演出が終了したら自身を削除するステートへ遷移する
@@ -78,16 +77,19 @@ public class PlayerInterFace : CharacterInterface
                 break;
 
             case PLAYER_STATE.delete:
-                //Destroy(gameObject);
                 SceneManager.LoadScene("GameOverScene");
                 break;
             case PLAYER_STATE.game_clear:
                 if(is_life)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
-                    GameManager.game_staging_controller_.state_machine_.setState((int)GameStagingController.GAME_STAGING_LABEL.game_clear);
-                    GameManager.game_staging_controller_.state_machine_.setSubState((int)GameStagingController.GAME_STAGING_LABEL.game_clear);
                     is_life = false;
+                }
+
+                //演出が終了したら自身を削除するステートへ遷移する
+                if (!GameManager.game_staging_controller_.is_staging_)
+                {
+                    SceneManager.LoadScene("GameClearScene");
                 }
                 break;
         }
@@ -123,4 +125,22 @@ public class PlayerInterFace : CharacterInterface
         player_act = PLAYER_STATE.game_clear;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //TODO:このメソッド専用のクラスを作りそこに入れる
+        if (collision.transform.tag != "Enemy") return;
+        Debug.Log("die");
+        //collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
+        transitionDieState();
+    }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //TODO:このメソッド専用のクラスを作りそこに入れる
+        if (collision.transform.tag != "Enemy") return;
+        Debug.Log("die");
+        //collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
+        transitionDieState();
+    }
+    */
 }

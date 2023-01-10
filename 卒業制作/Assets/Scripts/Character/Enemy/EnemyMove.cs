@@ -15,6 +15,8 @@ public class EnemyMove : CharacterMove
 
     public CircleCollider2D circle_collider;
 
+    private Vector3 last_time_euler;
+
     //‰¡²‚Ì‚İ‚É“®‚­“G
     public void horizonalMove()
     {
@@ -31,12 +33,17 @@ public class EnemyMove : CharacterMove
         switch_timer_ += Time.deltaTime;
     }
 
-    public void rotationOnlyMove()
+    public void rotationOnlyMove(Vector3 target)
     {
-        Vector3 update_euler = new Vector3(0.0f, 0.0f, rotate_speed_ * Time.deltaTime);
-        transform.Rotate(update_euler, Space.World);
+        Vector3 latest_euler = new Vector3(0,0,0);
+        if (latest_euler != last_time_euler)
+        {
+            Debug.Log("rotation");
+            transform.Rotate(latest_euler, Space.World);
+        }
+        last_time_euler = latest_euler;
     }
-
+    
     public Vector3 setWanderPosition()
     {
         //–Ú“I’n‚É“’…‚µ‚Ä‚¢‚È‚¢ê‡
