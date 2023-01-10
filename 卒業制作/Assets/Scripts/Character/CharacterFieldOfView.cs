@@ -27,6 +27,7 @@ public class CharacterFieldOfView : MonoBehaviour
     {
         //視界のレイ方向デバッグ表示用の処理↓
         float ray_length = 1.0f;
+
         float offset_angle_radian = transform.parent.localEulerAngles.z;
         offset_angle_radian *= 0.01745f; //rad = dgree * (π/180)
 
@@ -37,11 +38,11 @@ public class CharacterFieldOfView : MonoBehaviour
         float front_y = Mathf.Sin(offset_angle_radian + 1.5705f);
         Vector3 eye_end = new Vector3(transform.parent.position.x + front_x * 2.0f, transform.parent.position.y + front_y * 2.0f, transform.parent.position.z );
 
+        //視界のレイ方向デバッグ表示用の処理
         Color line_color = new Color(1.0f, 1.0f, 1.0f);
         Debug.DrawLine(transform.parent.position, eye_end, line_color);
         Debug.DrawLine(transform.parent.position, ray_end1, line_color);
         Debug.DrawLine(transform.parent.position, ray_end2, line_color);
-        //視界のレイ方向デバッグ表示用の処理↑
 
         //親オブジェクトの座標を更新
         transform.position = transform.parent.position;
@@ -50,7 +51,6 @@ public class CharacterFieldOfView : MonoBehaviour
     //視野角の中にいるか判定する
     public bool checkFieldOfView(Collider2D other)
     {
-
         //視界の角度内に収まっているか
         //接触オブジェクトへのベクトル
         Vector3 pos_delta = other.transform.position - transform.parent.position;
@@ -84,34 +84,26 @@ public class CharacterFieldOfView : MonoBehaviour
         //自身が回転している場合startの角度(350度)、endの角度(80度)となる場合があるので対策として下記の判定を行う
         if (radian_start < radian_end)
         {
-
             if (target_angle >= radian_start
                 && target_angle <= radian_end)
             {
-
                 return checkTargetRayCast(other);
             }
-
         }
-
         else
         {
             //自身の回転角によってstartの方が大きくなる場合はこれで角度判定を行う
             if (target_angle <= radian_start
                  && target_angle <= radian_end)
             {
-
                 return checkTargetRayCast(other);
             }
         }
 
-        /*
-        Debug.Log("角度" + target_angle / 0.01745f);
-        Debug.Log("S角度" + radian_start / 0.01745f);
-        Debug.Log("E角度" + radian_end / 0.01745f);
-        */
+        //Debug.Log("角度" + target_angle / 0.01745f);
+        //Debug.Log("S角度" + radian_start / 0.01745f);
+        //Debug.Log("E角度" + radian_end / 0.01745f);
         return false;
-
     }
 
     //ターゲットの間に他のオブジェクトが無いか判定する関数
@@ -123,26 +115,21 @@ public class CharacterFieldOfView : MonoBehaviour
         //レイを飛ばす方向を算出
         Vector2 direction = target_position - mine_position;
 
-        //自身とStealth(机の下にいる状態)の場合、レイキャスト対象ならないようにマスクする
-        //int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
-        int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(LayerMask.NameToLayer("Stealth"))) &
-           ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
+        //自身はレイキャスト対象ならないようにマスクする
+        int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
 
         RaycastHit2D hit = Physics2D.Raycast(mine_position, direction, circle_collider_.radius, layer_mask);
 
         if (hit)
         {
-            //Raycastの線を表示する
+            //デバッグ用　レイキャスト可視
             Debug.DrawRay(this.transform.position, direction);
-            //Debug.Log(hit.transform.name);
             //レイキャスト対象がヒットコリジョンと同じならtrue(ヒットコリジョン対象はコンストラクタ時に限定されている)
             //if (hit.collider.gameObject.tag == other.gameObject.tag)
-                return true;
 
+            return true;
         }
-
+        
         return false;
     }
-
-
 }

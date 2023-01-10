@@ -8,9 +8,9 @@ public class EnemyInterFace : CharacterInterface
     //敵の行動ステート
     private enum  ENEMY_STATE_LABEL
     {
-        idle = 0,//待機
-        wander,//徘徊
-        pursuit,//追跡
+        idle = 0,   //待機
+        wander,     //徘徊
+        pursuit,    //追跡
     }
 
     public EnemyMove enemy_move_;   //座標移動
@@ -61,18 +61,14 @@ public class EnemyInterFace : CharacterInterface
     void transitionWanderState()
     {
         GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.wander);
+        enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.wander);
     }
 
     void transitionPursuitState()
     {
         GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
+        //GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
+        enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //TODO:このメソッド専用のクラスを作りそこに入れる
-        if (collision.transform.tag != "Player") return;
-
-        collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
-    }
 }

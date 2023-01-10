@@ -125,4 +125,22 @@ public class PlayerInterFace : CharacterInterface
         player_act = PLAYER_STATE.game_clear;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //TODO:このメソッド専用のクラスを作りそこに入れる
+        if (collision.transform.tag != "Enemy") return;
+        Debug.Log("die");
+        //collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
+        transitionDieState();
+    }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //TODO:このメソッド専用のクラスを作りそこに入れる
+        if (collision.transform.tag != "Enemy") return;
+        Debug.Log("die");
+        //collision.gameObject.GetComponent<PlayerInterFace>().transitionDieState();
+        transitionDieState();
+    }
+    */
 }

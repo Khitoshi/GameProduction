@@ -22,7 +22,7 @@ public class EnemyPursuitState : StateBase
         if(transform.position != target_postion_)
         {
             //‰ñ“]
-            enemy_inter_face_.enemy_move_.rotationOnlyMove(target_postion_);
+            //enemy_inter_face_.enemy_move_.rotationOnlyMove(target_postion_);
 
             //ˆÚ“®
             transform.position = enemy_inter_face_.enemy_move_.moveToTarget(this.transform, target_postion_);
