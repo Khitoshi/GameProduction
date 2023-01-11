@@ -23,8 +23,16 @@ namespace MapGimic
         {
             Tilemap tile = tileMap;
             Debug.Log("set tilemap");
-            tile.SetTile(position, afterTilebase);
+            //tile.DeleteCells(position, position);
+            Destroy(gameObject);
         }
+
+        //É^ÉCÉãÇè¡Ç∑
+        protected void DestroyTile()
+        {
+            Destroy(gameObject);
+        }
+
 
     }
 }

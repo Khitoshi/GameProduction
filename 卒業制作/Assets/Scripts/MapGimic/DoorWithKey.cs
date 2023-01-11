@@ -38,22 +38,19 @@ namespace MapGimic
         {
             if (collision.gameObject.tag != "Player") return;
 
-            //playerのpostionをvector3Intに変換
-            Vector3Int PlayerPos = new Vector3Int((int)collision.transform.position.x, (int)collision.transform.position.y, (int)collision.transform.position.z);
-
-            //上下左右のpositionを登録
-            List<Vector3Int> positions = new List<Vector3Int>();
-
             //鍵を拾っているかの判定
             if (item_flag_datebase_.Key != door_opne_flag_) return;
-            
-            
 
+            /*//タイルを複数変化させる場合
             foreach(Vector3Int pos in tilemap_positions_)
             {
+                Debug.Log(pos);
                 //自身のタイルを変更
                 ChangeTile(this_tilemap_, pos, tilebase_after_);
             }
+            */
+
+            DestroyTile();
         }
 
         private void OnCollisionExit2D(Collision2D collision)
