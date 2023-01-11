@@ -7,7 +7,7 @@ namespace Item
     public class Key : Item
     {
         private Item item_;
-        [SerializeField] private int flag_bit_;
+        [SerializeField] public int flag_bit_ ;
 
         private new void Start()
         {
@@ -19,7 +19,7 @@ namespace Item
         {
         }
 
-        private void OnTriggerStay2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.tag != "Player") return;
 
