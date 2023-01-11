@@ -10,7 +10,7 @@ namespace MapGimic
     public class DoorWithKey : MapGimic
     {
         //タイルマップでのポジション
-        [SerializeField] private Vector3Int this_tilemap_position_;
+        [SerializeField] private List<Vector3Int> tilemap_positions_;
         //自身のタイルマップ
         [SerializeField] private Tilemap    this_tilemap_;
         //開錠後の扉のタイル
@@ -23,6 +23,9 @@ namespace MapGimic
         {
             //key_ = GetComponent<Item.Key>();
             //Debug.Log(key_.flag_bit_);
+
+            
+
         }
     
         // Update is called once per frame
@@ -34,11 +37,22 @@ namespace MapGimic
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.tag != "Player") return;
+
+            //playerのpostionをvector3Intに変換
+            Vector3Int PlayerPos = new Vector3Int((int)collision.transform.position.x, (int)collision.transform.position.y, (int)collision.transform.position.z);
+
+            //上下左右のpositionを登録
+            List<Vector3Int> positions = new List<Vector3Int>();
+
             //鍵を拾っているかの判定
-            if (item_flag_datebase_.Key == door_opne_flag_)
+            if (item_flag_datebase_.Key != door_opne_flag_) return;
+            
+            
+
+            foreach(Vector3Int pos in tilemap_positions_)
             {
                 //自身のタイルを変更
-                ChangeTile(this_tilemap_, this_tilemap_position_, tilebase_after_);
+                ChangeTile(this_tilemap_, pos, tilebase_after_);
             }
         }
 
@@ -47,6 +61,5 @@ namespace MapGimic
             if (collision.gameObject.tag != "Player") return;
             //collision.gameObject.GetComponent<PlayerInterFace>().transitionGameClearState();
         }
-
     }
 }

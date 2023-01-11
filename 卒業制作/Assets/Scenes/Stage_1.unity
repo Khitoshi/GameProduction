@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfa994c8eb25f948b695f4ef8ed4266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  this_tilemap_position_: {x: 1, y: 2, z: 0}
+  tilemap_positions_: []
   this_tilemap_: {fileID: 352864747}
   tilebase_after_: {fileID: 11400000, guid: 2114700e4080e2b4089283d092912e33, type: 2}
   item_flag_datebase_: {fileID: 11400000, guid: fdfcd7f9e2c0dcc46abb30892e628a2d, type: 2}
@@ -7316,7 +7316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792822084082724712, guid: fdf45407dd5e84d4dabbbc30f4ba91c0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 792822084082724714, guid: fdf45407dd5e84d4dabbbc30f4ba91c0, type: 3}
       propertyPath: m_RootOrder
@@ -7453,6 +7453,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1219706679 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 792822084082724693, guid: fdf45407dd5e84d4dabbbc30f4ba91c0, type: 3}
+  m_PrefabInstance: {fileID: 860980656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a8a8d85ee276940bd1faf7679af92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!43 &1222315276
@@ -7650,7 +7661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9646b5c6c9ba5984998f4132f2e37277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_lists_: []
+  enemy_lists_:
+  - {fileID: 1219706679}
 --- !u!114 &1261272316
 MonoBehaviour:
   m_ObjectHideFlags: 0
