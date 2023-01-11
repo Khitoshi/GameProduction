@@ -7310,6 +7310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 792822084082724695, guid: fdf45407dd5e84d4dabbbc30f4ba91c0, type: 3}
+      propertyPath: rotate_speed_
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 792822084082724712, guid: fdf45407dd5e84d4dabbbc30f4ba91c0, type: 3}
       propertyPath: m_Name
       value: EnemyTest 1
