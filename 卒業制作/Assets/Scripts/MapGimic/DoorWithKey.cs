@@ -18,8 +18,7 @@ namespace MapGimic
         //アイテムのフラグが格納されているデータベース
         [SerializeField] private ItemFlagDateBase item_flag_datebase_;
 
-        //[SerializeField] private Item.Key key_;
-        // Start is called before the first frame update
+        [SerializeField] private int door_opne_flag_;
         void Start()
         {
             //key_ = GetComponent<Item.Key>();
@@ -36,7 +35,7 @@ namespace MapGimic
         {
             if (collision.gameObject.tag != "Player") return;
             //鍵を拾っているかの判定
-            if (item_flag_datebase_.Key == 1)
+            if (item_flag_datebase_.Key == door_opne_flag_)
             {
                 //自身のタイルを変更
                 ChangeTile(this_tilemap_, this_tilemap_position_, tilebase_after_);
