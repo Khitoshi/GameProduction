@@ -36,7 +36,7 @@ public class CharacterFieldOfView : MonoBehaviour
 
         float front_x = Mathf.Cos(offset_angle_radian + 1.5705f);
         float front_y = Mathf.Sin(offset_angle_radian + 1.5705f);
-        Vector3 eye_end = new Vector3(transform.parent.position.x + front_x * 2.0f, transform.parent.position.y + front_y * 2.0f, transform.parent.position.z );
+        Vector3 eye_end = new Vector3(transform.parent.position.x + front_x * 2.0f, transform.parent.position.y + front_y * 2.0f, transform.parent.position.z);
 
         //‹ŠE‚ÌƒŒƒC•ûŒüƒfƒoƒbƒO•\¦—p‚Ìˆ—
         Color line_color = new Color(1.0f, 1.0f, 1.0f);
@@ -92,17 +92,31 @@ public class CharacterFieldOfView : MonoBehaviour
         }
         else
         {
+
             //©g‚Ì‰ñ“]Šp‚É‚æ‚Á‚Ästart‚Ì•û‚ª‘å‚«‚­‚È‚éê‡‚Í‚±‚ê‚ÅŠp“x”»’è‚ğs‚¤
-            if (target_angle <= radian_start
-                 && target_angle <= radian_end)
+            if (target_angle >= radian_start)
             {
-                return checkTargetRayCast(other);
+                //‹–ìŠp‚ğZo‚·‚é
+                float diffrence_angle = search_radian_end - search_radian_start;
+
+                //‹–ìŠp‚ğ‘«‚µ‚½Šp“xˆÈ“à‚È‚ç‹–ìŠp‚Ì’†‚É‚¢‚é
+                if (target_angle < radian_start + diffrence_angle)
+                    return checkTargetRayCast(other);
+                  
+            }
+
+            //Šp“x‚ª360‹‚ğ’´‚¦‚Ä0‹‚©‚ç‚É‚È‚éê‡‚Ì”»’è
+            else
+            {
+                //‹–ìŠp‚Ìend‘¤‚à0‹‚ğ’´‚¦‚½”’l‚É‚È‚Á‚Ä‚¢‚é‚©‚ç‚»‚ê‚æ‚è‰º‚©”»’è‚·‚é
+                if (target_angle <= radian_end)
+                    return checkTargetRayCast(other);
             }
         }
 
-        //Debug.Log("Šp“x" + target_angle / 0.01745f);
-        //Debug.Log("SŠp“x" + radian_start / 0.01745f);
-        //Debug.Log("EŠp“x" + radian_end / 0.01745f);
+        Debug.Log("Šp“x" + target_angle / 0.01745f);
+        Debug.Log("SŠp“x" + radian_start / 0.01745f);
+        Debug.Log("EŠp“x" + radian_end / 0.01745f);
         return false;
     }
 
@@ -129,7 +143,7 @@ public class CharacterFieldOfView : MonoBehaviour
 
             return true;
         }
-        
+
         return false;
     }
 }

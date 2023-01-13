@@ -72,57 +72,6 @@ public class EnemyMove : CharacterMove
     }
     */
 
-    //ターゲットを追跡する関数
-    public Vector3 moveToTarget(Transform mine_transform, Transform target_transform)
-    {
-
-        Vector3 direction = mine_transform.position - target_transform.position;
-
-        //自身の回転値から前方向ベクトルを求める
-        float angle_radian = mine_transform.localEulerAngles.z;
-        angle_radian *= 0.01745f; //rad = dgree * (π/180)
-        float add_right_angle = 1.5705f; //90度分数値を足してあげないと前方向にならない
-
-        angle_radian += add_right_angle;
-
-        float front_x = Mathf.Cos(angle_radian);
-        float front_y = Mathf.Sin(angle_radian);
-
-        //内積により、ターゲットとどれくらい角度差があるか計算する
-        float dot = front_x * direction.normalized.x + front_y * direction.normalized.y;
-
-        //補正値(内積値-1.0～1.0を角度小：0.0～2.0：角度大に補正します)
-        float rot = 1.0f - dot;
-
-        //内積値は-1.0～1.0で表現されており、2つの単位ベクトルの角度が
-        //小さいほど1.0に近づくという性質を利用して回転速度を調整する
-        if (rot > rotate_speed_)
-        {
-            rot = rotate_speed_;
-        }
-
-        //左右判定を行うために2つの単位ベクトルの外積を計算する
-        float cross = front_x * direction.normalized.y - front_y * direction.normalized.x;  //外積の公式
-
-        //2Dの外積値が正の場合か負の場合によって左右判定が行える
-        //左右判定を行うことによって左右回転を選択する
-        if (cross < 0.0f)
-        {
-            Vector3 rotate = new Vector3(0.0f, 0.0f, rot * Time.deltaTime);
-            mine_transform.Rotate(rotate);
-        }
-        else
-        {
-            Vector3 rotate = new Vector3(0.0f, 0.0f, -rot * Time.deltaTime);
-            mine_transform.Rotate(rotate);
-        }
-
-        Vector3 update_position = mine_transform.position;
-        update_position = Vector3.MoveTowards(mine_transform.position, target_transform.position, move_speed_ * Time.deltaTime);
-
-        return update_position;
-    }
-
     public Vector3 moveToTarget(Transform mine_transform, Vector3 target_position)
     {
 
@@ -154,16 +103,17 @@ public class EnemyMove : CharacterMove
         //左右判定を行うために2つの単位ベクトルの外積を計算する
         float cross = front_x * direction.normalized.y - front_y * direction.normalized.x;  //外積の公式
 
+        //ターゲット方向までの回転処理
         //2Dの外積値が正の場合か負の場合によって左右判定が行える
         //左右判定を行うことによって左右回転を選択する
         if (cross < 0.0f)
         {
-            Vector3 rotate = new Vector3(0.0f, 0.0f, rot * Time.deltaTime);
+            Vector3 rotate = new Vector3(0.0f, 0.0f, rot);
             mine_transform.Rotate(rotate);
         }
         else
         {
-            Vector3 rotate = new Vector3(0.0f, 0.0f, -rot * Time.deltaTime);
+            Vector3 rotate = new Vector3(0.0f, 0.0f, -rot);
             mine_transform.Rotate(rotate);
         }
 
