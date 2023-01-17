@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     [SerializeField]
@@ -19,11 +20,15 @@ public class Menu : MonoBehaviour
     [SerializeField]
     private StageItem stageItemPrefab;
 
+    private int lord_data = 0;
+
     void Start()
     {
         stageButton.onClick.AddListener(OnClickStageButton);
 
         uiBlocker.onClick.AddListener(OnClickUIBlocker);
+
+       
     }
 
     private void OnClickStageButton()
@@ -32,10 +37,24 @@ public class Menu : MonoBehaviour
 
         uiBlocker.gameObject.SetActive(true);
 
-        foreach(StageData stageData in MasterData.StageDataTable.Stages)
+       
+
+        bool exist = PlayerPrefs.HasKey("ClearStage");
+        if(exist)
         {
-            StageItem stageItem = Instantiate(stageItemPrefab, stageItemParent);
-            stageItem.Setup(stageData);
+            Debug.Log("ë∂ç›Ç∑ÇÈ");
+
+            SceneManager.LoadScene("Stage_4");
+        }
+        else
+        {
+            Debug.Log("ë∂ç›ÇµÇ»Ç¢");
+
+            foreach (StageData stageData in MasterData.StageDataTable.Stages)
+            {
+                StageItem stageItem = Instantiate(stageItemPrefab, stageItemParent);
+                stageItem.Setup(stageData);
+            }
         }
     }
 
