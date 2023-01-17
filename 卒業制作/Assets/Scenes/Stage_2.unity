@@ -5896,6 +5896,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!58 &561679860 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 165396423506291496, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
+  m_PrefabInstance: {fileID: 742588928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &742588928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5955,6 +5960,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1532585640327657149, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
+      propertyPath: enemy_state_machine
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532585640327657151, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
+      propertyPath: circle_collider
+      value: 
+      objectReference: {fileID: 561679860}
     - target: {fileID: 2913895769899096702, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
       propertyPath: m_Layer
       value: 9
