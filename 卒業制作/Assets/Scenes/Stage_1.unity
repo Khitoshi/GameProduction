@@ -1970,8 +1970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfa994c8eb25f948b695f4ef8ed4266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap_positions_: []
   this_tilemap_: {fileID: 352864747}
+  tilebase_befor_: {fileID: 11400000, guid: 48fddc7e0de71204ba6f66a6b3a69036, type: 2}
   tilebase_after_: {fileID: 11400000, guid: 2114700e4080e2b4089283d092912e33, type: 2}
   item_flag_datebase_: {fileID: 11400000, guid: fdfcd7f9e2c0dcc46abb30892e628a2d, type: 2}
   door_opne_flag_: 1
