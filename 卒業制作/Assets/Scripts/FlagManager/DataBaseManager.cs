@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DateBaseManager : MonoBehaviour
+public class DataBaseManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] public List<FlagDateBase> flag_date_base;
