@@ -23,6 +23,7 @@ public class PlayerInterFace : CharacterInterface
     public PlayerTrapMove player_trap_move;
     public PlayerFieldOfView player_fov;
     private PLAYER_STATE player_act;
+    private PlayerSkill player_skill_;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
@@ -32,6 +33,9 @@ public class PlayerInterFace : CharacterInterface
         is_life = true;
 
         player_act = PLAYER_STATE.idle;
+
+        //オブジェクトにアタッチしていないスクリプトはGetComponentしてもnullとなる
+        player_skill_ = GetComponent<DashSkill>();
 
     }
 
@@ -53,10 +57,16 @@ public class PlayerInterFace : CharacterInterface
         {
             case PLAYER_STATE.idle:
                 player_move_.move();
+                if (Input.GetKey("up"))
+                    player_skill_.enterSkill();
+                player_skill_.moveSkill();
                 break;
 
             case PLAYER_STATE.move:
                 player_move_.move();
+                if (Input.GetKey("up"))
+                    player_skill_.enterSkill();
+                player_skill_.moveSkill();
                 break;
 
             case PLAYER_STATE.pitfall:

@@ -20,11 +20,17 @@ public class DashSkill : PlayerSkill
 
     public override void moveSkill() 
     {
+        if(!is_active_)
+        {
+            return;
+        }
+
         //”­“®ŽžŠÔI—¹”»’è
         if(skill_timer_ > SKILL_CHRGE_TIME)
         {
             is_active_ = false;
             endSkill();
+            return;
         }
 
         skill_timer_ += Time.deltaTime;

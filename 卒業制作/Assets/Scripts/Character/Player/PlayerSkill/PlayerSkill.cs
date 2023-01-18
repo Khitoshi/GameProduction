@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSkill : MonoBehaviour
 {
     //プレイヤーが設定出来るスキルの種類
-    private enum PLAYER_SKILL_LABEL
+    public enum PLAYER_SKILL_LABEL
     {
         none = 0,   //スキル無し
         dash,       //ダッシュスキル
