@@ -12,25 +12,15 @@ public class PlayerSkillRecording : MonoBehaviour
     [SerializeField]
     private GameObject skill_slot_;
 
-    //スキルデータベース
+    //スキルデータベース(Paramaterフォルダ内のSkill Data Table)
     [SerializeField]
     private SkillDataTable skill_data_base_;
-
-    //指定されたスキルを取得
-    //public int getSkillNo(int skill_no)
-    //{
-    //    return records_;
-    //}
 
     // Start is called before the first frame update
     void Start()
     {
-        //マスターデータからスキルリストを作成する
-        //foreach (SkillData skill in MasterData.skill_data_table_.skill_datas_)
-        //{
-        //    records_.Add((int)skill.this_skill_);
-        //}
 
+        //用意されたスキル分、スキルアイコン情報スロットを生成する
         createSkillSlot(skill_data_base_.skill_datas_);
     }
 
@@ -47,15 +37,19 @@ public class PlayerSkillRecording : MonoBehaviour
         //スキルデータベース分スキルスロット作成処理
         foreach (var skill in skill_datas)
         {
-            //　スロットのインスタンス化
+            //Prefab/UI/Skill内のプレハブからスロットのインスタンス化
             var instance_slot = Instantiate<GameObject>(skill_slot_, transform);
             //　スロットゲームオブジェクトの名前を設定
             instance_slot.name = "SkillSlot" + i++;
             //　Scaleを設定しないと0になるので設定
             instance_slot.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            //Paramaterフォルダ内のSkill Data Table内に設定されたスキルアイコン情報をセットする
+            instance_slot.GetComponent<ProcessingSkillSlot>().setSkillData(skill);
         }
 
     }
+
 }
 
 public class SkillRecord
