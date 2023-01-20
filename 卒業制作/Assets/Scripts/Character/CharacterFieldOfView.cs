@@ -102,7 +102,6 @@ public class CharacterFieldOfView : MonoBehaviour
                 //視野角を足した角度以内なら視野角の中にいる
                 if (target_angle < radian_start + diffrence_angle)
                     return checkTargetRayCast(other);
-                  
             }
 
             //角度が360°を超えて0°からになる場合の判定
@@ -114,9 +113,9 @@ public class CharacterFieldOfView : MonoBehaviour
             }
         }
 
-        Debug.Log("角度" + target_angle / 0.01745f);
-        Debug.Log("S角度" + radian_start / 0.01745f);
-        Debug.Log("E角度" + radian_end / 0.01745f);
+        //Debug.Log("角度" + target_angle / 0.01745f);
+        //Debug.Log("S角度" + radian_start / 0.01745f);
+        //Debug.Log("E角度" + radian_end / 0.01745f);
         return false;
     }
 
@@ -133,15 +132,16 @@ public class CharacterFieldOfView : MonoBehaviour
         int layer_mask = ~LayerMask.GetMask(LayerMask.LayerToName(this.gameObject.layer));
 
         RaycastHit2D hit = Physics2D.Raycast(mine_position, direction, circle_collider_.radius, layer_mask);
-
+        //RaycastHit2D hit = Physics2D.Raycast(mine_position, direction, circle_collider_.radius);
         if (hit)
         {
             //デバッグ用　レイキャスト可視
-            Debug.DrawRay(this.transform.position, direction);
             //レイキャスト対象がヒットコリジョンと同じならtrue(ヒットコリジョン対象はコンストラクタ時に限定されている)
-            //if (hit.collider.gameObject.tag == other.gameObject.tag)
-
-            return true;
+            if (hit.collider.gameObject.tag == other.gameObject.tag)
+            {
+                Debug.DrawRay(this.transform.position, direction);
+                return true;
+            }
         }
 
         return false;
