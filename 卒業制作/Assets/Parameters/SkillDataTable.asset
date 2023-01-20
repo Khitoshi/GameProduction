@@ -15,9 +15,9 @@ MonoBehaviour:
   skill_datas_:
   - this_skill_: 0
     skill_image_: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}
-    skill_name_: 
-    skill_information_: 
+    skill_name_: "\u3010None\u3011"
+    skill_information_: "\u30B9\u30AD\u30EB\u7121\u3057"
   - this_skill_: 1
     skill_image_: {fileID: 21300000, guid: dc6be31e8fda7de47b4821069ac6a74f, type: 3}
-    skill_name_: 
-    skill_information_: 
+    skill_name_: "\u3010\u30C0\u30C3\u30B7\u30E5\u3011"
+    skill_information_: "\u4E00\u5B9A\u6642\u9593\u8DB3\u304C\u65E9\u304F\u306A\u308B"

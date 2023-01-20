@@ -16,18 +16,57 @@ public class PlayerSkillRecording : MonoBehaviour
     [SerializeField]
     private SkillDataTable skill_data_base_;
 
+    //現在選択中のプレイヤースキル
+    [SerializeField]
+    private CurrentPlayerSkill current_skill_;
+
     // Start is called before the first frame update
     void Start()
     {
 
         //用意されたスキル分、スキルアイコン情報スロットを生成する
         createSkillSlot(skill_data_base_.skill_datas_);
+
+        //セーブデータがある場合の処理
+        if (PlayerPrefs.HasKey("THIS_SKILL"))
+        {
+            current_skill_.setCurrentSkillIcon(skill_data_base_.skill_datas_[getSkillNo()]);
+        }
+
+        //セーブデータがない場合の処理
+        else
+        {
+            setSkillNo((int)PlayerSkill.PLAYER_SKILL_LABEL.none);
+            current_skill_.setCurrentSkillIcon(skill_data_base_.skill_datas_[getSkillNo()]);
+            skillSave();
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        int child_count = this.transform.childCount;
+
+        //自身のオブジェクトに子オブジェクトが存在すれば処理を行う(ゲーム内に存在するスキルの数)
+        if (child_count > 0)
+        {
+            int child_no = 0;
+            for (; child_no < child_count; child_no++)
+            {
+                var skill_object = transform.GetChild(child_no).GetComponent<ProcessingSkillSlot>();
+
+                //マウスがスキルアイコンと接触している場合
+                if (skill_object.getOnMouse())
+                {
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        current_skill_.setCurrentSkillIcon(skill_object.my_skill_data_);
+                        setSkillNo((int)skill_object.my_skill_data_.this_skill_);
+                    }
+                }
+            }
+        }
     }
 
     public void createSkillSlot(SkillData[] skill_datas)
@@ -50,19 +89,10 @@ public class PlayerSkillRecording : MonoBehaviour
 
     }
 
-}
-
-public class SkillRecord
-{
-    //現在設定されているスキル
-    public PlayerSkill.PLAYER_SKILL_LABEL this_skill_;
-    public int this_skill_no_ = (int)PlayerSkill.PLAYER_SKILL_LABEL.none;
-
     void setSkillNo(int no)
     {
         //THIS_SKILLという名前に引数のnoを格納する
         PlayerPrefs.SetInt("THIS_SKILL", no);
-        this_skill_no_ = no;
     }
 
     int getSkillNo()
@@ -71,10 +101,11 @@ public class SkillRecord
         return PlayerPrefs.GetInt("THIS_SKILL");
     }
 
-    void skillSave()
+    public void skillSave()
     {
         //セーブ処理
         PlayerPrefs.Save();
     }
 
 }
+
