@@ -38,7 +38,7 @@ public class PlayerInterFace : CharacterInterface
         switch (PlayerPrefs.GetInt("THIS_SKILL"))
         {
             case (int)PlayerSkill.PLAYER_SKILL_LABEL.none:
-                player_skill_ = null;
+                player_skill_ = GetComponentInChildren<PlayerSkill>();
                 break;
 
             case (int)PlayerSkill.PLAYER_SKILL_LABEL.dash:
