@@ -15,7 +15,7 @@ public class EnemyIdleState : StateBase
         enemy_inter_face_ = GetComponent<EnemyInterFace>();
 
         time_ = 0.0f;
-        Debug.Log("Idle start");
+        //Debug.Log("Idle start");
     }
 
     public override void execute()
@@ -32,6 +32,6 @@ public class EnemyIdleState : StateBase
 
     public override void exit()
     {
-        Debug.Log("Idle end");
+        //Debug.Log("Idle end");
     }
 }

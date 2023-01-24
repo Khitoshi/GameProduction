@@ -19,20 +19,12 @@ namespace MapGimic
         //開錠後の扉のタイル
         [SerializeField] private TileBase   tilebase_after_;
         //アイテムのフラグが格納されているデータベース
-        [SerializeField] private ItemFlagDateBase item_flag_datebase_;
+        [SerializeField] private KeyFlagDateBase item_flag_datebase_;
 
         [SerializeField] private int door_opne_flag_;
         void Start()
         {
-            //key_ = GetComponent<Item.Key>();
-            //Debug.Log(key_.flag_bit_);
-
             this_tilemap_ = GetComponent<Tilemap>();
-
-            //tilebase_befor_ = GetComponent<TileBase>();
-            //tilebase_after_ = GetComponent<TileBase>();
-
-            //item_flag_datebase_ = GetComponent<ItemFlagDateBase>();
         }
     
         // Update is called once per frame
@@ -56,9 +48,9 @@ namespace MapGimic
             //自身の位置をtilemapで使用できるintに変換
             Vector3Int player_position_convert_vector3int = new Vector3Int(0,0,0);
             //小数点以下切り捨てして変換
-            player_position_convert_vector3int.x = ((int)Mathf.Floor(collision.transform.position.x));
-            player_position_convert_vector3int.y = ((int)Mathf.Floor(collision.transform.position.y));
-            player_position_convert_vector3int.z = ((int)Mathf.Floor(collision.transform.position.z));
+            player_position_convert_vector3int.x = (int)Mathf.Floor(collision.transform.position.x);
+            player_position_convert_vector3int.y = (int)Mathf.Floor(collision.transform.position.y);
+            player_position_convert_vector3int.z = (int)Mathf.Floor(collision.transform.position.z);
             Debug.Log(player_position_convert_vector3int);
 
             //自身の上下左右の位置を設定
@@ -85,7 +77,8 @@ namespace MapGimic
                     Debug.Log("change");
                     //ドアがあった場合タイルを変更する
                     this_tilemap_.SetTile(pos, tilebase_after_);
-                    //this_tilemap_.SetTile(pos, null);
+                    
+                    //当たり判定を消す
                     this_tilemap_.SetColliderType(pos, Tile.ColliderType.None);
                 }
             }

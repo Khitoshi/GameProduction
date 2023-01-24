@@ -15,7 +15,7 @@ public class EnemyPursuitState : StateBase
         enemy_inter_face_ = GetComponent<EnemyInterFace>();
 
 
-        Debug.Log("pursuit start");
+        //Debug.Log("pursuit start");
     }
 
     public override void execute()
@@ -37,7 +37,7 @@ public class EnemyPursuitState : StateBase
 
     public override void exit()
     {
-        Debug.Log("Pursuit end");
+        //Debug.Log("Pursuit end");
     }
 
     //’ÇÕ‚·‚étarget‚Ìposition‚ğset

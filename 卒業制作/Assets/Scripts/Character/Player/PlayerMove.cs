@@ -10,7 +10,7 @@ public class PlayerMove : CharacterMove
     {
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
-            
+           
             if(Input.GetKey("up") || Input.GetKey(KeyCode.W))
             {
                 add_speed_.y = move_speed_ * MOVE_DIAGONAL_SPEED;
@@ -103,6 +103,4 @@ public class PlayerMove : CharacterMove
             add_speed_.y = 0.0f;
         }
     }
-
-
 }

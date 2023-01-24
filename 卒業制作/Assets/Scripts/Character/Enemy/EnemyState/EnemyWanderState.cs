@@ -27,7 +27,7 @@ public class EnemyWanderState : StateBase
 
         // CircleCollider“à‚Ìƒ‰ƒ“ƒ_ƒ€‚ÈˆÊ’u‚ðŒvŽZ
         target_position_ = Random.insideUnitCircle * radius;
-        Debug.Log("Wander start");
+        //Debug.Log("Wander start");
     }
 
     public override void execute()
@@ -50,6 +50,6 @@ public class EnemyWanderState : StateBase
 
     public override void exit()
     {
-        Debug.Log("Wander end");
+        //Debug.Log("Wander end");
     }
 }

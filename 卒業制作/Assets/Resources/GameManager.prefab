@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flag_date_base:
   - {fileID: 11400000, guid: fdfcd7f9e2c0dcc46abb30892e628a2d, type: 2}
+  - {fileID: 11400000, guid: 0ee4d534579dae04faad7e4b3873254e, type: 2}
 --- !u!114 &4500757102967470209
 MonoBehaviour:
   m_ObjectHideFlags: 0
