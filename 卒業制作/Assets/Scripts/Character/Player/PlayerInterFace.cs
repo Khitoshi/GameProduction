@@ -66,14 +66,14 @@ public class PlayerInterFace : CharacterInterface
         {
             case PLAYER_STATE.idle:
                 player_move_.move();
-                if (Input.GetKey("up"))
+                if (Input.GetButton("Skill"))
                     player_skill_.enterSkill();
                 player_skill_.moveSkill();
                 break;
 
             case PLAYER_STATE.move:
                 player_move_.move();
-                if (Input.GetKey("up"))
+                if (Input.GetButton("Skill"))
                     player_skill_.enterSkill();
                 player_skill_.moveSkill();
                 break;
