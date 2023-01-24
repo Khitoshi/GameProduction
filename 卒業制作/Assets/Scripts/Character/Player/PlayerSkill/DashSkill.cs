@@ -6,6 +6,7 @@ public class DashSkill : PlayerSkill
 {
     private float dash_timer_ = 0.0f;       //スキル発動中時間カウント用
     private const float DASH_TIME = 1.0f;   //スキル発動時間
+    private const float magnitude_dash_ = 2.5f;
 
     public void Start()
     {
@@ -21,7 +22,7 @@ public class DashSkill : PlayerSkill
             return false;
 
         //プレイヤーの移動速度変更
-        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ * 1.5f;
+        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ * magnitude_dash_;
 
         is_active_ = true;
 
@@ -51,7 +52,7 @@ public class DashSkill : PlayerSkill
     public override void endSkill() 
     {
         //プレイヤーの移動速度を元に戻す
-        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ / 1.5f;
+        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ / magnitude_dash_;
 
         dash_timer_ = 0.0f;
     }
