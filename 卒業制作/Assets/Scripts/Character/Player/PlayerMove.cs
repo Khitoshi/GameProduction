@@ -5,9 +5,17 @@ using UnityEngine;
 //プレイヤー用の移動管理クラス
 public class PlayerMove : CharacterMove
 {
+
+    private Animator animator;
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     //入力に応じた動きを計算する
     public void inputMove()
     {
+
         if (Input.GetKey("left") || Input.GetKey(KeyCode.A))
         {
             
@@ -28,6 +36,7 @@ public class PlayerMove : CharacterMove
             {
                 add_speed_.x = -move_speed_;
             }
+
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
@@ -102,6 +111,9 @@ public class PlayerMove : CharacterMove
         {
             add_speed_.y = 0.0f;
         }
+
+        animator.SetFloat("MoveY", add_speed_.y);
+        animator.SetFloat("MoveX", add_speed_.x);
     }
 
 
