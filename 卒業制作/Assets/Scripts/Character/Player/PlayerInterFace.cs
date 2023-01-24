@@ -112,6 +112,8 @@ public class PlayerInterFace : CharacterInterface
                 }
                 break;
         }
+
+        player_skill_.skillChargeTimer();
     }
 
     public void transitionIdleState()

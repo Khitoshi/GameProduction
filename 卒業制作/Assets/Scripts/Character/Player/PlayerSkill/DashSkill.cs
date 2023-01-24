@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class DashSkill : PlayerSkill
 {
+    private float dash_timer_ = 0.0f;       //スキル発動中時間カウント用
+    private const float DASH_TIME = 1.0f;   //スキル発動時間
 
     public void Start()
     {
-        SKILL_CHRGE_TIME = 1.0f;
+        //スキルのチャージ時間を設定
+        SKILL_CHRGE_TIME = 1.5f;
+
     }
 
-    public override void enterSkill() 
+    public override bool enterSkill() 
     {
+        //スキルチャージ時間が終わっていなければ発動しない
+        if (skill_timer_ < SKILL_CHRGE_TIME)
+            return false;
+
         //プレイヤーの移動速度変更
         player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ * 1.5f;
 
         is_active_ = true;
+
+        skill_timer_ = 0.0f;
+
+        return true;
     }
 
     public override void moveSkill() 
@@ -26,14 +38,14 @@ public class DashSkill : PlayerSkill
         }
 
         //発動時間終了判定
-        if(skill_timer_ > SKILL_CHRGE_TIME)
+        if(dash_timer_ > DASH_TIME)
         {
             is_active_ = false;
             endSkill();
             return;
         }
 
-        skill_timer_ += Time.deltaTime;
+        dash_timer_ += Time.deltaTime;
     }
 
     public override void endSkill() 
@@ -41,6 +53,6 @@ public class DashSkill : PlayerSkill
         //プレイヤーの移動速度を元に戻す
         player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ / 1.5f;
 
-        skill_timer_ = 0.0f;
+        dash_timer_ = 0.0f;
     }
 }

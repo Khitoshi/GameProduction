@@ -13,8 +13,8 @@ public class ProcessingSkillSlot : MonoBehaviour
     private bool on_mouse_point_ = false;
     public bool getOnMouse() { return on_mouse_point_; }
 
-    //　アイテムのデータをセット
-    public void setSkillData(SkillData skill_data)
+    //　アイテムのデータをセット(スキルデータ、X:列数、Y:行数)
+    public void setSkillData(SkillData skill_data, int offset_x, int offset_y)
     {
         my_skill_data_ = skill_data;
         //アイコンのスプライトを設定(iconの子オブジェクトの順番順に設定していく)
@@ -23,6 +23,18 @@ public class ProcessingSkillSlot : MonoBehaviour
         transform.GetChild(1).GetComponent<Text>().enabled = false;     //自身が選択されていない時は文字を表示しない為にテキストコンポーネントを非アクティブにしておく
         transform.GetChild(2).GetComponent<Text>().text = my_skill_data_.skill_information_;
         transform.GetChild(2).GetComponent<Text>().enabled = false;     ////自身が選択されていない時は文字を表示しない為にテキストコンポーネントを非アクティブにしておく
+
+        //transform.GetChild(1).position = new Vector3(70, -260, 0.0f);
+        //transform.GetChild(2).position = new Vector3(70, -280, 0.0f);
+
+        //transform.GetChild(1).GetComponent<RectTransform>().localPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(70, -260, 0.0f));
+        //transform.GetChild(2).GetComponent<RectTransform>().localPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(70, -280, 0.0f));
+
+        transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector3(70 - offset_x, -260 - offset_y, 0.0f);
+        transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector3(70 - offset_x, -280 - offset_y, 0.0f);
+
+
+
     }
 
     //カーソルが自身へ向けられている時等の制御もこのクラスで行う

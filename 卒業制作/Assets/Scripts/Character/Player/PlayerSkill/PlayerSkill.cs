@@ -31,10 +31,26 @@ public class PlayerSkill : MonoBehaviour
 
 
     //スキル発動処理
-    public virtual void enterSkill() { }
+    public virtual bool enterSkill() { return false; }
     //スキル発動中処理
     public virtual void moveSkill() { }
 
     //スキル発動後処理
     public virtual void endSkill() { }
+
+    //スキル発動タイマーカウント用関数
+    public void skillChargeTimer() 
+    {
+        //スキル発動中はカウントしない
+        if (is_active_)
+            return;
+
+        if(skill_timer_ >= SKILL_CHRGE_TIME)
+        {
+            skill_timer_ = SKILL_CHRGE_TIME;
+            return;
+        }
+
+        skill_timer_ += Time.deltaTime;
+    }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSkillRecording : MonoBehaviour
 {
@@ -20,9 +21,26 @@ public class PlayerSkillRecording : MonoBehaviour
     [SerializeField]
     private CurrentPlayerSkill current_skill_;
 
+    //スキルアイコン表示パネルサイズ
+    private Vector2 panel_size_;
+
+    //スキルアイコンセルサイズ
+    private Vector2 cell_size_;
+
+    //スキルアイコン間の幅
+    private Vector3 cell_spacing_;
+
     // Start is called before the first frame update
     void Start()
     {
+        //自身の四角形姿勢を取得、スキルアイコン表示パネルサイズを取得
+        RectTransform rect = transform.GetComponent<RectTransform>();
+        panel_size_ = rect.rect.size;
+
+        //セルのサイズ、セル間の幅を取得
+        GridLayoutGroup grid_layout = transform.GetComponent<GridLayoutGroup>();
+        cell_spacing_ = grid_layout.spacing;
+        cell_size_ = grid_layout.cellSize;
 
         //用意されたスキル分、スキルアイコン情報スロットを生成する
         createSkillSlot(skill_data_base_.skill_datas_);
@@ -71,7 +89,9 @@ public class PlayerSkillRecording : MonoBehaviour
 
     public void createSkillSlot(SkillData[] skill_datas)
     {
-        int i = 0;
+        int i = 0;  //ゲームオブジェクトのNo決定用
+        int x_num = 0;  //列数を記録する変数
+        int y_num = 0; //行数を記録する変数
 
         //スキルデータベース分スキルスロット作成処理
         foreach (var skill in skill_datas)
@@ -83,8 +103,21 @@ public class PlayerSkillRecording : MonoBehaviour
             //　Scaleを設定しないと0になるので設定
             instance_slot.transform.localScale = new Vector3(1f, 1f, 1f);
 
-            //Paramaterフォルダ内のSkill Data Table内に設定されたスキルアイコン情報をセットする
-            instance_slot.GetComponent<ProcessingSkillSlot>().setSkillData(skill);
+            //現在のスキルアイコンのX座標を計算
+            var offset_x = x_num * (int)(cell_size_.x + cell_spacing_.x);
+
+            //X座標がスキルアイコン表示パネルサイズを超えたら、改行するのでX座標を0にする
+            if(offset_x > panel_size_.x)
+            {
+                x_num = 0;
+                offset_x = 0;
+                y_num++;
+            }
+
+            //Paramaterフォルダ内のSkill Data Table内に設定されたスキルアイコン情報をセットする(説明文の表示用にX座標、Y座標情報を送る。Yは0固定で良い)
+            instance_slot.GetComponent<ProcessingSkillSlot>().setSkillData(skill, offset_x, 0);
+
+            x_num++;
         }
 
     }
