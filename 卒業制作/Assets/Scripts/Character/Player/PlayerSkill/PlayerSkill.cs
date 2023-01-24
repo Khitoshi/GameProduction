@@ -14,7 +14,8 @@ public class PlayerSkill : MonoBehaviour
         wave,       //波動
     }
 
-    public PlayerInterFace player_inter_face_;
+    [SerializeField]
+    protected PlayerInterFace player_inter_face_;
 
     private PLAYER_SKILL_LABEL skill_deiffrence_ { get; }
     public int getMineSkillNo() { return (int)skill_deiffrence_; }
@@ -27,11 +28,6 @@ public class PlayerSkill : MonoBehaviour
 
     //スキル発動中
     public bool is_active_ = false;
-
-    public PlayerSkill()
-    {
-        player_inter_face_ = GetComponent<PlayerInterFace>();
-    }
 
 
     //スキル発動処理

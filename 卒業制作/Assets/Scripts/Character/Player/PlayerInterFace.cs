@@ -35,7 +35,16 @@ public class PlayerInterFace : CharacterInterface
         player_act = PLAYER_STATE.idle;
 
         //オブジェクトにアタッチしていないスクリプトはGetComponentしてもnullとなる
-        player_skill_ = GetComponent<DashSkill>();
+        switch (PlayerPrefs.GetInt("THIS_SKILL"))
+        {
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.none:
+                player_skill_ = null;
+                break;
+
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.dash:
+                player_skill_ = GetComponentInChildren<DashSkill>();
+                break;
+        }
 
     }
 
@@ -90,7 +99,7 @@ public class PlayerInterFace : CharacterInterface
                 SceneManager.LoadScene("GameOverScene");
                 break;
             case PLAYER_STATE.game_clear:
-                if(is_life)
+                if (is_life)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
                     is_life = false;

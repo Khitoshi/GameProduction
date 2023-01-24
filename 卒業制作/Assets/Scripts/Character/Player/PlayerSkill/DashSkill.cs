@@ -7,13 +7,13 @@ public class DashSkill : PlayerSkill
 
     public void Start()
     {
-        SKILL_CHRGE_TIME = 3.0f;
+        SKILL_CHRGE_TIME = 1.0f;
     }
 
     public override void enterSkill() 
     {
         //プレイヤーの移動速度変更
-        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ * 2.0f;
+        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ * 1.5f;
 
         is_active_ = true;
     }
@@ -39,7 +39,7 @@ public class DashSkill : PlayerSkill
     public override void endSkill() 
     {
         //プレイヤーの移動速度を元に戻す
-        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ / 2.0f;
+        player_inter_face_.player_move_.move_speed_ = player_inter_face_.player_move_.move_speed_ / 1.5f;
 
         skill_timer_ = 0.0f;
     }

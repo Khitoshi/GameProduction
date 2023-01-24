@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 1594294541719043729}
   - {fileID: 6924484955061646024}
+  - {fileID: 5384491008713092365}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -115,9 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6059313b928b08541a5af5d320fd8839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_life: 0
   player_move_: {fileID: 1594294540389222586}
   player_trap_move: {fileID: 0}
   player_fov: {fileID: 0}
+  player_skill_: {fileID: 4474031386443087910}
 --- !u!50 &1594294540389222465
 Rigidbody2D:
   serializedVersion: 4
@@ -361,3 +364,50 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &6870931730015584377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5384491008713092365}
+  - component: {fileID: 4474031386443087910}
+  m_Layer: 0
+  m_Name: PlayerSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5384491008713092365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870931730015584377}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.000000059604645, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1594294540389222468}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4474031386443087910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870931730015584377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5bcab4a1ca25d439e51d4f659c4b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_inter_face_: {fileID: 1594294540389222584}
+  SKILL_CHRGE_TIME: 3
+  skill_timer_: 0
+  is_active_: 0
