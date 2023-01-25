@@ -120,7 +120,6 @@ MonoBehaviour:
   player_move_: {fileID: 1594294540389222586}
   player_trap_move: {fileID: 0}
   player_fov: {fileID: 0}
-  player_skill_: {fileID: 4474031386443087910}
 --- !u!50 &1594294540389222465
 Rigidbody2D:
   serializedVersion: 4
@@ -374,6 +373,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5384491008713092365}
   - component: {fileID: 4474031386443087910}
+  - component: {fileID: 7687793246959716263}
+  - component: {fileID: 6171398000289993412}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -411,3 +412,36 @@ MonoBehaviour:
   SKILL_CHRGE_TIME: 3
   skill_timer_: 0
   is_active_: 0
+--- !u!114 &7687793246959716263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870931730015584377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf45841a9b6394448df40fde2257e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_inter_face_: {fileID: 1594294540389222584}
+  SKILL_CHRGE_TIME: 3
+  skill_timer_: 0
+  is_active_: 0
+--- !u!114 &6171398000289993412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870931730015584377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e152e1b33c41f34b8a4e4e73c516ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_inter_face_: {fileID: 1594294540389222584}
+  SKILL_CHRGE_TIME: 1
+  skill_timer_: 0
+  is_active_: 0
+  disguise_sprite_: {fileID: 5830694933855508796, guid: fc332cc3c218c594f9983c7ea90b4319, type: 3}

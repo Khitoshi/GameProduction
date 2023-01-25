@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerSkillRecording : MonoBehaviour
 {
 
-    //ロード専用のリスト作成(スキルNo, スキルクラス)
-    private readonly List<int> records_ = new List<int>();
+    //スキルのロード、セーブ専用キー
+    public static string SKILL_HASH_KEY = "THIS_SKILL";
 
     //スキル情報のスロットプレハブ
     [SerializeField]
@@ -46,7 +46,7 @@ public class PlayerSkillRecording : MonoBehaviour
         createSkillSlot(skill_data_base_.skill_datas_);
 
         //セーブデータがある場合の処理
-        if (PlayerPrefs.HasKey("THIS_SKILL"))
+        if (PlayerPrefs.HasKey(SKILL_HASH_KEY))
         {
             current_skill_.setCurrentSkillIcon(skill_data_base_.skill_datas_[getSkillNo()]);
         }
@@ -125,13 +125,13 @@ public class PlayerSkillRecording : MonoBehaviour
     void setSkillNo(int no)
     {
         //THIS_SKILLという名前に引数のnoを格納する
-        PlayerPrefs.SetInt("THIS_SKILL", no);
+        PlayerPrefs.SetInt(SKILL_HASH_KEY, no);
     }
 
     int getSkillNo()
     {
         //THIS_SKILLという名前に記録された整数値を取得する
-        return PlayerPrefs.GetInt("THIS_SKILL");
+        return PlayerPrefs.GetInt(SKILL_HASH_KEY);
     }
 
     public void skillSave()

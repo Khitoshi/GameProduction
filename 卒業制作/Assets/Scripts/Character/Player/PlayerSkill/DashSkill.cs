@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//プレイヤーのダッシュスキル
 public class DashSkill : PlayerSkill
 {
     private float dash_timer_ = 0.0f;       //スキル発動中時間カウント用

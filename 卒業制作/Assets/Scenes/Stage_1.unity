@@ -10804,6 +10804,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1284325521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6870931730015584377, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
+  m_PrefabInstance: {fileID: 1343394338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284325522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284325521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e152e1b33c41f34b8a4e4e73c516ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_inter_face_: {fileID: 1792228799}
+  SKILL_CHRGE_TIME: 3
+  skill_timer_: 0
+  is_active_: 0
+  disguise_sprite_: {fileID: 21300000, guid: 4ebbb4402b3077444920391a14ed24cf, type: 3}
 --- !u!1001 &1343394338
 PrefabInstance:
   m_ObjectHideFlags: 0
