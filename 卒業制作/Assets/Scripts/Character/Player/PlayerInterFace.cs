@@ -35,7 +35,7 @@ public class PlayerInterFace : CharacterInterface
         player_act = PLAYER_STATE.idle;
 
         //オブジェクトにアタッチしていないスクリプトはGetComponentしてもnullとなる
-        switch (PlayerPrefs.GetInt("THIS_SKILL"))
+        switch (PlayerPrefs.GetInt(PlayerSkillRecording.SKILL_HASH_KEY))
         {
             case (int)PlayerSkill.PLAYER_SKILL_LABEL.none:
                 player_skill_ = GetComponentInChildren<PlayerSkill>();
@@ -43,6 +43,10 @@ public class PlayerInterFace : CharacterInterface
 
             case (int)PlayerSkill.PLAYER_SKILL_LABEL.dash:
                 player_skill_ = GetComponentInChildren<DashSkill>();
+                break;
+
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.disguise:
+                player_skill_ = GetComponentInChildren<DisguiseSkill>();
                 break;
         }
 
@@ -65,16 +69,12 @@ public class PlayerInterFace : CharacterInterface
         {
             case PLAYER_STATE.idle:
                 player_move_.move();
-                if (Input.GetButton("Skill"))
-                    player_skill_.enterSkill();
-                player_skill_.moveSkill();
+                checkSkill();
                 break;
 
             case PLAYER_STATE.move:
                 player_move_.move();
-                if (Input.GetButton("Skill"))
-                    player_skill_.enterSkill();
-                player_skill_.moveSkill();
+                checkSkill();
                 break;
 
             case PLAYER_STATE.pitfall:
@@ -143,6 +143,14 @@ public class PlayerInterFace : CharacterInterface
     public void transitionGameClearState()
     {
         player_act = PLAYER_STATE.game_clear;
+    }
+
+    //スキルを発動に関する処理
+    private void checkSkill()
+    {
+        if (Input.GetButton("Skill"))
+            player_skill_.enterSkill();
+        player_skill_.moveSkill();
     }
 
     //敵の当たり判定

@@ -10,7 +10,7 @@ public class PlayerSkill : MonoBehaviour
     {
         none = 0,   //スキル無し
         dash,       //ダッシュスキル
-        invincible, //無敵
+        disguise, //変装
         wave,       //波動
     }
 
@@ -29,6 +29,10 @@ public class PlayerSkill : MonoBehaviour
     //スキル発動中
     public bool is_active_ = false;
 
+    private void Start()
+    {
+        
+    }
 
     //スキル発動処理
     public virtual bool enterSkill() { return false; }

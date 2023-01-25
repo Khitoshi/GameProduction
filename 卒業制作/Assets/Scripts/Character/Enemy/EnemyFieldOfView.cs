@@ -16,6 +16,8 @@ public class EnemyFieldOfView : CharacterFieldOfView
     public delegate void setPlayerFindingLocation(Vector3 position);
     public setPlayerFindingLocation set_player_finding_location;//追跡時のtarget position　set
 
+    private int player_layer_no_;   //プレイヤーのレイヤー番号を保管しておく
+
     //コンストラクタ(GetComponentにてクラスを生成される時にもコンストラクタは呼ばれる)
     //引数の文字列は視野角がレイキャストしたい対称の文字列を入れる
     public EnemyFieldOfView() : base("Player")
@@ -25,6 +27,7 @@ public class EnemyFieldOfView : CharacterFieldOfView
     private void Start()
     {
         circle_collider_ = GetComponent<CircleCollider2D>();
+        player_layer_no_ = LayerMask.NameToLayer("Player");
     }
 
     private void Update()
@@ -34,7 +37,7 @@ public class EnemyFieldOfView : CharacterFieldOfView
     private void OnTriggerStay2D(Collider2D other)
     {
         //探査対象のプレイヤー以外は処理をしない
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.layer == player_layer_no_)
         {
 
             if (checkFieldOfView(other))

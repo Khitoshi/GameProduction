@@ -24,14 +24,8 @@ public class ProcessingSkillSlot : MonoBehaviour
         transform.GetChild(2).GetComponent<Text>().text = my_skill_data_.skill_information_;
         transform.GetChild(2).GetComponent<Text>().enabled = false;     ////自身が選択されていない時は文字を表示しない為にテキストコンポーネントを非アクティブにしておく
 
-        //transform.GetChild(1).position = new Vector3(70, -260, 0.0f);
-        //transform.GetChild(2).position = new Vector3(70, -280, 0.0f);
-
-        //transform.GetChild(1).GetComponent<RectTransform>().localPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(70, -260, 0.0f));
-        //transform.GetChild(2).GetComponent<RectTransform>().localPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, new Vector3(70, -280, 0.0f));
-
         transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector3(70 - offset_x, -260 - offset_y, 0.0f);
-        transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector3(70 - offset_x, -280 - offset_y, 0.0f);
+        transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector3(240 - offset_x, -280 - offset_y, 0.0f);
 
 
 
