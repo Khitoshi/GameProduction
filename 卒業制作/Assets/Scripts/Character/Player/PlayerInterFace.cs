@@ -24,6 +24,7 @@ public class PlayerInterFace : CharacterInterface
     public PlayerFieldOfView player_fov;
     private PLAYER_STATE player_act;
     private PlayerSkill player_skill_;
+    private Animator animator_;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
@@ -31,6 +32,8 @@ public class PlayerInterFace : CharacterInterface
         if (player_fov != null)
             player_fov = GetComponentInChildren<PlayerFieldOfView>();
         is_life = true;
+
+        animator_ = GetComponent<Animator>();
 
         player_act = PLAYER_STATE.idle;
 
@@ -48,13 +51,19 @@ public class PlayerInterFace : CharacterInterface
             case (int)PlayerSkill.PLAYER_SKILL_LABEL.disguise:
                 player_skill_ = GetComponentInChildren<DisguiseSkill>();
                 break;
+
+
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.wave:
+                player_skill_ = GetComponentInChildren<WaveSkill>();
+                break;
         }
 
     }
 
     private void Update()
     {
-
+        Debug.Log(animator_.GetFloat("MoveX"));
+        Debug.Log(animator_.GetFloat("MoveY"));
     }
 
     //ï«ê⁄êGéûÇ…ÉKÉ^ÉcÉLñhé~ÇÃà◊FixedUpdateì‡Ç≈èàóùÇ∑ÇÈ

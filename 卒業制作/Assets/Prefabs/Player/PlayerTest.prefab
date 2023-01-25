@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1594294540389222465}
   - component: {fileID: 8901395610582922954}
   - component: {fileID: -2589123885839824816}
+  - component: {fileID: 4122646027669996484}
   m_Layer: 8
   m_Name: PlayerTest
   m_TagString: Player
@@ -183,6 +184,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &4122646027669996484
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594294540389222585}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89b271b0b79e6b04f9c7ad8366d1a342, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1594294541719043734
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +405,7 @@ GameObject:
   - component: {fileID: 4474031386443087910}
   - component: {fileID: 7687793246959716263}
   - component: {fileID: 6171398000289993412}
+  - component: {fileID: 7088112219393664276}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -455,3 +476,21 @@ MonoBehaviour:
   skill_timer_: 0
   is_active_: 0
   disguise_sprite_: {fileID: 5830694933855508796, guid: fc332cc3c218c594f9983c7ea90b4319, type: 3}
+--- !u!114 &7088112219393664276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870931730015584377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745849290c010c144b9223b48d8a180f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_inter_face_: {fileID: 1594294540389222584}
+  SKILL_CHRGE_TIME: 1
+  skill_timer_: 0
+  is_active_: 0
+  wave_object_prefab_: {fileID: 1239932123759120383, guid: f9f8c0815cbb36f4b9f0831db9fce871, type: 3}
+  wave_speed_: 3
