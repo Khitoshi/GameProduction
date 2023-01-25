@@ -8,10 +8,7 @@ namespace MapGimic
     public class DoorWithSlateTableGimic : MapGimic
     {
         //gimic object: slate table
-        [SerializeField] List<SlateTable> slate_table_;
-
-        //ギミック解除後に変更するTileBase
-        [SerializeField] TileBase tilebase_after_change_;
+        [SerializeField] List<SlateTable> slate_tables_;
 
         //変更するTIleBaseのposition
         [SerializeField] Vector3Int position_;
@@ -19,10 +16,21 @@ namespace MapGimic
         //アニメーションの再生を判断するflag false = 再生していない
         private bool is_animation_;
 
+        private bool is_gimic_;
+
+        TileAnimation animation_;
+
         // Start is called before the first frame update
         void Start()
         {
+            //アニメーション再生フラグ
             is_animation_ = false;
+
+            //ギミック解除フラグ
+            is_gimic_ = false;
+
+            //tile_animation = GetComponent<TileAnimation>();
+            animation_ = GetComponent<TileAnimation>();
         }
     
         // Update is called once per frame
@@ -31,8 +39,8 @@ namespace MapGimic
             //ギミックのフラグを確認してドアを開ける
             Open();
 
-
-
+            //tile. 
+            PlayAnimation();
         }
 
         /// <summary>
@@ -40,11 +48,11 @@ namespace MapGimic
         /// </summary>
         private void Open()
         {
-            //ギミック解除後にアニメーションを流すので再生中の場合は以下を処理しない
-            if (is_animation_) return;
+            //ギミックを解除している場合入らない
+            if (is_gimic_) return;
 
             //flag check loop
-            foreach (SlateTable slatetable in slate_table_)
+            foreach (SlateTable slatetable in slate_tables_)
             {
                 //ギミックのフラグチェック false = ギミック解除前
                 if (!slatetable.GetGimicFlag()) return;
@@ -52,16 +60,13 @@ namespace MapGimic
 
             //必要なギミックが全部、解けているので
             //TileBaseを変更する
-            Tilemap tile_map_ = GetComponent<Tilemap>();
-            tile_map_.SetTile(position_, tilebase_after_change_);
 
             //当たり判定を消す
-            //tile_map_.SetColliderType(position_, Tile.ColliderType.None);
             GetComponent<TilemapCollider2D>().enabled = false;
-            GetComponent<TilemapCollider2D>().enabled = true;
 
             //ギミックを解除したのでアニメーションを流すフラグを立てる
             is_animation_ = true;
+            is_gimic_ = true;
         }
 
         /// <summary>
@@ -71,12 +76,11 @@ namespace MapGimic
         {
             //アニメーションフラグが立っていない場合、除外する
             if (!is_animation_) return;
+            //アニメーション再生
+            animation_.PlayAnimation(GetComponent<Tilemap>(), position_);
 
-
-
-
+            //アニメーション再生完了したのでanimationフラグをfalseにする
+            is_animation_ = false;
         }
-
-
     }
 }
