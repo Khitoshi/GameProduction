@@ -9,6 +9,9 @@ public class Menu : MonoBehaviour
     private Button stageButton;
 
     [SerializeField]
+    private Button deleteButton;
+
+    [SerializeField]
     private GameObject stageBorad;
     
     [SerializeField]
@@ -24,37 +27,56 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        // 
         stageButton.onClick.AddListener(OnClickStageButton);
 
         uiBlocker.onClick.AddListener(OnClickUIBlocker);
 
-       
+        deleteButton.onClick.AddListener(OnClickDeleteButton);
+
     }
 
     private void OnClickStageButton()
     {
+
         stageBorad.SetActive(true);
 
         uiBlocker.gameObject.SetActive(true);
 
-       
+        foreach (StageData stageData in MasterData.StageDataTable.Stages)
+        {
+            StageItem stageItem = Instantiate(stageItemPrefab, stageItemParent);
+            stageItem.Setup(stageData);
+        }
 
         bool exist = PlayerPrefs.HasKey("ClearStage");
-        if(exist)
+        
+        // キーを持っているかの判断
+        if (exist)
         {
             Debug.Log("存在する");
 
-            SceneManager.LoadScene("Stage_4");
+            // 読み込む
+            int lode_scene = PlayerPrefs.GetInt("ClearStage");
+
+            //　セーブされたシーンの番号で次からのシーンを反映する
+            switch (lode_scene)
+            {
+                case 3:
+                    SceneManager.LoadScene("Stage_2");
+                    Debug.Log("セーブされてシーン移動した  2");
+                    break;
+
+                case 4:
+                    SceneManager.LoadScene("Stage_4");
+                    Debug.Log("セーブされてシーン移動した  4");
+                    break;
+
+            }        
         }
         else
         {
             Debug.Log("存在しない");
-
-            foreach (StageData stageData in MasterData.StageDataTable.Stages)
-            {
-                StageItem stageItem = Instantiate(stageItemPrefab, stageItemParent);
-                stageItem.Setup(stageData);
-            }
         }
     }
 
@@ -70,5 +92,11 @@ public class Menu : MonoBehaviour
         }
     }
 
+    private void OnClickDeleteButton()
+    {
+        PlayerPrefs.DeleteAll();
 
+        Debug.Log("データは削除された");
+
+    }
 }

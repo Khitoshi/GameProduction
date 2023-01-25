@@ -76,10 +76,11 @@ namespace MapGimic
         {
             //アニメーションフラグが立っていない場合、除外する
             if (!is_animation_) return;
+
             //アニメーション再生
             animation_.PlayAnimation(GetComponent<Tilemap>(), position_);
 
-            //アニメーション再生完了したのでanimationフラグをfalseにする
+            //アニメーション再生完了したのでanimationフラグをfalseに
             is_animation_ = false;
         }
     }

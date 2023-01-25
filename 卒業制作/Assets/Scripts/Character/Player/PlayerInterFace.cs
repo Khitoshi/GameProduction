@@ -23,6 +23,7 @@ public class PlayerInterFace : CharacterInterface
     public PlayerTrapMove player_trap_move;
     public PlayerFieldOfView player_fov;
     private PLAYER_STATE player_act;
+    private PlayerSkill player_skill_;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
@@ -32,6 +33,18 @@ public class PlayerInterFace : CharacterInterface
         is_life = true;
 
         player_act = PLAYER_STATE.idle;
+
+        //オブジェクトにアタッチしていないスクリプトはGetComponentしてもnullとなる
+        switch (PlayerPrefs.GetInt("THIS_SKILL"))
+        {
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.none:
+                player_skill_ = GetComponentInChildren<PlayerSkill>();
+                break;
+
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.dash:
+                player_skill_ = GetComponentInChildren<DashSkill>();
+                break;
+        }
 
     }
 
@@ -52,10 +65,16 @@ public class PlayerInterFace : CharacterInterface
         {
             case PLAYER_STATE.idle:
                 player_move_.move();
+                if (Input.GetButton("Skill"))
+                    player_skill_.enterSkill();
+                player_skill_.moveSkill();
                 break;
 
             case PLAYER_STATE.move:
                 player_move_.move();
+                if (Input.GetButton("Skill"))
+                    player_skill_.enterSkill();
+                player_skill_.moveSkill();
                 break;
 
             case PLAYER_STATE.pitfall:
@@ -79,7 +98,7 @@ public class PlayerInterFace : CharacterInterface
                 SceneManager.LoadScene("GameOverScene");
                 break;
             case PLAYER_STATE.game_clear:
-                if(is_life)
+                if (is_life)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
                     is_life = false;
@@ -92,6 +111,8 @@ public class PlayerInterFace : CharacterInterface
                 }
                 break;
         }
+
+        player_skill_.skillChargeTimer();
     }
 
     public void transitionIdleState()
