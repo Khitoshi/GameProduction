@@ -5,6 +5,9 @@ using UnityEngine;
 //プレイヤー用の移動管理クラス
 public class PlayerMove : CharacterMove
 {
+    //アニメーション再生用変数
+    public bool walk_animation_ = false;
+
     //入力に応じた動きを計算する
     public void inputMove()
     {
@@ -37,6 +40,8 @@ public class PlayerMove : CharacterMove
                 //左入力値(180° = 3.14rad)
                 direction_angle_ = 3.14f;
             }
+
+            walk_animation_ = true;
         }
         else if (Input.GetKey("right") || Input.GetKey(KeyCode.D))
         {
@@ -65,13 +70,14 @@ public class PlayerMove : CharacterMove
                 //右入力値(0° = 0rad)
                 direction_angle_ = 0.0f;
             }
-            
+            walk_animation_ = true;
         }
 
         //横無しの入力無し
         else
         {
             add_speed_.x = 0.0f;
+            walk_animation_ = false;
         }
 
         if (Input.GetKey("up") || Input.GetKey(KeyCode.W))
@@ -100,7 +106,7 @@ public class PlayerMove : CharacterMove
                 //上入力値(90° = 1.57rad)
                 direction_angle_ = 1.57f;
             }
-
+            walk_animation_ = true;
         }
         else if (Input.GetKey("down") || Input.GetKey(KeyCode.S))
         {
@@ -128,6 +134,7 @@ public class PlayerMove : CharacterMove
                 //下入力値(270° = 4.71rad)
                 direction_angle_ = 4.71f;
             }
+            walk_animation_ = true;
         }
 
         //縦軸の入力無し
