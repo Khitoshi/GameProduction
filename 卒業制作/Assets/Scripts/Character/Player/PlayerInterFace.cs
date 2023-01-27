@@ -31,7 +31,7 @@ public class PlayerInterFace : CharacterInterface
         player_trap_move = GetComponent<PlayerTrapMove>();
         if (player_fov != null)
             player_fov = GetComponentInChildren<PlayerFieldOfView>();
-        is_life = true;
+        is_life_ = true;
 
         animator_ = GetComponent<Animator>();
 
@@ -62,8 +62,7 @@ public class PlayerInterFace : CharacterInterface
 
     private void Update()
     {
-        Debug.Log(animator_.GetFloat("MoveX"));
-        Debug.Log(animator_.GetFloat("MoveY"));
+
     }
 
     //壁接触時にガタツキ防止の為FixedUpdate内で処理する
@@ -90,10 +89,10 @@ public class PlayerInterFace : CharacterInterface
                 player_trap_move.pitfallAct();
                 break;
             case PLAYER_STATE.die:
-                if (is_life)
+                if (is_life_)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
-                    is_life = false;
+                    is_life_ = false;
                 }
 
                 //演出が終了したら自身を削除するステートへ遷移する
@@ -107,10 +106,10 @@ public class PlayerInterFace : CharacterInterface
                 SceneManager.LoadScene("GameOverScene");
                 break;
             case PLAYER_STATE.game_clear:
-                if (is_life)
+                if (is_life_)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
-                    is_life = false;
+                    is_life_ = false;
                 }
 
                 //演出が終了したら自身を削除するステートへ遷移する
@@ -121,6 +120,8 @@ public class PlayerInterFace : CharacterInterface
                 break;
         }
 
+        animator_.SetFloat("MoveX", Mathf.Cos(player_move_.direction_angle_));
+        animator_.SetFloat("MoveY", Mathf.Sin(player_move_.direction_angle_));
         player_skill_.skillChargeTimer();
     }
 

@@ -16,6 +16,8 @@ public class WaveSkill : PlayerSkill
     private float wave_timer_ = 0.0f;       //スキル発動中時間カウント用
     private const float WAVE_TIME = 2.0f;   //スキル発動時間
     public float wave_speed_ = 3.0f;    //波動の進行速度
+    private float wave_direction_ = 0.0f;   //波動の進行方向
+    public float wave_power = 5.0f;     //波動のノックバックパワー
 
     public void Start()
     {
@@ -33,7 +35,7 @@ public class WaveSkill : PlayerSkill
         //waveオブジェクト作成、プレイヤーの姿勢情報を送る
         wave_object_ = Instantiate<GameObject>(wave_object_prefab_) as GameObject;
 
-        wave_object_.transform.forward = player_inter_face_.transform.forward;
+        wave_direction_ = player_inter_face_.player_move_.direction_angle_;
         wave_object_.transform.position = player_inter_face_.transform.position;
 
         is_active_ = true;
@@ -75,8 +77,11 @@ public class WaveSkill : PlayerSkill
     //波動の動き
     private void waveMove()
     {
-        Vector3 direction = wave_object_.transform.forward.normalized;
-        Vector3 wave_update = new Vector3(direction.x * wave_speed_, direction.y * wave_speed_, 0.0f);
+        Vector3 direction = new Vector3(Mathf.Cos(wave_direction_), Mathf.Sin(wave_direction_), 0.0f);
+
+        float wave_speed_frame_ = wave_speed_ * Time.deltaTime;
+
+        Vector3 wave_update = new Vector3(direction.x * wave_speed_frame_, direction.y * wave_speed_frame_, 0.0f);
 
         //座標更新
         wave_object_.transform.position = wave_object_.transform.position + wave_update;
@@ -95,6 +100,9 @@ public class WaveSkill : PlayerSkill
             }
             return;
         }
+
+        collision.rigidbody.AddForce(new Vector2(Mathf.Cos(wave_direction_) * wave_power, Mathf.Sin(wave_direction_) * wave_power));
+
         Debug.Log("波動接触");
     }
 }

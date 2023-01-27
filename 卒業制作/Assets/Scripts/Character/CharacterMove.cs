@@ -17,6 +17,9 @@ public class CharacterMove : MonoBehaviour
     //斜め移動時の定数(1/√2 = 0.7f)
     protected const float MOVE_DIAGONAL_SPEED = 0.7f;
 
+    //キャラクターオブジェクトが向いている方向を示すの角度
+    public float direction_angle_ = 0.0f;
+
     //移動更新関数
     public void move() 
     {
