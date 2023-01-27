@@ -122,7 +122,7 @@ public class PlayerInterFace : CharacterInterface
 
         animator_.SetFloat("MoveX", Mathf.Cos(player_move_.direction_angle_));
         animator_.SetFloat("MoveY", Mathf.Sin(player_move_.direction_angle_));
-        animator_.SetTrigger("WalkTrigger", player_move_.walk_animation_);
+        animator_.SetBool("WalkTrigger", player_move_.walk_animation_);
         player_skill_.skillChargeTimer();
     }
 

@@ -260,10 +260,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\r<color=red><size=50>\u660E\u65E5\u4E88\u5B9A\u4E0B\u3055\u3044</size></color>\r\n
-    \r\n\u304B\u3081\u304F\u3081\u3061\u3083\u3093\r\nkamekumechan\r\nkame\r\n\r\n<color=red><size=50>Program</size></color>\r\n
-    \r\n\u304B\u3081\u304F\u3081\r\nkamekumechan\r\n\r\n<color=red><size=50>Sound</size></color>\r\n
-    \r\n\u304B\u3081\u304F\u3081"
+  m_Text: "\r<color=red><size=50>GO3A</size></color>\r\n\r\n\u304B\u3081\u304F\u3081\u3061\u3083\u3093\r\nkamekumechan\r\nkame\r\n\r\n<color=red><size=50>Program</size></color>\r\n\r\n\u304B\u3081\u304F\u3081\r\nkamekumechan\r\n\r\n<color=red><size=50>Sound</size></color>\r\n\r\n\u304B\u3081\u304F\u3081"
 --- !u!222 &966543821
 CanvasRenderer:
   m_ObjectHideFlags: 0
