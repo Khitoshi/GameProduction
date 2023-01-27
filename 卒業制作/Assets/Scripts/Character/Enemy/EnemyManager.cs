@@ -21,9 +21,10 @@ public class EnemyManager : MonoBehaviour
 
     public void fixedUpdate()
     {
-        for(int i = 0; i < enemy_lists_.Count; i++)
+        for (int i = 0; i < enemy_lists_.Count; i++)
         {
-            enemy_lists_[i].enemyAction();
+            if (enemy_lists_[i] != null)
+                enemy_lists_[i].enemyAction();
         }
     }
 

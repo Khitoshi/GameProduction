@@ -17,7 +17,8 @@ public class WaveSkill : PlayerSkill
     private const float WAVE_TIME = 2.0f;   //スキル発動時間
     public float wave_speed_ = 3.0f;    //波動の進行速度
     private float wave_direction_ = 0.0f;   //波動の進行方向
-    public float wave_power = 5.0f;     //波動のノックバックパワー
+    public float wave_power_ = 5.0f;     //波動のノックバックパワー
+    private PlayerWaveCollision wave_hit_event_;
 
     public void Start()
     {
@@ -37,6 +38,12 @@ public class WaveSkill : PlayerSkill
 
         wave_direction_ = player_inter_face_.player_move_.direction_angle_;
         wave_object_.transform.position = player_inter_face_.transform.position;
+
+        //波動ヒット用コンポーネントをprefabから生成したオブジェクトから取得
+        wave_hit_event_ = wave_object_.GetComponent<PlayerWaveCollision>();
+        //ヒットイベント登録
+        wave_hit_event_.on_hit_wave_enemy_function_ += hitEnemy;
+        wave_hit_event_.on_hit_wave_other_function_ += hitOther;
 
         is_active_ = true;
 
@@ -70,8 +77,10 @@ public class WaveSkill : PlayerSkill
 
     public override void endSkill()
     {
-
+        is_active_ = false;
         wave_timer_ = 0.0f;
+
+        Destroy(wave_object_);
     }
 
     //波動の動き
@@ -87,22 +96,21 @@ public class WaveSkill : PlayerSkill
         wave_object_.transform.position = wave_object_.transform.position + wave_update;
     }
 
-    //敵の当たり判定
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void hitEnemy(Collider2D collision)
     {
-        if (collision.transform.tag != "Enemy")
+        if (collision.gameObject != null)
         {
-            //プレイヤー以外のオブジェクトと接触したら自身を破棄する
-            if (collision.transform.tag != "Player")
-            {
-                if (wave_object_ != null)
-                    Destroy(wave_object_);
-            }
-            return;
+            collision.attachedRigidbody.AddForce(new Vector2(Mathf.Cos(wave_direction_) * wave_power_, Mathf.Sin(wave_direction_) * wave_power_));
         }
-
-        collision.rigidbody.AddForce(new Vector2(Mathf.Cos(wave_direction_) * wave_power, Mathf.Sin(wave_direction_) * wave_power));
-
-        Debug.Log("波動接触");
+        endSkill();
+        Destroy(wave_object_);
     }
+
+    public void hitOther(Collider2D collision)
+    {
+        endSkill();
+        Destroy(wave_object_);
+    }
+
+
 }

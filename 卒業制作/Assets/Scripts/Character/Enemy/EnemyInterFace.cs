@@ -16,7 +16,7 @@ public class EnemyInterFace : CharacterInterface
     public EnemyMove enemy_move_;   //座標移動
     public EnemyFieldOfView enemy_fov_; //視界
     public EnemyStateMachine enemy_state_machine;
-    //private ENEMY_STATE_LABEL enemy_act_;   //行動ステート
+    public int hp_;    //敵のヒットポイント
     public Transform target_transform_ {private set; get; }   //追跡する目的地
 
     public Vector3 latest_position;
@@ -38,11 +38,17 @@ public class EnemyInterFace : CharacterInterface
         //最初の state　は　idle
         enemy_state_machine = GetComponent<EnemyStateMachine>();
         enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.idle);
+
+        hp_ = 3;
     }
 
     private void Update()
     {
-
+        if(hp_ <= 0)
+        {
+            is_life_ = false;
+            Destroy(gameObject, 1.0f);
+        }
     }
 
     //壁接触時にガタツキ防止の為FixedUpdate内で処理する
@@ -69,6 +75,21 @@ public class EnemyInterFace : CharacterInterface
         GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
         //GetComponent<EnemyStateMachine>().changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
         enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.pursuit);
+    }
+
+    public void subtractHp(int sub)
+    {
+        hp_ -= sub;
+        if (hp_ < 0)
+            hp_ = 0;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Wave")
+        {
+            subtractHp(1);
+        }
     }
 
 }

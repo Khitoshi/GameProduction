@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1532585640089690207}
   m_Layer: 9
   m_Name: Point Light 2D
-  m_TagString: Untagged
+  m_TagString: EnemySight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed_: 3
   rotate_speed_: 20
+  direction_angle_: 0
   HORIZONAL_SWITCH_TIME: 3
   circle_collider: {fileID: 0}
 --- !u!114 &1532585640327657149
@@ -193,10 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a8a8d85ee276940bd1faf7679af92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_life: 0
+  is_life_: 0
   enemy_move_: {fileID: 1532585640327657151}
   enemy_fov_: {fileID: 8804274368817728734}
   enemy_state_machine: {fileID: 0}
+  hp_: 0
   latest_position: {x: 0, y: 0, z: 0}
 --- !u!58 &1532585640327657150
 CircleCollider2D:
@@ -303,7 +305,7 @@ GameObject:
   - component: {fileID: 8804274368817728734}
   m_Layer: 9
   m_Name: sight
-  m_TagString: Enemy
+  m_TagString: EnemySight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

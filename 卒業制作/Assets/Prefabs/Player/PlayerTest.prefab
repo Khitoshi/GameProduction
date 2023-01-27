@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed_: 5
   rotate_speed_: 20
+  direction_angle_: 0
 --- !u!114 &1594294540389222584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6059313b928b08541a5af5d320fd8839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_life: 0
+  is_life_: 0
   player_move_: {fileID: 1594294540389222586}
   player_trap_move: {fileID: 0}
   player_fov: {fileID: 0}
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed_: 0
   rotate_speed_: 20
+  direction_angle_: 0
   gauge: {fileID: 0}
   gaugePlus: 0
 --- !u!61 &-2589123885839824816
@@ -494,3 +496,4 @@ MonoBehaviour:
   is_active_: 0
   wave_object_prefab_: {fileID: 1239932123759120383, guid: f9f8c0815cbb36f4b9f0831db9fce871, type: 3}
   wave_speed_: 3
+  wave_power_: 10
