@@ -24,7 +24,7 @@ public class PlayerInterFace : CharacterInterface
     public PlayerFieldOfView player_fov;
     private PLAYER_STATE player_act;
     private PlayerSkill player_skill_;
-    private Animator animator_;
+    public Animator animator_;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();

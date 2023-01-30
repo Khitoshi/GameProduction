@@ -106,6 +106,7 @@ MonoBehaviour:
   move_speed_: 5
   rotate_speed_: 20
   direction_angle_: 0
+  walk_animation_: 0
 --- !u!114 &1594294540389222584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +123,7 @@ MonoBehaviour:
   player_move_: {fileID: 1594294540389222586}
   player_trap_move: {fileID: 0}
   player_fov: {fileID: 0}
+  animator_: {fileID: 0}
 --- !u!50 &1594294540389222465
 Rigidbody2D:
   serializedVersion: 4
@@ -176,7 +178,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.8888889, y: 1.3888888}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -408,6 +410,7 @@ GameObject:
   - component: {fileID: 7687793246959716263}
   - component: {fileID: 6171398000289993412}
   - component: {fileID: 7088112219393664276}
+  - component: {fileID: 2521226886566473825}
   m_Layer: 0
   m_Name: PlayerSkills
   m_TagString: Untagged
@@ -477,7 +480,7 @@ MonoBehaviour:
   SKILL_CHRGE_TIME: 1
   skill_timer_: 0
   is_active_: 0
-  disguise_sprite_: {fileID: 5830694933855508796, guid: fc332cc3c218c594f9983c7ea90b4319, type: 3}
+  disguise_animator_: {fileID: 2521226886566473825}
 --- !u!114 &7088112219393664276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,3 +500,22 @@ MonoBehaviour:
   wave_object_prefab_: {fileID: 1239932123759120383, guid: f9f8c0815cbb36f4b9f0831db9fce871, type: 3}
   wave_speed_: 3
   wave_power_: 10
+--- !u!95 &2521226886566473825
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870931730015584377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 530a659dfc364304f8d88504bf4e63e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

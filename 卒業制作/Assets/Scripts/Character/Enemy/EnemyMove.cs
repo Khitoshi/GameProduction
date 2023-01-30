@@ -17,6 +17,9 @@ public class EnemyMove : CharacterMove
 
     private Vector3 last_time_euler;
 
+    //アニメーション再生用変数
+    public bool walk_animation_ = false;
+
     //横軸のみに動く敵
     public void horizonalMove()
     {
@@ -74,6 +77,7 @@ public class EnemyMove : CharacterMove
 
     public Vector3 moveToTarget(Transform mine_transform, Vector3 target_position)
     {
+        walk_animation_ = true;
 
         Vector3 direction = mine_transform.position - target_position;
 

@@ -16,15 +16,26 @@ public class EnemyInterFace : CharacterInterface
     public EnemyMove enemy_move_;   //座標移動
     public EnemyFieldOfView enemy_fov_; //視界
     public EnemyStateMachine enemy_state_machine;
+    private Animator animator_;
     public int hp_;    //敵のヒットポイント
     public Transform target_transform_ {private set; get; }   //追跡する目的地
 
     public Vector3 latest_position;
 
+    //無敵時間
+    private float INVISIBLE_TIME = 0.5f;
+
+    //無敵時間カウント用
+    private float invisible_time_ = 0.0f;
+
+    //攻撃ヒットフラッグ
+    private bool is_hit_ = false;
+
     private void Start()
     {
         enemy_move_ = GetComponent<EnemyMove>();
         enemy_fov_ = GetComponentInChildren<EnemyFieldOfView>();
+        animator_ = GetComponent<Animator>();
 
         //視界にいる場合のメソッド
         enemy_fov_.on_field_of_view += transitionPursuitState;
@@ -62,6 +73,13 @@ public class EnemyInterFace : CharacterInterface
     {
         //enemy_move_.rotationOnlyMove();
         enemy_state_machine.execute();
+
+        //自身の回転値から前方向ベクトルを求める
+        float angle_radian = transform.localEulerAngles.z;
+
+        animator_.SetFloat("MoveX", Mathf.Cos(angle_radian));
+        animator_.SetFloat("MoveY", Mathf.Sin(angle_radian));
+        animator_.SetBool("WalkTrigger", enemy_move_.walk_animation_);
     }
 
     void transitionWanderState()
@@ -79,9 +97,33 @@ public class EnemyInterFace : CharacterInterface
 
     public void subtractHp(int sub)
     {
+        //無敵時間中なら処理しない
+        if (is_hit_)
+            return;
+
         hp_ -= sub;
         if (hp_ < 0)
             hp_ = 0;
+    }
+
+    //無敵時間計算用
+    public void invisibleCount()
+    {
+        if(is_hit_)
+        {
+            if(invisible_time_ > INVISIBLE_TIME)
+            {
+                is_hit_ = false;
+                invisible_time_ = 0.0f;
+                return;
+            }
+
+            else
+            {
+                invisible_time_ += Time.deltaTime;
+            }
+
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -89,6 +131,7 @@ public class EnemyInterFace : CharacterInterface
         if(collision.tag == "Wave")
         {
             subtractHp(1);
+            is_hit_ = true;
         }
     }
 
