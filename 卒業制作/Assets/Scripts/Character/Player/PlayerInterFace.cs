@@ -34,7 +34,9 @@ public class PlayerInterFace : CharacterInterface
     private Canvas skill_charage_canvas_;
     private Image skill_charge_gauge_;
     private Image skill_charge_ui_;
-    private RectTransform skill_charge_ui_size_;
+
+    //スキル毎によるチャージUIマスク用時間
+    float charge_masktime = 0.0f;
 
     private void Start()
     {
@@ -55,11 +57,13 @@ public class PlayerInterFace : CharacterInterface
         skill_charge_gauge_.sprite = Resources.Load<Sprite>("スキルチャージ枠UI");
         skill_charge_ui_ = skill_charage_canvas_.transform.GetChild(0).GetComponent<Image>();
         skill_charge_ui_.sprite = Resources.Load<Sprite>("スキルチャージUI");
-        skill_charge_ui_size_ = skill_charge_ui_.GetComponent<RectTransform>();
 
+        //Imageのサイズを変更可能タイプへ設定
         skill_charge_ui_.type = Image.Type.Filled;
+
+        //fillMethodをVerticalにする事でX軸のマスク処理を行う
         skill_charge_ui_.fillMethod = Image.FillMethod.Vertical;
-        skill_charge_ui_.fillAmount = 0.5f;
+        skill_charge_ui_.fillAmount = 0.0f;
 
         //スキルチャージ用UI作成処理↑
 
@@ -85,6 +89,8 @@ public class PlayerInterFace : CharacterInterface
                 player_skill_ = GetComponentInChildren<WaveSkill>();
                 break;
         }
+
+        charge_masktime = Time.deltaTime / player_skill_.SKILL_CHRGE_TIME;
 
     }
 
@@ -114,7 +120,7 @@ public class PlayerInterFace : CharacterInterface
                 break;
 
             case PLAYER_STATE.pitfall:
-                player_trap_move.pitfallAct();
+                //現在落とし穴の処理を落とし穴スクリプト内へ記述している
                 break;
             case PLAYER_STATE.die:
                 if (is_life_)
@@ -187,7 +193,12 @@ public class PlayerInterFace : CharacterInterface
     //スキルを発動に関する処理
     private void checkSkill()
     {
-        //skill_charge_ui_size_.sizeDelta = new Vector2(100.0f, 50.0f);
+        
+        skill_charge_ui_.fillAmount += charge_masktime;
+
+        if (skill_charge_ui_.fillAmount >= 1.0f)
+            skill_charge_ui_.fillAmount = 1.0f;
+
         if (Input.GetButton("Skill"))
             player_skill_.enterSkill();
         player_skill_.moveSkill();

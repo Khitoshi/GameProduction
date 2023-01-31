@@ -124,8 +124,7 @@ MonoBehaviour:
   player_trap_move: {fileID: 0}
   player_fov: {fileID: 0}
   animator_: {fileID: 4122646027669996484}
-  skill_charge_gauge_: {fileID: 6633719997426702372, guid: f553479c6957cfa43a56510863d7c156, type: 3}
-  skill_charge_ui_: {fileID: 4753257047309099887, guid: 82e60261312769a4b928801f3b1f7582, type: 3}
+  skill_charage_canvas_prefab_: {fileID: 0}
 --- !u!50 &1594294540389222465
 Rigidbody2D:
   serializedVersion: 4
@@ -478,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_inter_face_: {fileID: 1594294540389222584}
-  SKILL_CHRGE_TIME: 1
+  SKILL_CHRGE_TIME: 3
   skill_timer_: 0
   is_active_: 0
 --- !u!114 &7088112219393664276
