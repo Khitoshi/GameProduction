@@ -6,27 +6,41 @@ using UnityEngine;
 public class PlayerTrapMove : CharacterMove
 {
     public Gauge gauge;
+    public TypeKey type_key;
     private PlayerInterFace player;
     public bool gaugePlus;
+    public bool is_fall;
     Vector2 pos;
 
     private void Start()
     {
         player = GetComponent<PlayerInterFace>();
         gaugePlus = false;
+        is_fall = false;
     }
 
     public void pitfallAct()
     {
-        gaugePlus = true;
-        
-        if(gauge.isMaxGauge)
+        is_fall = true;
+
+        //gaugePlus = true;
+        //
+        //if(gauge.isMaxGauge)
+        //{
+        //    gaugePlus = false;
+        //    gauge.isMaxGauge = false;
+        //
+        //    PlayerPos();
+        //}
+
+        if (type_key.text_finish)
         {
-            gaugePlus = false;
-            gauge.isMaxGauge = false;
+            is_fall = false;
 
             PlayerPos();
         }
+
+
     }
 
     private void PlayerPos()
