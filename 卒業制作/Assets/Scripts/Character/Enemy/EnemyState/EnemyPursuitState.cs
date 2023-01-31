@@ -9,6 +9,9 @@ public class EnemyPursuitState : StateBase
 
     EnemyInterFace enemy_inter_face_;
 
+    //変移先のステートを設定
+    public EnemyStateMachine.ENEMY_STATE_LABEL change_state_ = EnemyStateMachine.ENEMY_STATE_LABEL.idle;
+
 
     public override void enter()
     {
@@ -30,7 +33,7 @@ public class EnemyPursuitState : StateBase
         else
         {
             //徘徊へ状態変更
-            enemy_inter_face_.enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.idle);
+            enemy_inter_face_.enemy_state_machine.changeSubState((int)change_state_);
         }
 
     }

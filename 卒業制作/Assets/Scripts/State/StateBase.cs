@@ -5,6 +5,7 @@ using UnityEngine;
 //任意の動作を実行するStateクラス
 public class StateBase : MonoBehaviour
 {
+
 	// コンストラクタ
 	public StateBase() { }
 	// ステートに入った時のメソッド

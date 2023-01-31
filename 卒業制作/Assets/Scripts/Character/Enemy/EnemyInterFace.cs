@@ -32,6 +32,9 @@ public class EnemyInterFace : CharacterInterface
     private bool is_hit_ = false;
     public bool is_hit { get { return is_hit_; } set { is_hit_ = value; } }
 
+    //初期のステートを決定する
+    public EnemyStateMachine.ENEMY_STATE_LABEL initialize_state_ = EnemyStateMachine.ENEMY_STATE_LABEL.idle;
+
     private void Start()
     {
         enemy_move_ = GetComponent<EnemyMove>();
@@ -49,7 +52,7 @@ public class EnemyInterFace : CharacterInterface
 
         //最初の state　は　idle
         enemy_state_machine = GetComponent<EnemyStateMachine>();
-        enemy_state_machine.changeSubState((int)EnemyStateMachine.ENEMY_STATE_LABEL.idle);
+        enemy_state_machine.changeSubState((int)initialize_state_);
 
         hp_ = 3;
     }
@@ -66,8 +69,7 @@ public class EnemyInterFace : CharacterInterface
     //壁接触時にガタツキ防止の為FixedUpdate内で処理する
     private void FixedUpdate()
     {
-        //enemy_move_.rotationOnlyMove();
-        enemy_state_machine.execute();
+
     }
 
     public void enemyAction()
@@ -75,13 +77,39 @@ public class EnemyInterFace : CharacterInterface
         //enemy_move_.rotationOnlyMove();
         enemy_state_machine.execute();
 
+        invisibleCount();
+
         //自身の回転値から前方向ベクトルを求める
         float angle_radian = transform.localEulerAngles.z;
 
-        invisibleCount();
+        float power_ang_x = Mathf.Cos(angle_radian);
+        float power_ang_y = Mathf.Sin(angle_radian);
 
-        animator_.SetFloat("MoveX", Mathf.Cos(angle_radian));
-        animator_.SetFloat("MoveY", Mathf.Sin(angle_radian));
+        if(Mathf.Abs(power_ang_x) > Mathf.Abs(power_ang_y))
+        {
+            if(power_ang_x < 0.0f)
+            {
+                animator_.SetFloat("MoveX", -1.0f);
+            }
+
+            else
+            {
+                animator_.SetFloat("MoveX", 1.0f);
+            }
+        }
+
+        else
+        {
+            if (power_ang_y < 0.0f)
+            {
+                animator_.SetFloat("MoveY", -1.0f);
+            }
+
+            else
+            {
+                animator_.SetFloat("MoveY", 1.0f);
+            }
+        }
         animator_.SetBool("WalkTrigger", enemy_move_.walk_animation_);
     }
 

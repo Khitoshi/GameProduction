@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//第一階層のステート(スター獲得、攻撃等の行動グループ分け)
+//第一階層のステート
 public class HierarchicalState : StateBase
 {
     public List<StateBase> sub_state_pool_;  //2層目ステート配列
 
     // 現在のステート
-    private StateBase current_state_;
+    protected StateBase current_state_;
 
     //コンストラクタ
     public HierarchicalState() { sub_state_pool_ = new List<StateBase>(); }
