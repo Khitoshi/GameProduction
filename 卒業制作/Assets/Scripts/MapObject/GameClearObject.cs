@@ -19,7 +19,6 @@ public class GameClearObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag != "Player") return;
-        //TODO
         collision.gameObject.GetComponent<PlayerInterFace>().transitionGameClearState();
     }
 
