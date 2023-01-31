@@ -44,6 +44,9 @@ public class Gauge : MonoBehaviour
                 KeyDownProcess();
                 if (gaugeAmount >= 1f)
                 {
+                    image1.enabled = false;
+                    image2.enabled = false;
+
                     MaxProcess();
                 }
             }
@@ -63,9 +66,6 @@ public class Gauge : MonoBehaviour
     private void  MaxProcess()
     {
         gaugeAmount = 0f;
-
-        image1.enabled = false;
-        image2.enabled = false;
 
         image2.color = new Color(1.0f, 1.0f, 1.0f);
         isMaxGauge = true;

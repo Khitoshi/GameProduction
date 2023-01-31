@@ -30,6 +30,7 @@ public class EnemyInterFace : CharacterInterface
 
     //攻撃ヒットフラッグ
     private bool is_hit_ = false;
+    public bool is_hit { get { return is_hit_; } set { is_hit_ = value; } }
 
     private void Start()
     {
@@ -76,6 +77,8 @@ public class EnemyInterFace : CharacterInterface
 
         //自身の回転値から前方向ベクトルを求める
         float angle_radian = transform.localEulerAngles.z;
+
+        invisibleCount();
 
         animator_.SetFloat("MoveX", Mathf.Cos(angle_radian));
         animator_.SetFloat("MoveY", Mathf.Sin(angle_radian));
@@ -126,13 +129,5 @@ public class EnemyInterFace : CharacterInterface
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Wave")
-        {
-            subtractHp(1);
-            is_hit_ = true;
-        }
-    }
 
 }

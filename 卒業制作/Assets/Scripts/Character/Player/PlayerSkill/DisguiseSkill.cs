@@ -7,17 +7,9 @@ public class DisguiseSkill : PlayerSkill
 {
     private float disguise_timer_ = 0.0f;       //スキル発動中時間カウント用
     private const float DISGUISE_TIME = 5.0f;   //スキル発動時間
-    public Animator disguise_animator_ = null;
-    private Animator save_animator_ = null;
     // Start is called before the first frame update
     void Start()
     {
-        //プレイヤーの画像を保存処理
-        var player_animator = GetComponentInParent<Animator>();
-        if (player_animator != null)
-        {
-            save_animator_ = player_animator;
-        }
 
     }
 
@@ -31,10 +23,11 @@ public class DisguiseSkill : PlayerSkill
 
         skill_timer_ = 0.0f;
 
-        //変装用画像をセット
-        if(disguise_animator_ != null)
+        //変装用のアニメーションフラッグをセット
+        var player_animator = GetComponentInParent<Animator>();
+        if (player_animator != null)
         {
-            GetComponentInParent<PlayerInterFace>().animator_ = disguise_animator_;
+            player_animator.SetBool("DisguiseTrigger", true);
         }
 
         //親オブジェクトの取得処理(プレイヤーオブジェクト)
@@ -66,10 +59,11 @@ public class DisguiseSkill : PlayerSkill
 
     public override void endSkill()
     {
-        //変装時にセットした画像を元に戻す
-        if (save_animator_ != null)
+        //変装用のアニメーションから通常へ戻す
+        var player_animator = GetComponentInParent<Animator>();
+        if (player_animator != null)
         {
-            GetComponentInParent<PlayerInterFace>().animator_ = save_animator_;
+            player_animator.SetBool("DisguiseTrigger", false);
         }
 
         //親オブジェクトの取得処理(プレイヤーオブジェクト)

@@ -29,7 +29,15 @@ public class PlayerWaveCollision : MonoBehaviour
         }
 
         if (on_hit_wave_enemy_function_ != null)
-            on_hit_wave_enemy_function_(collision);
+        {
+            var enemy = collision.GetComponent<EnemyInterFace>();
+            if (!enemy.is_hit)
+            {
+                enemy.subtractHp(1);
+                enemy.is_hit = true;
+                on_hit_wave_enemy_function_(collision);
+            }
+        }
 
     }
 }
