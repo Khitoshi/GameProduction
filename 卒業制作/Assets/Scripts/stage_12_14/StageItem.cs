@@ -8,9 +8,6 @@ public class StageItem : MonoBehaviour
     [SerializeField]
     private Text title;
 
-    [SerializeField]
-    private Image fieldIcon;
-
     private StageData stageData;
 
     public void Setup(StageData stageData)
@@ -18,7 +15,6 @@ public class StageItem : MonoBehaviour
         title.text = stageData.Name;
 
         FieldData fieldData = MasterData.FieldDataTable.Find(stageData.FieldId);
-        fieldIcon.sprite = fieldData.Icon;
 
         this.stageData = stageData;
     }

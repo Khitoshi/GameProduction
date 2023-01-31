@@ -20,21 +20,7 @@ public class ChangeScene : MonoBehaviour
 
     private void ChengeScene()
     {
-        // 現在のシーン取得
-        Scene scene = SceneManager.GetActiveScene();
-
-        // 現在のシーンのビルド番号取得
-        int build_index = scene.buildIndex;
-
-        // 現在のシーンのビルド番号に　+1
-        build_index += 1;
-        
-        // 取得したビルド番号のシーンを読み込む
-        SceneManager.LoadScene(build_index);
-
-        // セーブされたデータの読み込み
-        //LordData();
-
+        SceneManager.LoadScene("Stage_Select");
     }
 
 
@@ -43,18 +29,9 @@ public class ChangeScene : MonoBehaviour
         // 現在のシーン取得し、ビルド番号も取得
         Scene scene = SceneManager.GetActiveScene();
         int scene_index = scene.buildIndex;
-        scene_index += 1;
 
-        switch(scene_index)
-        {
-            case 3:
-                PlayerPrefs.SetInt("ClearStage", 3);
-                break;
-
-            case 4:
-                PlayerPrefs.SetInt("ClearStage", 4);
-                break;
-        } 
+        PlayerPrefs.SetInt("ClearStage", 1);
+       
     }
 
     private void LordData()
