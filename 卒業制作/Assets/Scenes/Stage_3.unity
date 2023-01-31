@@ -365,9 +365,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< HEAD:卒業制作/Assets/Scenes/Stage_3.unity
-    - target: {fileID: 1594294540389222468, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
-=======
     - target: {fileID: 1532585640089690207, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -381,7 +378,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1532585640327657090, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
->>>>>>> ce93f88849103e2d49421142491f7d3b44131cb4:卒業制作/Assets/Scenes/Stage_Test2.unity
       propertyPath: m_LocalPosition.x
       value: -16.405653
       objectReference: {fileID: 0}
