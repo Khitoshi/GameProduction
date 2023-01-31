@@ -4185,8 +4185,8 @@ MonoBehaviour:
   - {x: 0.3165201, y: 9.331375, z: 0}
   - {x: -11.366756, y: 9.36595, z: 0}
   m_ShapePathHash: 1247403442
-  m_Mesh: {fileID: 924138920}
-  m_InstanceId: 30186
+  m_Mesh: {fileID: 1173988615}
+  m_InstanceId: 20458
 --- !u!43 &394225103
 Mesh:
   m_ObjectHideFlags: 0
@@ -10900,7 +10900,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &924138920
+--- !u!114 &995539486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8901395610582922954, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
+  m_PrefabInstance: {fileID: 1954737631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b36e3794b31695488ed48e2f417cb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!43 &1173988615
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11064,17 +11075,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &995539486 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8901395610582922954, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
-  m_PrefabInstance: {fileID: 1954737631}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b36e3794b31695488ed48e2f417cb77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1235288281
 Mesh:
   m_ObjectHideFlags: 0

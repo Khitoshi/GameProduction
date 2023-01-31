@@ -96,6 +96,7 @@ public class EnemyInterFace : CharacterInterface
             {
                 animator_.SetFloat("MoveX", 1.0f);
             }
+            animator_.SetFloat("MoveY", 0.0f);
         }
 
         else
@@ -109,6 +110,8 @@ public class EnemyInterFace : CharacterInterface
             {
                 animator_.SetFloat("MoveY", 1.0f);
             }
+            animator_.SetFloat("MoveX", 0.0f);
+
         }
         animator_.SetBool("WalkTrigger", enemy_move_.walk_animation_);
     }
