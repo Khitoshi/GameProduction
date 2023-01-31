@@ -7,17 +7,11 @@ public class DisguiseSkill : PlayerSkill
 {
     private float disguise_timer_ = 0.0f;       //スキル発動中時間カウント用
     private const float DISGUISE_TIME = 5.0f;   //スキル発動時間
-    public Animator disguise_animator_ = null;
-    private Animator save_animator_ = null;
+    private bool is_disguise_ = false;  //変装中フラッグ
+    public bool is_disguise { get { return is_disguise_; } set { is_disguise_ = value; } }
     // Start is called before the first frame update
     void Start()
     {
-        //プレイヤーの画像を保存処理
-        var player_animator = GetComponentInParent<Animator>();
-        if (player_animator != null)
-        {
-            save_animator_ = player_animator;
-        }
 
     }
 
@@ -31,14 +25,12 @@ public class DisguiseSkill : PlayerSkill
 
         skill_timer_ = 0.0f;
 
-        //変装用画像をセット
-        if(disguise_animator_ != null)
-        {
-            GetComponentInParent<PlayerInterFace>().animator_ = disguise_animator_;
-        }
+        is_disguise = true;
 
         //親オブジェクトの取得処理(プレイヤーオブジェクト)
         var parent_object = transform.root.gameObject;
+
+        parent_object.GetComponent<Animator>().SetBool("DisguiesTrigger", is_disguise);
 
         //引数の名前のレイヤー番号を取得する
         parent_object.layer = LayerMask.NameToLayer("DisguisePlayer");
@@ -66,15 +58,14 @@ public class DisguiseSkill : PlayerSkill
 
     public override void endSkill()
     {
-        //変装時にセットした画像を元に戻す
-        if (save_animator_ != null)
-        {
-            GetComponentInParent<PlayerInterFace>().animator_ = save_animator_;
-        }
 
         //親オブジェクトの取得処理(プレイヤーオブジェクト)
         var parent_object = transform.root.gameObject;
         parent_object.layer = LayerMask.NameToLayer("Player");
+
+        is_disguise = false;
+
+        parent_object.GetComponent<Animator>().SetBool("DisguiesTrigger", is_disguise);
 
         disguise_timer_ = 0.0f;
     }

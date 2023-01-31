@@ -11715,6 +11715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1594294540389222586, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
+      propertyPath: move_speed_
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1594294541719043728, guid: 90bf145358a2f8c458ab21fcd05fa8ce, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -11908,6 +11912,10 @@ PrefabInstance:
       propertyPath: circle_collider
       value: 
       objectReference: {fileID: 1992987689}
+    - target: {fileID: 165396423506291496, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1532585640089690205, guid: 5bf5b097abfb4ec44b4d57ce28b648dc, type: 3}
       propertyPath: m_TagString
       value: EnemySight

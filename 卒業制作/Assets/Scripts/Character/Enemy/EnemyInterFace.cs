@@ -23,13 +23,14 @@ public class EnemyInterFace : CharacterInterface
     public Vector3 latest_position;
 
     //無敵時間
-    private float INVISIBLE_TIME = 0.5f;
+    private float INVISIBLE_TIME = 0.2f;
 
     //無敵時間カウント用
     private float invisible_time_ = 0.0f;
 
     //攻撃ヒットフラッグ
     private bool is_hit_ = false;
+    public bool is_hit { get { return is_hit_; } set { is_hit_ = value; } }
 
     private void Start()
     {
@@ -73,6 +74,8 @@ public class EnemyInterFace : CharacterInterface
     {
         //enemy_move_.rotationOnlyMove();
         enemy_state_machine.execute();
+
+        invisibleCount();
 
         //自身の回転値から前方向ベクトルを求める
         float angle_radian = transform.localEulerAngles.z;
@@ -128,11 +131,7 @@ public class EnemyInterFace : CharacterInterface
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Wave")
-        {
-            subtractHp(1);
-            is_hit_ = true;
-        }
+
     }
 
 }
