@@ -22,24 +22,14 @@ public class PlayerWaveCollision : MonoBehaviour
             if (collision.transform.tag != "Player" && collision.transform.tag != "EnemySight")
             {
                 if (on_hit_wave_other_function_ != null)
-                {
                     on_hit_wave_other_function_(collision);
-                }
 
             }
             return;
         }
 
         if (on_hit_wave_enemy_function_ != null)
-        {
-            var enemy = collision.GetComponent<EnemyInterFace>();
-            if (!enemy.is_hit)
-            {
-                enemy.subtractHp(1);
-                enemy.is_hit = true;
-                on_hit_wave_enemy_function_(collision);
-            }
-        }
+            on_hit_wave_enemy_function_(collision);
 
     }
 }
