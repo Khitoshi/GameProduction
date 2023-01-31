@@ -80,7 +80,7 @@ public class EnemyInterFace : CharacterInterface
         invisibleCount();
 
         //自身の回転値から前方向ベクトルを求める
-        float angle_radian = transform.localEulerAngles.z + 90;
+        float angle_radian = transform.GetChild(0).transform.localEulerAngles.z + 90;
 
         float power_ang_x = Mathf.Cos(angle_radian);
         float power_ang_y = Mathf.Sin(angle_radian);

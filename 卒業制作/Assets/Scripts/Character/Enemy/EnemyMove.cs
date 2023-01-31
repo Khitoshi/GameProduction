@@ -49,7 +49,9 @@ public class EnemyMove : CharacterMove
     {
 
         Vector3 latest_euler = new Vector3(0, 0, rotate_speed_);
-        transform.Rotate(latest_euler, Space.World);
+
+        //アニメーション姿勢を崩さない為に視野となる子オブジェクトの角度を変更する
+        transform.GetChild(0).transform.Rotate(latest_euler, Space.World);
     }
 
     //初期座標へ移動する(初期座標と誤差0.2しかない場合は戻ったと判定してtrueを返す)
@@ -99,8 +101,8 @@ public class EnemyMove : CharacterMove
 
         Vector3 direction = mine_transform.position - target_position;
 
-        //自身の回転値から前方向ベクトルを求める
-        float angle_radian = mine_transform.localEulerAngles.z;
+        //自身の回転値から前方向ベクトルを求める(アニメーション姿勢を崩さない為に視野となる子オブジェクトの角度取得)
+        float angle_radian = transform.GetChild(0).localEulerAngles.z;
         angle_radian *= 0.01745f; //rad = dgree * (π/180)
         float add_right_angle = 1.5705f; //90度分数値を足してあげないと前方向にならない
 
@@ -131,12 +133,12 @@ public class EnemyMove : CharacterMove
         if (cross < 0.0f)
         {
             Vector3 rotate = new Vector3(0.0f, 0.0f, rot);
-            mine_transform.Rotate(rotate);
+            transform.GetChild(0).Rotate(rotate);
         }
         else
         {
             Vector3 rotate = new Vector3(0.0f, 0.0f, -rot);
-            mine_transform.Rotate(rotate);
+            transform.GetChild(0).Rotate(rotate);
         }
 
         Vector3 update_position = mine_transform.position;

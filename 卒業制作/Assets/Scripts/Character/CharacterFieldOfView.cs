@@ -59,7 +59,7 @@ public class CharacterFieldOfView : MonoBehaviour
         float target_angle = Mathf.Atan2(pos_delta.y, pos_delta.x);
 
         //自身の回転角度をオフセット値として持たせる
-        float offset_angle_radian = transform.parent.localEulerAngles.z;
+        float offset_angle_radian = transform.localEulerAngles.z;
         offset_angle_radian *= 0.01745f; //rad = dgree * (π/180)
 
         //Atan2は0 ~ 180°, 0 ~ -180°しか算出しないので360°分のラジアンを足して補正を行う
