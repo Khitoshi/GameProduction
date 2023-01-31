@@ -24,13 +24,16 @@ public class PlayerInterFace : CharacterInterface
     public PlayerFieldOfView player_fov;
     private PLAYER_STATE player_act;
     private PlayerSkill player_skill_;
+    public Animator animator_;
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
         player_trap_move = GetComponent<PlayerTrapMove>();
         if (player_fov != null)
             player_fov = GetComponentInChildren<PlayerFieldOfView>();
-        is_life = true;
+        is_life_ = true;
+
+        animator_ = GetComponent<Animator>();
 
         player_act = PLAYER_STATE.idle;
 
@@ -47,6 +50,11 @@ public class PlayerInterFace : CharacterInterface
 
             case (int)PlayerSkill.PLAYER_SKILL_LABEL.disguise:
                 player_skill_ = GetComponentInChildren<DisguiseSkill>();
+                break;
+
+
+            case (int)PlayerSkill.PLAYER_SKILL_LABEL.wave:
+                player_skill_ = GetComponentInChildren<WaveSkill>();
                 break;
         }
 
@@ -81,10 +89,10 @@ public class PlayerInterFace : CharacterInterface
                 player_trap_move.pitfallAct();
                 break;
             case PLAYER_STATE.die:
-                if (is_life)
+                if (is_life_)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_over);
-                    is_life = false;
+                    is_life_ = false;
                 }
 
                 //演出が終了したら自身を削除するステートへ遷移する
@@ -98,10 +106,10 @@ public class PlayerInterFace : CharacterInterface
                 SceneManager.LoadScene("GameOverScene");
                 break;
             case PLAYER_STATE.game_clear:
-                if (is_life)
+                if (is_life_)
                 {
                     GameManager.game_staging_controller_.setStaging(GameStagingController.GAME_STAGING_LABEL.game_clear);
-                    is_life = false;
+                    is_life_ = false;
                 }
 
                 //演出が終了したら自身を削除するステートへ遷移する
@@ -112,6 +120,9 @@ public class PlayerInterFace : CharacterInterface
                 break;
         }
 
+        animator_.SetFloat("MoveX", Mathf.Cos(player_move_.direction_angle_));
+        animator_.SetFloat("MoveY", Mathf.Sin(player_move_.direction_angle_));
+        animator_.SetBool("WalkTrigger", player_move_.walk_animation_);
         player_skill_.skillChargeTimer();
     }
 

@@ -17,8 +17,11 @@ public class CharacterMove : MonoBehaviour
     //斜め移動時の定数(1/√2 = 0.7f)
     protected const float MOVE_DIAGONAL_SPEED = 0.7f;
 
-    //移動更新関数
-    public void move() 
+    //キャラクターオブジェクトが向いている方向を示すの角度
+    public float direction_angle_ = 0.0f;
+
+//移動更新関数
+public void move() 
     {
         //現在の座標を取得する
         Vector3 current_position = transform.position;
@@ -32,4 +35,4 @@ public class CharacterMove : MonoBehaviour
         transform.position = update_pos;
     }
 
-}
+};

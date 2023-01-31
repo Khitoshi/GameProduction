@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - MapObject
   - Safe_erea
+  - EnemySight
+  - Wave
   layers:
   - Default
   - TransparentFX

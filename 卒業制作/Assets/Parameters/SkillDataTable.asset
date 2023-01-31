@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill_datas_:
   - this_skill_: 0
-    skill_image_: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}
+    skill_image_: {fileID: 21300000, guid: 58b007f7abcb8b34691c35c58e151df8, type: 3}
     skill_name_: "\u3010None\u3011"
     skill_information_: "\u30B9\u30AD\u30EB\u7121\u3057"
   - this_skill_: 1
-    skill_image_: {fileID: 21300000, guid: dc6be31e8fda7de47b4821069ac6a74f, type: 3}
+    skill_image_: {fileID: 21300000, guid: 9207eac02775f274e98ccb8dae375573, type: 3}
     skill_name_: "\u3010\u30C0\u30C3\u30B7\u30E5\u3011"
     skill_information_: "\u4E00\u5B9A\u6642\u9593\u8DB3\u304C\u65E9\u304F\u306A\u308B"
   - this_skill_: 2
-    skill_image_: {fileID: -3947254293041751445, guid: c2b44a308c65ed1479f73025efb540e9, type: 3}
+    skill_image_: {fileID: 21300000, guid: 07fd0ce4dfedeb244bf2004189620283, type: 3}
     skill_name_: "\u3010\u5909\u88C5\u3011"
     skill_information_: "\u6575\u306E\u59FF\u306B\u5909\u88C5\u3057\u3066\u898B\u3064\u304B\u3089\u306A\u304F\u306A\u308B\u3002\u63A5\u89E6\u3059\u308B\u3068\u30D0\u30EC\u308B"
+  - this_skill_: 3
+    skill_image_: {fileID: 21300000, guid: 5e6def7317aac4f438681d1cc1ae466a, type: 3}
+    skill_name_: "\u3010\u6CE2\u52D5\u3011"
+    skill_information_: "Youtube\u3067\u5B66\u3093\u3060\u30A6\u30A7\u30FC\u30D6\u30DE\u30B9\u30BF\u30FC\u306F\u4F0A\u9054\u3058\u3083\u306A\u3044!!"

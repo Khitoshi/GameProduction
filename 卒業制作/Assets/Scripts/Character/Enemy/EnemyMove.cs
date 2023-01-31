@@ -13,9 +13,21 @@ public class EnemyMove : CharacterMove
 
     private Vector3 wander_move_position = new Vector3(0,0,0);
 
+    //初期座標を記憶しておく
+    private Vector3 initialize_position_;
+
     public CircleCollider2D circle_collider;
 
     private Vector3 last_time_euler;
+
+    //アニメーション再生用変数
+    public bool walk_animation_ = false;
+
+    void Start()
+    {
+        //自身の初期座標を記憶しておく
+        initialize_position_ = this.transform.position;
+    }
 
     //横軸のみに動く敵
     public void horizonalMove()
@@ -33,15 +45,24 @@ public class EnemyMove : CharacterMove
         switch_timer_ += Time.deltaTime;
     }
 
-    public void rotationOnlyMove(Vector3 target)
+    public void rotationOnlyMove()
     {
-        Vector3 latest_euler = new Vector3(0,0,0);
-        if (latest_euler != last_time_euler)
-        {
-            Debug.Log("rotation");
-            transform.Rotate(latest_euler, Space.World);
-        }
-        last_time_euler = latest_euler;
+
+        Vector3 latest_euler = new Vector3(0, 0, rotate_speed_);
+        transform.Rotate(latest_euler, Space.World);
+    }
+
+    //初期座標へ移動する(初期座標と誤差0.2しかない場合は戻ったと判定してtrueを返す)
+    public bool moveToInitilaizePosition()
+    {
+
+        Vector3 length = initialize_position_ - this.transform.position;
+
+        if (length.magnitude < 0.2f)
+            return true;
+
+        moveToTarget(this.transform, initialize_position_);
+        return false;
     }
     
     public Vector3 setWanderPosition()
@@ -74,6 +95,7 @@ public class EnemyMove : CharacterMove
 
     public Vector3 moveToTarget(Transform mine_transform, Vector3 target_position)
     {
+        walk_animation_ = true;
 
         Vector3 direction = mine_transform.position - target_position;
 

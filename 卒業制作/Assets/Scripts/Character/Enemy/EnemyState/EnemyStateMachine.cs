@@ -9,5 +9,6 @@ public class EnemyStateMachine:HierarchicalState
         idle = 0,//‘Ò‹@
         wander,//œpœj
         pursuit,//’ÇÕ
+        rotate,//‰ñ“]ƒIƒ“ƒŠ[
     }
 }
