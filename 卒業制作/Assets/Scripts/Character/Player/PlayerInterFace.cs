@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;  //SceneManagerを使用するのに必要
 
 [RequireComponent(typeof(PlayerMove))]
@@ -25,6 +26,16 @@ public class PlayerInterFace : CharacterInterface
     private PLAYER_STATE player_act;
     private PlayerSkill player_skill_;
     public Animator animator_;
+
+    //スキルチャージ用UIのキャンバスプレファブ
+    public Canvas skill_charage_canvas_prefab_;
+
+    //スキルチャージ用UIのプレファブから複製用
+    private Canvas skill_charage_canvas_;
+    private Image skill_charge_gauge_;
+    private Image skill_charge_ui_;
+    private RectTransform skill_charge_ui_size_;
+
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
@@ -34,6 +45,23 @@ public class PlayerInterFace : CharacterInterface
         is_life_ = true;
 
         animator_ = GetComponent<Animator>();
+
+        //スキルチャージ用UI作成処理↓
+        //スキルチャージUi用のキャンバス作成
+        skill_charage_canvas_ = Instantiate<Canvas>(skill_charage_canvas_prefab_);
+
+
+        skill_charge_gauge_ = skill_charage_canvas_.transform.GetChild(1).GetComponent<Image>();
+        skill_charge_gauge_.sprite = Resources.Load<Sprite>("スキルチャージ枠UI");
+        skill_charge_ui_ = skill_charage_canvas_.transform.GetChild(0).GetComponent<Image>();
+        skill_charge_ui_.sprite = Resources.Load<Sprite>("スキルチャージUI");
+        skill_charge_ui_size_ = skill_charge_ui_.GetComponent<RectTransform>();
+
+        skill_charge_ui_.type = Image.Type.Filled;
+        skill_charge_ui_.fillMethod = Image.FillMethod.Vertical;
+        skill_charge_ui_.fillAmount = 0.5f;
+
+        //スキルチャージ用UI作成処理↑
 
         player_act = PLAYER_STATE.idle;
 
@@ -159,6 +187,7 @@ public class PlayerInterFace : CharacterInterface
     //スキルを発動に関する処理
     private void checkSkill()
     {
+        //skill_charge_ui_size_.sizeDelta = new Vector2(100.0f, 50.0f);
         if (Input.GetButton("Skill"))
             player_skill_.enterSkill();
         player_skill_.moveSkill();
