@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be168cc30972dea4ebdfc211c361b4b4, type: 3}
   m_Name: SlateFlagDB
   m_EditorClassIdentifier: 
-  SlateFlagBit: 0
+  SlateFlagBit_: 0
