@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stages:
   - Id: 0
-    Name: "\u30B9\u30C6\u30FC\u30B81"
+    Name: 1
     FieldId: 0
   - Id: 0
-    Name: "\u30B9\u30C6\u30FC\u30B82"
+    Name: 2
     FieldId: 1
+  - Id: 0
+    Name: 3
+    FieldId: 2
+  - Id: 0
+    Name: 4
+    FieldId: 3
+  - Id: 0
+    Name: 5
+    FieldId: 4
