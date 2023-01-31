@@ -80,37 +80,57 @@ public class EnemyInterFace : CharacterInterface
         invisibleCount();
 
         //自身の回転値から前方向ベクトルを求める
-        float angle_radian = transform.localEulerAngles.z;
+        float angle_radian = transform.localEulerAngles.z + 90;
 
         float power_ang_x = Mathf.Cos(angle_radian);
         float power_ang_y = Mathf.Sin(angle_radian);
 
-        if(Mathf.Abs(power_ang_x) > Mathf.Abs(power_ang_y))
-        {
-            if(power_ang_x < 0.0f)
-            {
-                animator_.SetFloat("MoveX", -1.0f);
-            }
+        angle_radian *= 0.01745f; //rad = dgree * (π/180)
 
-            else
-            {
-                animator_.SetFloat("MoveX", 1.0f);
-            }
+        //視野角が360度を超える場合は補正を行う
+        if (angle_radian > Mathf.PI * 2)
+        {
+            angle_radian = 0.0f;
         }
 
-        else
+        //右側(0.785rad = 45°)
+        if (angle_radian < 0.785f)
         {
-            if (power_ang_y < 0.0f)
-            {
-                animator_.SetFloat("MoveY", -1.0f);
-            }
+            animator_.SetFloat("MoveX", 1.0f);
+            animator_.SetFloat("MoveY", 0.0f);
 
-            else
-            {
-                animator_.SetFloat("MoveY", 1.0f);
-            }
+        }
+
+        //上側(2.356rad = 135°)
+        else if (angle_radian < 2.356f)
+        {
+            animator_.SetFloat("MoveX", 0.0f);
+            animator_.SetFloat("MoveY", 1.0f);
+        }
+
+        //左側(3.926rad = 225°)
+        else if (angle_radian < 3.926f)
+        {
+            animator_.SetFloat("MoveX", -1.0f);
+            animator_.SetFloat("MoveY", 0.0f);
+        }
+
+        //下側(5.497rad = 315°)
+        else if (angle_radian < 5.497f)
+        {
+            animator_.SetFloat("MoveX", 0.0f);
+            animator_.SetFloat("MoveY", -1.0f);
+        }
+
+        //右側(5.497rad = 315°)
+        else if (angle_radian >= 5.497f)
+        {
+            animator_.SetFloat("MoveX", 1.0f);
+            animator_.SetFloat("MoveY", 0.0f);
         }
         animator_.SetBool("WalkTrigger", enemy_move_.walk_animation_);
+
+        Debug.Log(angle_radian / 0.01745f);
     }
 
     void transitionWanderState()
