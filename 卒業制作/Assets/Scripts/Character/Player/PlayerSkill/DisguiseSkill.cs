@@ -8,9 +8,9 @@ public class DisguiseSkill : PlayerSkill
     private float disguise_timer_ = 0.0f;       //スキル発動中時間カウント用
     private const float DISGUISE_TIME = 5.0f;   //スキル発動時間
     // Start is called before the first frame update
+
     void Start()
     {
-
     }
 
     public override bool enterSkill()
