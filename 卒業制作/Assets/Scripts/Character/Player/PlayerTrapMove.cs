@@ -5,31 +5,20 @@ using UnityEngine;
 
 public class PlayerTrapMove : CharacterMove
 {
-    public Gauge gauge;
     private PlayerInterFace player;
-    public bool gaugePlus;
     Vector2 pos;
+
+    //ƒgƒ‰ƒbƒv‚Ì’†‚É‚¢‚é‚©”»’è‚·‚é
+    public bool is_trap_ = false;
 
     private void Start()
     {
         player = GetComponent<PlayerInterFace>();
-        gaugePlus = false;
+        is_trap_ = false;
     }
 
-    public void pitfallAct()
-    {
-        gaugePlus = true;
-        
-        if(gauge.isMaxGauge)
-        {
-            gaugePlus = false;
-            gauge.isMaxGauge = false;
 
-            PlayerPos();
-        }
-    }
-
-    private void PlayerPos()
+    public void PlayerPos()
     {
         //’âŽ~‚µ‚Ä‚¢‚½player‚ð“®‚©‚·
         player.transitionMoveState();

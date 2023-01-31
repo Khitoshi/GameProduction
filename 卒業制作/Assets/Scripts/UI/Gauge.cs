@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class Gauge : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     Image image1;
     Image image2;
 
     [SerializeField] private CanvasGroup canvas;
-    public PlayerTrapMove trapMove;
     public bool isMaxGauge;
-    
+
+    public PlayerTrapMove player_trap_move_;
+
+    //プレイヤーが落とし穴にヒットしたか判定
+    public bool is_player_hit_ = false;
+
     float gaugeAmount;
 
     void Start()
     {
-        image2 = GameObject.Find("Canvas/Image2").GetComponent<Image>();
-        image1 = GameObject.Find("Canvas/Image1").GetComponent<Image>();
+        image2 = GameObject.Find("PitFall/Image2").GetComponent<Image>();
+        image1 = GameObject.Find("PitFall/Image1").GetComponent<Image>();
 
         image2.type = Image.Type.Filled;
         image2.fillMethod = Image.FillMethod.Horizontal;
@@ -26,26 +30,43 @@ public class Gauge : MonoBehaviour
         image2.fillAmount = 0;
 
         image1.enabled = false;
-        image2.enabled = false; 
+        image2.enabled = false;
 
         isMaxGauge = false;
+
+        is_player_hit_ = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(trapMove.gaugePlus)
+        if (is_player_hit_)
         {
+            //ゲージUI表示
             image1.enabled = true;
             image2.enabled = true;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
+                 Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 KeyDownProcess();
                 if (gaugeAmount >= 1f)
                 {
+                    //ゲージUI非表示
                     image1.enabled = false;
                     image2.enabled = false;
+
+                    is_player_hit_ = false;
+                    isMaxGauge = false;
+
+                    //プレイヤーがトラップから抜けた
+                    if (player_trap_move_ != null)
+                    {
+                        player_trap_move_.is_trap_ = false;
+
+                        //落とし穴に入る前へ座標を変更
+                        player_trap_move_.PlayerPos();
+                    }
 
                     MaxProcess();
                 }
@@ -63,7 +84,7 @@ public class Gauge : MonoBehaviour
     }
 
 
-    private void  MaxProcess()
+    private void MaxProcess()
     {
         gaugeAmount = 0f;
 
