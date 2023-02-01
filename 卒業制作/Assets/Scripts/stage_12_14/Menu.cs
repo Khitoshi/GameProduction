@@ -36,6 +36,11 @@ public class Menu : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+
+    }
+
     private void OnClickStageButton()
     {
 

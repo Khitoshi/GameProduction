@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class TextUi : MonoBehaviour
 {
-    public Text text_ui;
-    public Text text_ui_1;
+    public Text text_button_screen_;    //画面にランダムで表示するボタン用
+    public Text text_ui_;       //画面にボタンを押せと表示する用
     public TypeKey type_key;
-    public PlayerTrapMove trap_move;
+
+    //プレイヤーがいるか判定する
+    public bool is_player_ = false;
 
     public float speed = 1.0f;
 
@@ -18,18 +20,18 @@ public class TextUi : MonoBehaviour
     
     void Start()
     {
-        text_ui.enabled = false;
-        text_ui_1.enabled = false;
+        text_button_screen_.enabled = false;
+        text_ui_.enabled = false;
     }
 
     void Update()
     {
-        if (trap_move.is_fall_)
+        if (is_player_)
         {
-            text_ui.enabled = true;
-            text_ui_1.enabled = true;
+            text_button_screen_.enabled = true;
+            text_ui_.enabled = true;
 
-            text_ui_1.text = "画面に表示された文字を押せ";
+            text_ui_.text = "画面に表示された文字を押せ";
 
 
             if (type_key.text_finish)
@@ -53,19 +55,19 @@ public class TextUi : MonoBehaviour
             switch (count)
             {
                 case 1:
-                    text_ui.text = " W ";
+                    text_button_screen_.text = " W ";
                     break;
 
                 case 2:
-                    text_ui.text = " A ";
+                    text_button_screen_.text = " A ";
                     break;
 
                 case 3:
-                    text_ui.text = " S ";
+                    text_button_screen_.text = " S ";
                     break;
 
                 case 4:
-                    text_ui.text = " D ";
+                    text_button_screen_.text = " D ";
                     break;
             }
         }
@@ -75,8 +77,8 @@ public class TextUi : MonoBehaviour
 
     private void finish()
     {
-        text_ui_1.enabled = false;
-        text_ui.text = "成功！";
+        text_ui_.enabled = false;
+        text_button_screen_.text = "成功！";
        
 
         Invoke("TextEnable", 1.0f);
@@ -84,7 +86,7 @@ public class TextUi : MonoBehaviour
 
     private void TextEnable()
     {
-        text_ui.enabled = false;
+        text_button_screen_.enabled = false;
        
     }
 

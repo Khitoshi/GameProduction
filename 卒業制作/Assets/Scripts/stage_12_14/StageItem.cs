@@ -19,6 +19,11 @@ public class StageItem : MonoBehaviour
         this.stageData = stageData;
     }
 
+    public void Update()
+    {
+        //Debug.Log(transform.position);
+    }
+
     public void OnClickButton()
     {
         GameManager.StageProgressService.AcceptStage(stageData);

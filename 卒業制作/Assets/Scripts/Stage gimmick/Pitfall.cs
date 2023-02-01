@@ -19,6 +19,14 @@ public class Pitfall : MonoBehaviour
             PlayerInterFace player = collsion.gameObject.GetComponent<PlayerInterFace>();
             player.transitionPitfallState();
 
+            //自身にアタッチされているTypeKeyをプレイヤーへ送る
+            player.player_trap_move.type_key = GetComponent<TypeKey>();
+
+            //初期化処理及びプレイヤー判定処理
+            GetComponent<TextUi>().is_player_ = true;
+            var type_key = GetComponent<TypeKey>();
+            type_key.is_player_ = true;
+            type_key.text_finish = false;
         }
     }
 
@@ -28,6 +36,10 @@ public class Pitfall : MonoBehaviour
         {
 
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("otosiana_2");
+            collsion.gameObject.GetComponent<PlayerInterFace>().player_trap_move.type_key = null;
+
+            GetComponent<TextUi>().is_player_ = false;
+            GetComponent<TypeKey>().is_player_ = false;
         }
     }
 

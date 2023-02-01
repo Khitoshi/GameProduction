@@ -20,8 +20,10 @@ public class TypeKey : MonoBehaviour
     private int max_count = 5;
     private int miss_count = 2;
     
-    public int key_num = 0;
-    public PlayerTrapMove trap_move;
+    private int key_num_ = 0;
+    public int key_num { get { return key_num_; } set { key_num_ = value; } }
+    //プレイヤーがいるか判定する
+    public bool is_player_ = false;
 
     private bool is_succes = false;
     private bool is_miss = false;
@@ -35,7 +37,7 @@ public class TypeKey : MonoBehaviour
 
     void Update()
     {
-        if (trap_move.is_fall_)
+        if (is_player_)
         {
             if (max_judge())
             {
@@ -91,7 +93,7 @@ public class TypeKey : MonoBehaviour
         // 正しく押されたら count + 1 
         if(Input.anyKeyDown)
         {
-            key_num = 0;
+            key_num_ = 0;
             count += 1;
             Debug.Log(count);
         }
@@ -99,12 +101,14 @@ public class TypeKey : MonoBehaviour
         //miss += 1;
         //Debug.Log(miss);
 
-        if (count == max_count)
+        //成功
+        if (count >= max_count)
         {
             // 
             is_succes = true;
         }
 
+        //ミス
         if(miss == miss_count)
         {
             is_miss = true;
@@ -119,19 +123,19 @@ public class TypeKey : MonoBehaviour
 
         if(Command[number] == KeyCode.W)
         {
-            key_num = 1;
+            key_num_ = 1;
         }
         if (Command[number] == KeyCode.A)
         {
-            key_num = 2;
+            key_num_ = 2;
         }
         if (Command[number] == KeyCode.S)
         {
-            key_num = 3;
+            key_num_ = 3;
         }
         if (Command[number] == KeyCode.D)
         {
-            key_num = 4;
+            key_num_ = 4;
         }
 
         return true;

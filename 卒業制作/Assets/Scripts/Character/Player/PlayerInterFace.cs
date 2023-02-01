@@ -182,6 +182,7 @@ public class PlayerInterFace : CharacterInterface
     public void transitionPitfallState()
     {
         player_act = PLAYER_STATE.pitfall;
+        player_trap_move.is_trap_ = true;
     }
 
     public void transitionDieState()

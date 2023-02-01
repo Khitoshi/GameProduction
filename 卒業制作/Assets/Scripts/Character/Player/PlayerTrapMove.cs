@@ -7,12 +7,12 @@ public class PlayerTrapMove : CharacterMove
 {
     private PlayerInterFace player;
     Vector2 pos;
-    public TypeKey type_key_;
+    private TypeKey type_key_;
+    public TypeKey type_key { set { type_key_ = value; } }
 
     //ƒgƒ‰ƒbƒv‚Ì’†‚É‚¢‚é‚©”»’è‚·‚é
     public bool is_trap_ = false;
-    public bool is_fall_;
-
+    
     private void Start()
     {
         player = GetComponent<PlayerInterFace>();
