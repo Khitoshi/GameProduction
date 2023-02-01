@@ -29,6 +29,7 @@ public class GameClearStaging : StateBase
         Vector3 scale = text_object_.transform.localScale;
         scale = new Vector3(0.1f, 0.1f, 0.1f);
         text_object_.transform.localScale = scale;
+        time_ = 0.0f;
 
 
     }
