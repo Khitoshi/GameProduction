@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class Pitfall : MonoBehaviour
 {
-    private Gauge gauge_;
 
     // Update is called once per frame
     void Start()
     {
-        gauge_ = transform.parent.GetChild(2).GetComponent<Gauge>();
     }
 
     private void OnTriggerEnter2D(Collider2D collsion)
@@ -21,7 +19,6 @@ public class Pitfall : MonoBehaviour
             PlayerInterFace player = collsion.gameObject.GetComponent<PlayerInterFace>();
             player.transitionPitfallState();
 
-            gauge_.is_player_hit_ = true;
         }
     }
 
