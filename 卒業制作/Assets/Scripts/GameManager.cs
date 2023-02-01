@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public static StageProgressService StageProgressService { get; private set; }
 
+    public static DataBaseManager date_base_manager_ { get; private set; }
+
     //ゲーム開始時直後のシーン読込前に呼ばれるようにする属性を指定
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]  //←関数の前にこれを付ける事でゲーム開始時のシーン読込前に呼ばれる
     private static void InitializeBeforeSceneLoad()
@@ -29,7 +31,15 @@ public class GameManager : MonoBehaviour
         fade_service_ = gameManager.GetComponent<FadeService>();
         game_staging_controller_ = gameManager.GetComponent<GameStagingController>();
         StageProgressService = gameManager.GetComponent<StageProgressService>();
+        date_base_manager_ = gameManager.GetComponent<DataBaseManager>();
 
 
+    }
+
+    //ステージを開始する度に各初期化を呼ぶ
+    public static void gameInitialize()
+    {
+        if (date_base_manager_ != null)
+            date_base_manager_.initialize();
     }
 }

@@ -11,6 +11,11 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private EnemyManager enemy_manager_;
 
+    private void Start()
+    {
+        GameManager.gameInitialize();
+    }
+
 
     // Update is called once per frame
     void Update()

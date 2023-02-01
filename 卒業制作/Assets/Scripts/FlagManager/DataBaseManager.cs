@@ -14,6 +14,15 @@ public class DataBaseManager : MonoBehaviour
         }
     }
 
+    //ŠO•”—p‚Ì‰Šú‰»ˆ—
+    public void initialize()
+    {
+        foreach (FlagDateBase flag in flag_date_base)
+        {
+            flag.Init();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
