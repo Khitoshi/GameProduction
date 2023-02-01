@@ -231,7 +231,7 @@ MonoBehaviour:
   enemy_move_: {fileID: 1532585640327657151}
   enemy_fov_: {fileID: 3272309164591529392}
   enemy_state_machine: {fileID: -6656654999305050848}
-  hp_: 0
+  hp_: 5
   latest_position: {x: 0, y: 0, z: 0}
   initialize_state_: 0
 --- !u!58 &1532585640327657150

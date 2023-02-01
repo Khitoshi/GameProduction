@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;  //SceneManagerを使用するのに必要
 
 //エンドロール時のテキストスクロール用
@@ -16,6 +17,16 @@ public class EndRollScript : MonoBehaviour
     private bool is_stop_endroll;
     //　シーン移動用コルーチン
     private Coroutine endroll_coroutine;
+
+    //最後にスペースキー追加
+    [SerializeField]
+    private Text text_space_prefab_;
+
+    //Prefabから複製用
+    private Text text_space_;
+
+    [SerializeField]
+    private Canvas canvas;
 
     // Update is called once per frame
     void Update()
@@ -35,6 +46,13 @@ public class EndRollScript : MonoBehaviour
             else
             {
                 is_stop_endroll = true;
+
+                if(text_space_prefab_ != null)
+                {
+                    text_space_ = Instantiate<Text>(text_space_prefab_);
+
+                    text_space_.transform.SetParent(canvas.transform, false);
+                }
             }
         }
     }
@@ -42,7 +60,7 @@ public class EndRollScript : MonoBehaviour
     IEnumerator GoToNextScene()
     {
         //　5秒間待つ
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         if (Input.GetKeyDown("space"))
         {

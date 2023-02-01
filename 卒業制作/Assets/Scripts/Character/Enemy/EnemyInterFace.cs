@@ -17,7 +17,7 @@ public class EnemyInterFace : CharacterInterface
     public EnemyFieldOfView enemy_fov_; //視界
     public EnemyStateMachine enemy_state_machine;
     private Animator animator_;
-    public int hp_;    //敵のヒットポイント
+    public int hp_ = 3;    //敵のヒットポイント
     public Transform target_transform_ {private set; get; }   //追跡する目的地
 
     public Vector3 latest_position;
@@ -53,8 +53,6 @@ public class EnemyInterFace : CharacterInterface
         //最初の state　は　idle
         enemy_state_machine = GetComponent<EnemyStateMachine>();
         enemy_state_machine.changeSubState((int)initialize_state_);
-
-        hp_ = 3;
     }
 
     private void Update()

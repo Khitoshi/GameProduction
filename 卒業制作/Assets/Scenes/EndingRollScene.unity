@@ -249,7 +249,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -264,8 +264,8 @@ MonoBehaviour:
     ECC\u751F \u304F\u308C\u306A\u304E\n\u30FB(\u30A2\u30FC\u30C8) ECC\u751F \u30EC\u30C3\u30C1\n~\u6CA2\u5C71\u306E\u30A4\u30E9\u30B9\u30C8\u3042\u308A\u304C\u3068\u3046~
     \n\n\n\u30FB(PG)GO3A \u30CF\u30E4\u30BF\u30AB \n\u30FB(PG)GO3A \u306E\u307E\n\u30FB(PG)GO3A
     \u548C\u7530 \u6E67\u6A39\n \n\r\n~ \u811A\u672C\u30FB\u30EA\u30FC\u30C0\u30FC~\n\u30FB(PG)GO3A
-    \u786C\u6D3E\u304F\u3093\n \r\n\n<color=red><size=30>\u30B5\u30F3\u30AF\u30B9</size></color>\r\n\r\n\u5FEB\u6D3B\u30AF\u30E9\u30D6\u96E3\u6CE2\u5E97\n\r\n<color=red><size=30>\u9811\u5F35\u3063\u305F</size></color>\n\u30A2\u30EB\u30D0\u30A4\u30C8\u6CA2\u5C71\u9811\u5F35\u308A\u307E\u3057\u305F\n\u4F01\u696D\u3055\u3093\u306B\u65E5\u8A18\u9001\u308A\u307E\u3057\u305F\n\n~
-    Fin ~\r\n<color=red><size=25>\u30B2\u30FC\u30E0\u30AF\u30EA\u30A2</size></color>\n\n\u300C\u30B9\u30DA\u30FC\u30B9\u30AD\u30FC\u3092\u62BC\u3057\u3066\u306D\u300D\n\r"
+    \u786C\u6D3E\u304F\u3093\n \r\n<color=red><size=30>\u9811\u5F35\u3063\u305F</size></color>\n\u30A2\u30EB\u30D0\u30A4\u30C8\u6CA2\u5C71\u9811\u5F35\u308A\u307E\u3057\u305F\n\nPG\u3067\u3082\u30A2\u30FC\u30C8\u3055\u3093\u306E\u304A\u624B\u4F1D\u3057\u305F\n\n\u4F01\u696D\u3055\u3093\u306B\u65E5\u8A18\u9001\u308A\u307E\u3057\u305F\n\n\u6771\u4EAC\u306E\u7269\u4EF6\u63A2\u3057!!\n\u73FE\u5730\u307E\u3067\u5185\u898B\u884C\u304D\u307E\u3057\u305F!!\n\n<color=red><size=30>\u30B5\u30F3\u30AF\u30B9</size></color>\r\n\r\n\u5FEB\u6D3B\u30AF\u30E9\u30D6\u96E3\u6CE2\u5E97\n\u30B3\u30E1\u30F3\u30C8\u6A5F\u80FD\u3067\u65E5\u8A18\u66F8\u304F\u4EBA\n\n~
+    Fin ~\r\n<color=red><size=25>\u30B2\u30FC\u30E0\u30AF\u30EA\u30A2</size></color>\n\u904A\u3093\u3067\u304F\u308C\u3066\n\u3042\u308A\u304C\u3068\u3046!!\n\r"
 --- !u!222 &966543821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -287,7 +287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text_scroll_speed: 30
-  text_limit_position: 730
+  text_limit_position: 780
+  text_space_prefab_: {fileID: 6338900538775463164, guid: 201b50f85be2a7a4b9d8ee346443c8ca, type: 3}
+  canvas: {fileID: 2003167051}
 --- !u!1 &1560550924
 GameObject:
   m_ObjectHideFlags: 0
