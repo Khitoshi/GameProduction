@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace MapGimic
+namespace MapGimics
 {
     public class MapGimic : MonoBehaviour
     {

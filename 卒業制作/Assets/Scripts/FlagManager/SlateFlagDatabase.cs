@@ -17,7 +17,7 @@ public class SlateFlagDatabase : FlagDateBase
 
     public void SetFlagBit(int bit)
     {
-        SlateFlagBit_ = 1 << bit;
+        SlateFlagBit_ +=  bit;
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine;
 
 
-namespace MapGimic
+namespace MapGimics
 {
     //Œ®‚ÅŠJ‚­ƒhƒA
     public class DoorWithKey : MapGimic

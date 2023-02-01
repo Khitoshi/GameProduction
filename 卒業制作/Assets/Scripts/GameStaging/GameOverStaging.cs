@@ -12,9 +12,15 @@ public class GameOverStaging : StateBase
 
     public float max_staging_time_ = 3.0f; //演出の終了時間
 
-    public GameObject text_object_;
+    [SerializeField]
+    public GameObject text_object_prefab_;
 
-    public GameObject canvas_;  //キャンバス
+    [SerializeField]
+    public GameObject canvas_prefab_;  //キャンバス
+
+    private GameObject text_object_;
+
+    private GameObject canvas_;  //キャンバス
 
     //コンストラクタ
     public GameOverStaging() { }
@@ -22,8 +28,8 @@ public class GameOverStaging : StateBase
     public override void enter()
     {
         //prefabからオブジェクト生成
-        text_object_ = Instantiate(text_object_);
-        canvas_ = Instantiate(canvas_);
+        text_object_ = Instantiate(text_object_prefab_) as GameObject;
+        canvas_ = Instantiate(canvas_prefab_) as GameObject;
         text_object_.transform.SetParent(canvas_.transform, false);
 
         //最初は小さく表示する

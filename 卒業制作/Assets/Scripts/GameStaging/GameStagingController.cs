@@ -52,6 +52,7 @@ public class GameStagingController : MonoBehaviour
             //TODO:現在はゲーム演出のみなのでサブステートに様々な演出を登録していくからHierarchStateは0番のみ
             state_machine_.setState(0);
             state_machine_.setSubState((int)staging_label);
+            state_machine_.getState().enter();
 
         }
         else

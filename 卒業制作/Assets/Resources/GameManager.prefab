@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_up_time_: 0.5
   max_staging_time_: 3
-  text_object_: {fileID: 7663866721241787164, guid: 92f6aa45450cd5d4982315a4f350c7c5, type: 3}
-  canvas_: {fileID: 6035581250280229784, guid: 80eece357a2c33248bec8100814ab3f1, type: 3}
+  text_object_prefab_: {fileID: 7663866721241787164, guid: 92f6aa45450cd5d4982315a4f350c7c5, type: 3}
+  canvas_prefab_: {fileID: 6035581250280229784, guid: 80eece357a2c33248bec8100814ab3f1, type: 3}
 --- !u!114 &4837511857494839544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_up_time_: 0.5
   max_staging_time_: 3
-  text_object_: {fileID: 2796782758743824292, guid: 575df2fc3e3fa254db54b1553ea29d34, type: 3}
-  canvas_: {fileID: 6035581250280229784, guid: 80eece357a2c33248bec8100814ab3f1, type: 3}
+  text_object_prefab_: {fileID: 2796782758743824292, guid: 575df2fc3e3fa254db54b1553ea29d34, type: 3}
+  canvas_prefab_: {fileID: 6035581250280229784, guid: 80eece357a2c33248bec8100814ab3f1, type: 3}
 --- !u!114 &8328059133461275994
 MonoBehaviour:
   m_ObjectHideFlags: 0

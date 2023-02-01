@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace MapGimic
+namespace MapGimics
 {
     public class PlayerStealthGimic : MapGimic
     {

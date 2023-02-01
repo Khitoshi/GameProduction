@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using UnityEngine;
 
-namespace MapGimic
+namespace MapGimics
 {
     //ボタンで開くドア
     public class DoorOpenButton : MapGimic

@@ -9,6 +9,7 @@ namespace Item
     {
         //フラグ管理用ビット
         [SerializeField]private int slate_flag_bit_;
+        public int slate_flag_bit { get { return slate_flag_bit_; } }
         // Start is called before the first frame update
         new void Start()
         {
