@@ -54,25 +54,10 @@ public class Menu : MonoBehaviour
         // キーを持っているかの判断
         if (exist)
         {
-            Debug.Log("存在する");
-
             // 読み込む
             int lode_scene = PlayerPrefs.GetInt("ClearStage");
 
-            //　セーブされたシーンの番号で次からのシーンを反映する
-            switch (lode_scene)
-            {
-                case 3:
-                    SceneManager.LoadScene("Stage_2");
-                    Debug.Log("セーブされてシーン移動した  2");
-                    break;
-
-                case 4:
-                    SceneManager.LoadScene("Stage_4");
-                    Debug.Log("セーブされてシーン移動した  4");
-                    break;
-
-            }        
+                  
         }
         else
         {
