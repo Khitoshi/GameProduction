@@ -21,8 +21,11 @@ public class Gauge : MonoBehaviour
 
     void Start()
     {
-        image2 = GameObject.Find("PitFall/Image2").GetComponent<Image>();
-        image1 = GameObject.Find("PitFall/Image1").GetComponent<Image>();
+        //image2 = GameObject.Find("PitFall/Image2").GetComponent<Image>();
+        //image1 = GameObject.Find("PitFall/Image1").GetComponent<Image>();
+
+        image2 = transform.parent.GetChild(2).GetComponent<Image>();
+        image1 = transform.parent.GetChild(1).GetComponent<Image>();
 
         image2.type = Image.Type.Filled;
         image2.fillMethod = Image.FillMethod.Horizontal;

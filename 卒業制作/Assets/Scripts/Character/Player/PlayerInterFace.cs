@@ -193,15 +193,28 @@ public class PlayerInterFace : CharacterInterface
     //スキルを発動に関する処理
     private void checkSkill()
     {
-        
-        skill_charge_ui_.fillAmount += charge_masktime;
 
-        if (skill_charge_ui_.fillAmount >= 1.0f)
-            skill_charge_ui_.fillAmount = 1.0f;
+        //スキル発動中はカウントしない
+        if (player_skill_.is_active_)
+        {
+            skill_charge_ui_.fillAmount = 0.0f;
+        }
+
+        else
+        {
+
+            skill_charge_ui_.fillAmount += charge_masktime;
+
+            if (skill_charge_ui_.fillAmount >= 1.0f)
+                skill_charge_ui_.fillAmount = 1.0f;
+
+        }
 
         if (Input.GetButton("Skill"))
             player_skill_.enterSkill();
         player_skill_.moveSkill();
+
+
     }
 
     //敵の当たり判定

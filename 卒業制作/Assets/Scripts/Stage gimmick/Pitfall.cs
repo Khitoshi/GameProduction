@@ -8,9 +8,9 @@ public class Pitfall : MonoBehaviour
     private Gauge gauge_;
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        gauge_ = GameObject.Find("PitFall/Image2").GetComponent<Gauge>();
+        gauge_ = transform.parent.GetChild(2).GetComponent<Gauge>();
     }
 
     private void OnTriggerEnter2D(Collider2D collsion)
@@ -30,7 +30,6 @@ public class Pitfall : MonoBehaviour
         if (collsion.gameObject.tag == "Player")
         {
 
-            //var sprite = GetComponent<SpriteRenderer>().sprite;
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("otosiana_2");
         }
     }
