@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea6f7aad039a4449a8e1e1a8695b79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_speed_: 5
+  move_speed_: 7
   rotate_speed_: 20
   direction_angle_: 0
   walk_animation_: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   player_fov: {fileID: 0}
   animator_: {fileID: 4122646027669996484}
   skill_charage_canvas_prefab_: {fileID: 2524120275508434808, guid: 00170179c2f4b73469bc01d9ebca9563, type: 3}
+  check_laststage_: 0
 --- !u!50 &1594294540389222465
 Rigidbody2D:
   serializedVersion: 4
@@ -322,8 +323,8 @@ Camera:
   m_GameObject: {fileID: 3183779138260231479}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_inter_face_: {fileID: 1594294540389222584}
-  SKILL_CHRGE_TIME: 3
+  SKILL_CHRGE_TIME: 8
   skill_timer_: 0
   is_active_: 0
 --- !u!114 &7687793246959716263
@@ -476,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_inter_face_: {fileID: 1594294540389222584}
-  SKILL_CHRGE_TIME: 3
+  SKILL_CHRGE_TIME: 6
   skill_timer_: 0
   is_active_: 0
 --- !u!114 &7088112219393664276
@@ -492,9 +493,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_inter_face_: {fileID: 1594294540389222584}
-  SKILL_CHRGE_TIME: 1
+  SKILL_CHRGE_TIME: 5
   skill_timer_: 0
   is_active_: 0
   wave_object_prefab_: {fileID: 1239932123759120383, guid: f9f8c0815cbb36f4b9f0831db9fce871, type: 3}
-  wave_speed_: 3
+  wave_speed_: 10
   wave_power_: 10

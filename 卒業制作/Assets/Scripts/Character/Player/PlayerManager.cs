@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     private PlayerInterFace player_ = null;
 
+    public Vector3 player_pos { get { return player_.transform.position; } }
+
     public PlayerManager()
     {
         if(player_ != null)

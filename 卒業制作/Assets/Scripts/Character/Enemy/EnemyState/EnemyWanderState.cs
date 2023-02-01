@@ -26,7 +26,16 @@ public class EnemyWanderState : StateBase
         //light = GetComponent<Light2D>();
 
         // CircleCollider内のランダムな位置を計算
-        target_position_ = Random.insideUnitCircle * radius;
+
+        //シード値初期化
+        Random.InitState(System.DateTime.Now.Millisecond);
+
+        //半径内のX座標、Y座標ランダム値
+        var random_x = Random.Range(-radius, radius);
+        var random_y = Random.Range(-radius, radius);
+
+        //自身の座標にランダム値を足してランダム値生成
+        target_position_ = new Vector2(transform.position.x + random_x, transform.position.y + random_y);
         //Debug.Log("Wander start");
     }
 

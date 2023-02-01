@@ -34,7 +34,7 @@ public class CharacterManager : MonoBehaviour
                 break;
 
             case GameStagingController.GAME_STAGING_LABEL.game_over:
-                enemy_manager_.fixedUpdate();
+                //enemy_manager_.fixedUpdate();
                 break;
         }
     }
