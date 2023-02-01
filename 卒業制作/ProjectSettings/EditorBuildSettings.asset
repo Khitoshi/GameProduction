@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage_2.unity
     guid: 68302fe67e17a1b4f88e5805dfc38c81
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage_3.unity
     guid: 636a08baa6b0b0a4b8dfd65e272947ed
   - enabled: 1
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage_5.unity
     guid: 51234e9116514e44e93f64f48bf46c69
+  - enabled: 1
+    path: Assets/Scenes/Stage_6.unity
+    guid: 1c16c1d3b0fc44546833699e459598fc
   - enabled: 1
     path: Assets/Scenes/stage gimmick.unity
     guid: 9c9372d310cc14246805f9ce964d0b41

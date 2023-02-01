@@ -23,13 +23,13 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}
   - Id: 2
     Name: StageTest
-    SceneName: Stage_3
+    SceneName: Stage_4
     Icon: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}
   - Id: 3
     Name: StageTest
-    SceneName: Stage_4
+    SceneName: Stage_5
     Icon: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}
   - Id: 4
     Name: StageTest
-    SceneName: Stage_5
+    SceneName: Stage_6
     Icon: {fileID: 21300000, guid: 779d25a8dc5255f4fab73fd722da6d2f, type: 3}

@@ -249,10 +249,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -260,7 +260,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\r<color=red><size=50>GO3A</size></color>\r\n\r\n\u304B\u3081\u304F\u3081\u3061\u3083\u3093\r\nkamekumechan\r\nkame\r\n\r\n<color=red><size=50>Program</size></color>\r\n\r\n\u304B\u3081\u304F\u3081\r\nkamekumechan\r\n\r\n<color=red><size=50>Sound</size></color>\r\n\r\n\u304B\u3081\u304F\u3081"
+  m_Text: "\r<color=red><size=30>\u30E9\u30D3\u30EA\u30F3\u30B9</size></color>\r\n\r\n\u5236\u4F5C\u30E1\u30F3\u30D0\u30FC\n\u30FB(\u30A2\u30FC\u30C8)
+    ECC\u751F \u304F\u308C\u306A\u304E\n\u30FB(\u30A2\u30FC\u30C8) ECC\u751F \u30EC\u30C3\u30C1\n
+    ~\u6CA2\u5C71\u306E\u30A4\u30E9\u30B9\u30C8\u3042\u308A\u304C\u3068\u3046~ \n\n\n\u30FB(PG)GO3A
+    \u30CF\u30E4\u30BF\u30AB \n\u30FB(PG)GO3A \u306E\u307E\n\u30FB(PG)GO3A \u548C\u7530
+    \u6E67\u6A39\n \n\r\n~ \u811A\u672C\u30FB\u30EA\u30FC\u30C0\u30FC~\n\u30FB(PG)GO3A
+    \u786C\u6D3E\u304F\u3093\n \r\n\n<color=red><size=30>\u30B5\u30F3\u30AF\u30B9</size></color>\r\n\r\n\u5FEB\u6D3B\u30AF\u30E9\u30D6\u96E3\u6CE2\u5E97\n\r\n<color=red><size=30>\u9811\u5F35\u3063\u305F</size></color>\n\u30A2\u30EB\u30D0\u30A4\u30C8\u6CA2\u5C71\u9811\u5F35\u308A\u307E\u3057\u305F\n\u4F01\u696D\u3055\u3093\u306B\u65E5\u8A18\u9001\u308A\u307E\u3057\u305F\n\n~
+    Fin ~\r\n\r"
 --- !u!222 &966543821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -294,6 +300,7 @@ GameObject:
   - component: {fileID: 1560550927}
   - component: {fileID: 1560550926}
   - component: {fileID: 1560550925}
+  - component: {fileID: 1560550928}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -366,6 +373,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1560550928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560550924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1738586795
 GameObject:
   m_ObjectHideFlags: 0
