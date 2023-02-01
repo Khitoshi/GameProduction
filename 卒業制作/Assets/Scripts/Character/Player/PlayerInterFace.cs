@@ -38,6 +38,9 @@ public class PlayerInterFace : CharacterInterface
     //スキル毎によるチャージUIマスク用時間
     float charge_masktime = 0.0f;
 
+    //最終ステージかどうか判定する
+    public bool check_laststage_ = false;
+
     private void Start()
     {
         player_move_ = GetComponent<PlayerMove>();
@@ -149,7 +152,12 @@ public class PlayerInterFace : CharacterInterface
                 //演出が終了したら自身を削除するステートへ遷移する
                 if (!GameManager.game_staging_controller_.is_staging_)
                 {
-                    SceneManager.LoadScene("GameClearScene");
+                    if (!check_laststage_)
+                        SceneManager.LoadScene("GameClearScene");
+
+                    //ラストステージは別シーンへ飛ぶ
+                    else
+                        SceneManager.LoadScene("EndingRollScene");
                 }
                 break;
         }

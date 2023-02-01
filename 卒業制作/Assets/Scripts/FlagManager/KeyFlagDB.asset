@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773df359757861d46bad87c28526d145, type: 3}
   m_Name: KeyFlagDB
   m_EditorClassIdentifier: 
-  Key: 1
+  Key: 0
