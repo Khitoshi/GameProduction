@@ -7,9 +7,11 @@ public class PlayerTrapMove : CharacterMove
 {
     private PlayerInterFace player;
     Vector2 pos;
+    public TypeKey type_key_;
 
     //トラップの中にいるか判定する
     public bool is_trap_ = false;
+    public bool is_fall_;
 
     private void Start()
     {
@@ -17,6 +19,23 @@ public class PlayerTrapMove : CharacterMove
         is_trap_ = false;
     }
 
+    public void pitfallAct()
+    {
+        if (is_trap_)
+        {
+
+            if (type_key_.text_finish)
+            {
+                is_trap_ = false;
+
+                //落とし穴に入る前へ座標を変更
+                PlayerPos();
+
+            }
+        }
+
+
+    }
 
     public void PlayerPos()
     {

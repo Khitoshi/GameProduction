@@ -123,7 +123,8 @@ public class PlayerInterFace : CharacterInterface
                 break;
 
             case PLAYER_STATE.pitfall:
-                //現在落とし穴の処理を落とし穴スクリプト内へ記述している
+    
+                player_trap_move.pitfallAct();
                 break;
             case PLAYER_STATE.die:
                 if (is_life_)

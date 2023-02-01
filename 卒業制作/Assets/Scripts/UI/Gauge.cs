@@ -43,38 +43,38 @@ public class Gauge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (is_player_hit_)
-        {
-            //ゲージUI表示
-            image1.enabled = true;
-            image2.enabled = true;
+        //if (is_player_hit_)
+        //{
+        //    //ゲージUI表示
+        //    image1.enabled = true;
+        //    image2.enabled = true;
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
-                 Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                KeyDownProcess();
-                if (gaugeAmount >= 1f)
-                {
-                    //ゲージUI非表示
-                    image1.enabled = false;
-                    image2.enabled = false;
+        //    if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
+        //         Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        //    {
+        //        KeyDownProcess();
+        //        if (gaugeAmount >= 1f)
+        //        {
+        //            //ゲージUI非表示
+        //            image1.enabled = false;
+        //            image2.enabled = false;
 
-                    is_player_hit_ = false;
-                    isMaxGauge = false;
+        //            is_player_hit_ = false;
+        //            isMaxGauge = false;
 
-                    //プレイヤーがトラップから抜けた
-                    if (player_trap_move_ != null)
-                    {
-                        player_trap_move_.is_trap_ = false;
+        //            //プレイヤーがトラップから抜けた
+        //            if (player_trap_move_ != null)
+        //            {
+        //                player_trap_move_.is_trap_ = false;
 
-                        //落とし穴に入る前へ座標を変更
-                        player_trap_move_.PlayerPos();
-                    }
+        //                //落とし穴に入る前へ座標を変更
+        //                player_trap_move_.PlayerPos();
+        //            }
 
-                    MaxProcess();
-                }
-            }
-        }
+        //            MaxProcess();
+        //        }
+        //    }
+        //}
     }
 
     private void KeyDownProcess()
